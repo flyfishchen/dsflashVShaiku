@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+logs/
+
+# 每次运行的完整事件日志（约 950MB），可用 run_eval.py 重新生成
+hard/work/
+# 由 gen_data.py / gen_cases.py 重新生成
+hard/truth/
+hard/expected/

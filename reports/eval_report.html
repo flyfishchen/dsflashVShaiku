@@ -1,0 +1,682 @@
+<title>Haiku 5.5 与 DeepSeek 数据处理评测</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* 版式：实验记录本 —— 窄栏正文 + 宽栏图表与表格，左侧节号标出报告章节顺序 */
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --ink: #121826;
+  --ink-2: #485164;
+  --muted: #7a8293;
+  --rule: #dde2ea;
+  --rule-strong: #c4cbd6;
+  --accent: #155e75;
+  --accent-wash: #e6f1f4;
+  --s1: #2a78d6;           /* Haiku 5.5 */
+  --s2: #eb6834;           /* DeepSeek */
+  --s1-wash: rgba(42,120,214,.10);
+  --s2-wash: rgba(235,104,52,.10);
+  --good: #0ca30c;
+  --good-ink: #0b6b0b;
+  --bad: #d03b3b;
+  --bad-ink: #a32626;
+  --chip-ok-bg: #e7f5e7;
+  --chip-bad-bg: #fbe9e9;
+  --font-display: "Noto Serif SC", "Songti SC", "STSong", serif;
+  --font-body: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --chart-font: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1116; --surface: #161a21; --ink: #e7eaf0; --ink-2: #b3bac7; --muted: #868d9b;
+    --rule: #2a303a; --rule-strong: #3a414d; --accent: #63b7c9; --accent-wash: #15282e;
+    --s1: #3987e5; --s2: #d95926; --s1-wash: rgba(57,135,229,.14); --s2-wash: rgba(217,89,38,.14);
+    --good: #0ca30c; --good-ink: #4cc94c; --bad: #d03b3b; --bad-ink: #f08585;
+    --chip-ok-bg: #12301a; --chip-bad-bg: #3a1717;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1116; --surface: #161a21; --ink: #e7eaf0; --ink-2: #b3bac7; --muted: #868d9b;
+  --rule: #2a303a; --rule-strong: #3a414d; --accent: #63b7c9; --accent-wash: #15282e;
+  --s1: #3987e5; --s2: #d95926; --s1-wash: rgba(57,135,229,.14); --s2-wash: rgba(217,89,38,.14);
+  --good: #0ca30c; --good-ink: #4cc94c; --bad: #d03b3b; --bad-ink: #f08585;
+  --chip-ok-bg: #12301a; --chip-bad-bg: #3a1717;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 15.5px; line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+.page {
+  max-width: 1040px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 72px;
+}
+.prose { max-width: 700px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.3; margin: 0; }
+h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 700; letter-spacing: .01em; }
+h2 { font-size: 24px; font-weight: 700; }
+h3 { font-size: 17px; font-weight: 600; margin-top: 28px; }
+p { margin: 12px 0 0; }
+a { color: var(--accent); }
+code, .mono { font-family: var(--font-mono); font-size: .9em; }
+code { background: var(--accent-wash); padding: 1px 5px; border-radius: 4px; word-break: break-all; }
+.num { font-variant-numeric: tabular-nums; }
+.eyebrow { font-size: 12.5px; letter-spacing: .12em; color: var(--accent); font-weight: 500; text-transform: uppercase; }
+.lede { font-size: 17px; color: var(--ink-2); margin-top: 14px; max-width: 700px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 18px; font-size: 13px; color: var(--muted); }
+.meta span b { color: var(--ink-2); font-weight: 500; }
+
+/* 头部结论 */
+header.top { display: grid; gap: 4px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); }
+.verdict {
+  margin-top: 28px; display: grid; gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.fig { display: grid; gap: 2px; align-content: start; }
+.fig .label { font-size: 13px; color: var(--muted); }
+.fig .value { font-size: 30px; font-weight: 700; line-height: 1.2; font-family: var(--font-body); }
+.fig .sub { font-size: 13px; color: var(--ink-2); }
+.who { display: inline-flex; align-items: center; gap: 6px; }
+.key { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex: none; }
+.key.h { background: var(--s1); } .key.d { background: var(--s2); }
+
+/* 章节 */
+section { padding-top: 48px; display: grid; gap: 0; }
+.sec-head { display: flex; align-items: baseline; gap: 14px; }
+.sec-no { font-family: var(--font-mono); font-size: 14px; color: var(--muted); min-width: 22px; }
+.findings { margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 14px; max-width: 760px; }
+.findings li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; }
+.findings li::before { content: "—"; color: var(--accent); font-weight: 700; }
+.callout {
+  margin-top: 20px; max-width: 760px; background: var(--accent-wash);
+  border-radius: 8px; padding: 14px 18px; font-size: 14.5px; color: var(--ink);
+}
+.callout b { color: var(--accent); }
+
+/* 表格 */
+.tbl-wrap { margin-top: 18px; overflow-x: auto; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 560px; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-weight: 500; color: var(--ink-2); font-size: 12.5px; background: var(--bg); white-space: nowrap; }
+tbody tr:last-child td { border-bottom: none; }
+td.r, th.r { text-align: right; }
+td.num, td.r { font-variant-numeric: tabular-nums; }
+.dim { color: var(--muted); }
+.caption { font-size: 13px; color: var(--muted); margin-top: 8px; max-width: 760px; }
+.diff-up { color: var(--good-ink); } .diff-down { color: var(--bad-ink); }
+
+.chip {
+  display: inline-flex; align-items: center; justify-content: center; gap: 3px;
+  min-width: 26px; height: 22px; padding: 0 6px; border-radius: 11px; font-size: 12.5px; font-weight: 500;
+}
+.chip.ok { background: var(--chip-ok-bg); color: var(--good-ink); }
+.chip.bad { background: var(--chip-bad-bg); color: var(--bad-ink); }
+.runs { display: inline-flex; gap: 4px; }
+.tag { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 10px; border: 1px solid var(--rule-strong); color: var(--ink-2); white-space: nowrap; }
+.tag.warn { border-color: var(--bad); color: var(--bad-ink); }
+
+/* 图表 */
+.chart-card { margin-top: 20px; background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 18px 12px; }
+.chart-title { font-size: 15px; font-weight: 500; }
+.chart-sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 10px; font-size: 13px; color: var(--ink-2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 16px; height: 2px; border-radius: 1px; display: inline-block; }
+.legend i.h { background: var(--s1); } .legend i.d { background: var(--s2); }
+.multiples { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px 24px; margin-top: 8px; }
+.panel-title { font-size: 13px; color: var(--ink-2); font-weight: 500; margin-top: 6px; }
+.chart { position: relative; margin-top: 6px; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; font-family: var(--chart-font); }
+.grid line { stroke: var(--rule); stroke-width: 1; }
+.axis-base { stroke: var(--rule-strong); stroke-width: 1; }
+.tick { fill: var(--muted); font-size: 11px; }
+.cat { fill: var(--ink-2); font-size: 11.5px; }
+.endlabel { fill: var(--ink-2); font-size: 11.5px; font-weight: 500; }
+.ln { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.ln.h { stroke: var(--s1); } .ln.d { stroke: var(--s2); }
+.dot { stroke: var(--surface); stroke-width: 2; }
+.dot.h { fill: var(--s1); } .dot.d { fill: var(--s2); }
+.whisker { stroke-width: 2; stroke-linecap: round; }
+.whisker.d { stroke: var(--s2); } .whisker.h { stroke: var(--s1); }
+.cross { stroke: var(--rule-strong); stroke-width: 1; opacity: 0; }
+.hit { fill: transparent; cursor: crosshair; outline: none; }
+.hit:focus-visible { fill: var(--accent-wash); fill-opacity: .5; }
+.tip {
+  position: absolute; top: 0; pointer-events: none; background: var(--surface); color: var(--ink);
+  border: 1px solid var(--rule-strong); border-radius: 8px; padding: 8px 10px; font-size: 12.5px;
+  line-height: 1.55; box-shadow: 0 4px 16px rgba(0,0,0,.10); white-space: nowrap; z-index: 5;
+  font-family: var(--chart-font); font-variant-numeric: tabular-nums;
+}
+.tip b { font-weight: 600; }
+.tip .row { display: flex; align-items: center; gap: 6px; }
+
+footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--rule); font-size: 13px; color: var(--muted); max-width: 760px; }
+ol.steps { margin: 12px 0 0; padding-left: 20px; display: grid; gap: 6px; max-width: 760px; }
+pre.cmd { margin: 14px 0 0; background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px; overflow-x: auto; font-family: var(--font-mono); font-size: 13px; line-height: 1.6; color: var(--ink); }
+
+@media (max-width: 560px) {
+  body { font-size: 15px; }
+  .fig .value { font-size: 26px; }
+  section { padding-top: 40px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="page">
+
+<header class="top">
+  <div class="eyebrow">模型评测报告 · 2026-10-18</div>
+  <h1>Haiku 5.5 与 DeepSeek 数据处理评测</h1>
+  <p class="lede">用 pi 在四种出题方式下对比 <span class="who"><i class="key h"></i>claude-haiku-5-5</span> 与 <span class="who"><i class="key d"></i>deepseek-flash（DeepSeek v4.1）</span> 的数据处理与分析能力。题目分 10 个难度等级、每级 20 题，累计约 2,500 次模型运行。</p>
+  <div class="meta">
+    <span><b>评测框架</b> pi 1.3.0，provider newapi</span>
+    <span><b>思考强度</b> 两个模型都用默认值</span>
+    <span><b>判分</b> 与标准答案自动比对</span>
+  </div>
+  <div class="verdict">
+    <div class="fig">
+      <span class="label">最终条件下的正确率（3 轮均值）</span>
+      <span class="value"><span class="who"><i class="key h"></i>99.5%</span></span>
+      <span class="sub">Haiku 5.5，3 轮均为 199/200</span>
+    </div>
+    <div class="fig">
+      <span class="label">同条件下 DeepSeek</span>
+      <span class="value"><span class="who"><i class="key d"></i>97.8%</span></span>
+      <span class="sub">3 轮分别为 195、195、197/200</span>
+    </div>
+    <div class="fig">
+      <span class="label">正确率差（Haiku − DeepSeek）</span>
+      <span class="value">+1.67 pp</span>
+      <span class="sub">95% CI [+0.17, +3.33]，符号检验 p = 0.039</span>
+    </div>
+  </div>
+</header>
+
+<!-- ================= 结论 ================= -->
+<section id="summary">
+  <div class="sec-head"><span class="sec-no">00</span><h2>结论</h2></div>
+  <ul class="findings">
+    <li><span><b>在最接近真实工作的条件下，Haiku 5.5 小幅但稳定地领先。</b>“最终条件”指：开启工具，处理真实 CSV，README 不提示脏数据，重复 3 轮。在此条件下 Haiku 3 轮都是 199/200，DeepSeek 平均 195.7/200。差距有统计意义，但只有 1.67 个百分点。</span></li>
+    <li><span><b>差距几乎全部来自一类问题，而且主要不是“没发现”。</b>DeepSeek 在 3 轮里共失败 13 次，其中 11 次是 A/B 实验里同时出现在两组的 30 个用户没有被剔除。它在 21 次相关运行中有 18 次发现了这些用户，却有 8 次权衡后选择不处理。理由是 README 没有逐字写明这种情况怎么办。Haiku 则 21 次全部按“字段定义被违反”处理。如果把“不处理”也算作可接受答案，两者正确率持平，详见第 05 节。其他陷阱两个模型都能自己发现并处理。</span></li>
+    <li><span><b>难度等级本身拉不开差距，“要不要自己发现问题”才拉得开。</b>只要 README 把所有口径写清楚，两个模型都是 200/200，L1 到 L10 没有区别。去掉提示后，差距才集中出现在 L6–L10。</span></li>
+    <li><span><b>效率按难度分化。</b>简单题 DeepSeek 更快（L1 平均 6.4s，Haiku 10.7s）；复杂题 Haiku 更快（L9 平均 24.8s，DeepSeek 34.8s）。DeepSeek 的中位耗时更短，12.2s 对 16.8s，但它的 P90 耗时是 45.9s，Haiku 是 33.2s，慢题更多。费用基本持平，每千题约 2.3 美元对 2.4 美元。</span></li>
+    <li><span><b>选型建议。</b>如果模型要自己处理来路不明的脏数据，尤其是实验分析类任务，Haiku 5.5 更稳。如果口径已经写清、以查询类任务为主、对延迟和成本敏感，DeepSeek 在有提示时快 36%、便宜 29%。</span></li>
+  </ul>
+</section>
+
+<!-- ================= 评测设计 ================= -->
+<section id="design">
+  <div class="sec-head"><span class="sec-no">01</span><h2>评测设计</h2></div>
+  <div class="prose">
+    <p>评测分四轮推进。每一轮都是因为上一轮两个模型接近满分、区分不出来，才提高难度或改变出题方式。所有轮次两个模型使用相同的提示词和环境，开启工具时共用同一个 Python 环境（pandas 3.0、numpy、scipy）。</p>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>轮次</th><th>条件</th><th>数据</th><th class="r">Haiku 5.5</th><th class="r">DeepSeek</th><th class="r">平均耗时 H / D</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>关闭工具，只靠推理计算</td><td>数据直接写在题目里，10–25 行</td><td class="r num">199/200</td><td class="r num">200/200</td><td class="r num">3.7s / 1.9s</td></tr>
+        <tr><td>2</td><td>开启工具，README 写明所有脏数据及处理口径</td><td>真实 CSV，11 个文件，约 5MB</td><td class="r num">200/200</td><td class="r num">200/200</td><td class="r num">15.0s / 9.6s</td></tr>
+        <tr><td>3</td><td>开启工具，README 不提示脏数据（单轮）</td><td>同第 2 轮</td><td class="r num">198/200</td><td class="r num">194/200</td><td class="r num">18.6s / 20.7s</td></tr>
+        <tr><td>4</td><td>同第 3 轮，独立重复 3 轮</td><td>同第 2 轮</td><td class="r num">199.0 ± 0.0</td><td class="r num">195.7 ± 1.2</td><td class="r num">19.7s / 20.8s</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="caption">第 1、3 轮的分数是修正题目缺陷后的结果，修正内容见第 06 节。第 3 轮中途修过题，因此只作参考，结论以第 4 轮为准。</p>
+
+  <h3>十个难度等级</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>等级</th><th>考查内容（第 2–4 轮）</th><th>典型题目</th></tr></thead>
+      <tbody>
+        <tr><td>L1</td><td>基础读取</td><td>文件行数、不同取值个数、列求和</td></tr>
+        <tr><td>L2</td><td>过滤与类型解析</td><td>解析 <code>¥1,299.00</code> 后筛选、按年龄筛客户</td></tr>
+        <tr><td>L3</td><td>分组聚合</td><td>各渠道订单数、各等级平均年龄（输出对象）</td></tr>
+        <tr><td>L4</td><td>文本与正则</td><td>邮箱校验、从工单文本提取订单号与金额</td></tr>
+        <tr><td>L5</td><td>日期与时区</td><td>UTC 与北京时间混合、ISO 周、汇率补齐</td></tr>
+        <tr><td>L6</td><td>统计推断</td><td>z 检验、Welch t 检验、卡方、方差分析</td></tr>
+        <tr><td>L7</td><td>多表联结</td><td>按当日汇率换算 GMV、毛利、孤儿记录</td></tr>
+        <tr><td>L8</td><td>数据质量与清洗</td><td>输出清洗后的客户表、订单汇总表（逐格比对）</td></tr>
+        <tr><td>L9</td><td>复杂变换</td><td>会话切分、透视表、滚动窗口、组织树递归</td></tr>
+        <tr><td>L10</td><td>高级分析</td><td>Cohort 留存、RFM、关联规则、异常检测、样本量</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>数据集与陷阱</h3>
+  <div class="prose">
+    <p>第 2–4 轮使用同一套电商数据：订单 2.5 万条、订单明细 4.9 万条、行为事件 5.4 万条，另有客户、商品、汇率、每日指标、旧系统导出、A/B 实验、员工、客服工单。生成时先得到干净真值，再按规则“弄脏”写入文件。标准答案只从真值计算，不依赖任何清洗代码。为防止题面规则与真值不一致，另写了一个只读脏文件的独立清洗器做核对，16 项核心字段与真值完全一致。</p>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>陷阱</th><th>位置与规模</th><th>无提示时的表现</th></tr></thead>
+      <tbody>
+        <tr><td>整行重复</td><td>customers 80 行、orders 150 行、order_items 15 行</td><td>两者都能发现</td></tr>
+        <tr><td>同一城市多种写法</td><td>北京 / 北京市 / Beijing / BEIJING / 首尾空格，含 Xi'an</td><td>两者都能发现</td></tr>
+        <tr><td>性别与出生日期格式混用</td><td>M/F 与 男/女；三种日期写法</td><td>两者都能发现</td></tr>
+        <tr><td>价格是字符串</td><td><code>¥1,299.00</code>、<code>1,299.00</code>、<code>1299.00</code></td><td>两者都能发现</td></tr>
+        <tr><td>时区混用</td><td>25% 的订单时间以 Z 结尾（UTC），其余为北京时间</td><td>两者都能发现</td></tr>
+        <tr><td>状态写法</td><td><code>PAID</code>、<code>paid </code>、<code>Cancelled</code></td><td>两者都能发现</td></tr>
+        <tr><td>无效数量</td><td>约 0.5% 的明细 quantity 为 0 或 −1</td><td>两者都能发现</td></tr>
+        <tr><td>汇率回溯</td><td>只有工作日汇率，另有 12 个工作日缺失</td><td>两者都能发现</td></tr>
+        <tr><td>旧系统文件</td><td>GBK 编码、分号分隔、千分位、N/A</td><td>两者都能发现</td></tr>
+        <tr><td>跨年时区边界</td><td>北京时间 2023-12-31 与 2025-01-01 的事件，按 UTC 看落在 2024 年</td><td>两者都能发现</td></tr>
+        <tr><td>A/B 实验重复分组</td><td>30 个用户同时出现在 A、B 两组</td><td><span class="tag warn">DeepSeek 不稳定</span></td></tr>
+        <tr><td>1970 / 2099 时间戳</td><td>行为日志中 12 条明显异常的时间</td><td><span class="tag warn">Haiku 偶发误判</span></td></tr>
+        <tr><td>孤儿记录</td><td>40 个订单的客户不存在；25 条明细的订单不存在；2 名员工的上级不存在</td><td>两者都能处理</td></tr>
+        <tr><td>单价误录</td><td>20 条明细单价被放大 10 倍（规范要求以文件为准、不修正）</td><td>两者都未擅自修正</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>判分方式</h3>
+  <div class="prose">
+    <p>每道题在独立的工作目录中运行，模型自己写 Python 代码，最后把答案写入 <code>answer.json</code>，或按要求输出 CSV。数值题按题目要求的小数位允许 1 个末位单位的舍入差；整数题和字符串题要求完全一致；CSV 题先核对列名和行数，再逐格比对。判分器做过反向测试，CSV 中篡改 0.05 即被判错。</p>
+    <p>第 3、4 轮的 README 是一份普通的数据字典：只写字段含义、字段约束（如“主键”“正整数”“非负”“每个用户只属于一个组”）、业务口径（时区、GMV 公式、汇率规则）和 5 条通用分析规范。它不提示哪张表、哪个字段有什么问题。保留通用规范是有意的取舍：如果完全不给处理口径，同一个问题会有多种合理做法，评测就成了猜出题人的口径。</p>
+  </div>
+</section>
+
+<!-- ================= 结果总览 ================= -->
+<section id="overview">
+  <div class="sec-head"><span class="sec-no">02</span><h2>结果总览</h2></div>
+  <div class="chart-card">
+    <div class="chart-title">三种出题方式下的正确率</div>
+    <div class="chart-sub">纵轴从 97% 开始；竖线表示 3 轮重复的最小值到最大值</div>
+    <div class="legend"><span><i class="h"></i>Haiku 5.5</span><span><i class="d"></i>DeepSeek</span></div>
+    <div class="chart" id="chart-acc"></div>
+  </div>
+  <div class="prose">
+    <p>前两种条件下，两个模型都处在天花板附近，差异只有 0 到 1 题，在统计上没有意义。去掉提示后，Haiku 的正确率几乎不变，DeepSeek 下降了约 2 个百分点。逐题配对比较，Haiku 通过率更高的题有 8 道，DeepSeek 更高的只有 1 道（#158）。</p>
+  </div>
+</section>
+
+<!-- ================= 分级结果 ================= -->
+<section id="levels">
+  <div class="sec-head"><span class="sec-no">03</span><h2>无提示条件下的分级结果</h2></div>
+  <div class="prose"><p>下表是第 4 轮 3 次重复的均值。耗时为每题平均墙钟时间，费用按 pi 报告的 token 计费换算为每千题美元数。</p></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>等级</th><th class="r">Haiku 正确</th><th class="r">DeepSeek 正确</th><th class="r">Haiku 耗时</th><th class="r">DeepSeek 耗时</th><th class="r">Haiku $/千题</th><th class="r">DeepSeek $/千题</th></tr></thead>
+      <tbody id="level-rows"></tbody>
+    </table>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-title">各等级每题平均耗时（秒）</div>
+    <div class="chart-sub">左：第 2 轮，README 写明口径；右：第 4 轮，不提示脏数据（3 轮均值）。两图纵轴相同。</div>
+    <div class="legend"><span><i class="h"></i>Haiku 5.5</span><span><i class="d"></i>DeepSeek</span></div>
+    <div class="multiples">
+      <div><div class="panel-title">有提示</div><div class="chart" id="chart-time-hint"></div></div>
+      <div><div class="panel-title">无提示</div><div class="chart" id="chart-time-nohint"></div></div>
+    </div>
+  </div>
+  <div class="prose">
+    <p>有提示时，DeepSeek 在每个等级都比 Haiku 快约 1.3 到 1.9 倍。去掉提示后，Haiku 各级耗时平均增加约 30%，DeepSeek 增加约 120%，两条曲线在 L5 附近交叉。从 L7 开始，DeepSeek 反而比 Haiku 慢 30% 左右。原因是 DeepSeek 需要更多轮探查才能找出数据问题：平均工具调用 5.7 次，Haiku 为 4.6 次；输入 token 也多出约 25%。</p>
+  </div>
+</section>
+
+<!-- ================= 错误分析 ================= -->
+<section id="errors">
+  <div class="sec-head"><span class="sec-no">04</span><h2>错误分析</h2></div>
+  <div class="prose"><p>第 4 轮 3 次重复中，至少有一个模型答错过的题共 10 道，如下表。<span class="chip ok" aria-label="正确">✓</span> 表示该轮正确，<span class="chip bad" aria-label="错误">✗</span> 表示错误。</p></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>题号</th><th>等级</th><th>题目</th><th>Haiku 第 1–3 轮</th><th>DeepSeek 第 1–3 轮</th><th>原因</th></tr></thead>
+      <tbody id="fail-rows"></tbody>
+    </table>
+  </div>
+
+  <h3>DeepSeek：A/B 实验中的重复分组</h3>
+  <div class="prose">
+    <p>表中标为“未剔除重复分组用户”的 11 次失败，原因单独在第 05 节分析。</p>
+  </div>
+
+  <h3>DeepSeek：其他偶发错误</h3>
+  <div class="prose">
+    <p><b>#80（工单金额求和）</b>：第 2 轮正则只匹配到一部分金额写法，得到 149,911.06（标准答案 912,047.35）。在第 3 轮的单次运行中，它还出现过只在思考里推进、没有调用工具或写答案就结束回合的情况。<b>#168（各城市 GMV 最高的客户）</b>：第 2 轮有一个城市的 GMV 少了 15.00 元，相当于漏掉一笔运费。</p>
+  </div>
+
+  <h3>Haiku：两类失误</h3>
+  <div class="prose">
+    <p><b>#158（时间不在 2024 年的事件数）</b>：有 2 轮把 6 条 9 位数的时间戳（如 <code>336708780</code>）判定为“不是毫秒时间戳”而排除，得到 14（标准答案 20）。严格说这些是合法的毫秒时间戳，对应 1970 年 1 月，所以判错；但它的理由并非没有道理，属于有争议的失分。<b>#108</b>：第 2 轮算出了正确的 0.1229，却没有写 <code>answer.json</code>，还把脚本写到了 <code>/tmp</code>。</p>
+  </div>
+</section>
+
+<!-- ================= A/B 根因 ================= -->
+<section id="ab-root">
+  <div class="sec-head"><span class="sec-no">05</span><h2>DeepSeek 在 A/B 题上失误的原因</h2></div>
+  <div class="prose">
+    <p>A/B 实验文件里有 30 个用户同时出现在 A、B 两组。数据字典写着“每个用户只属于一个组”，通用规范写着“违反字段定义的值视为无效，只把该字段当作缺失”。按这两条，这些用户的组别无效，应从分组分析中整体剔除，这也是 A/B 实验分析的常规做法。</p>
+    <p>结论先说：DeepSeek 在这里的问题不是不会算，也基本不是没发现。它多数时候发现了冲突，却选择“不处理”，而且这个选择在多次运行之间来回摇摆。下面是逐次分析事件日志得到的证据。</p>
+  </div>
+
+  <h3>证据一：错误答案与“不处理”口径逐位一致</h3>
+  <div class="prose"><p>12 道 A/B 相关题中，有 7 道的答案会随处理方式改变（其余题不受影响，或差异小于判分容差）。对这 7 道题按三种口径分别计算，DeepSeek 的 11 次错误答案全部与“不处理”一致，没有一次是“保留首条”。</p></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>题号</th><th>题目</th><th class="r">整体剔除（标准答案）</th><th class="r">保留首条</th><th class="r">不处理</th><th class="r">DeepSeek 错误答案</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">#107</td><td>z 值</td><td class="r num">1.5426</td><td class="r num">1.5636</td><td class="r num">1.5634</td><td class="r num">1.5634 ×1</td></tr>
+        <tr><td class="mono">#108</td><td>z 检验 p 值</td><td class="r num">0.1229</td><td class="r num">0.1179</td><td class="r num">0.1180</td><td class="r num">0.118 ×1</td></tr>
+        <tr><td class="mono">#109</td><td>Welch t 值</td><td class="r num">2.6931</td><td class="r num">2.6534</td><td class="r num">2.6713</td><td class="r num">2.6713 ×2</td></tr>
+        <tr><td class="mono">#110</td><td>Welch p 值</td><td class="r num">0.0071</td><td class="r num">0.0080</td><td class="r num">0.0076</td><td class="r num">0.0076 ×3</td></tr>
+        <tr><td class="mono">#120</td><td>Mann-Whitney U</td><td class="r num">571410.0</td><td class="r num">572714.0</td><td class="r num">573616.5</td><td class="r num">573616.5 ×2</td></tr>
+        <tr><td class="mono">#194</td><td>SRM 卡方 p 值</td><td class="r num">0.0445</td><td class="r num">0.0527</td><td class="r num">0.0448</td><td class="r num">0.0448 ×1</td></tr>
+        <tr><td class="mono">#195</td><td>样本量</td><td class="r num">14838</td><td class="r num">14838</td><td class="r num">14825</td><td class="r num">14825 ×1</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>证据二：读到了规则，也检查了，最后没有用</h3>
+  <div class="prose"><p>同样是这 7 道题，每个模型 3 轮共 21 次运行：</p></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>阶段</th><th class="r">Haiku 5.5</th><th class="r">DeepSeek</th></tr></thead>
+      <tbody>
+        <tr><td>读了 README，且输出中包含“每个用户只属于一个组”</td><td class="r num">21 / 21</td><td class="r num">21 / 21</td></tr>
+        <tr><td>代码中检查了同一 user_id 是否跨组</td><td class="r num">21 / 21</td><td class="r num">18 / 21</td></tr>
+        <tr><td>检查后采用“整体剔除”口径</td><td class="r num">21 / 21</td><td class="r num diff-down">10 / 18</td></tr>
+        <tr><td>最终答对</td><td class="r num">20 / 21</td><td class="r num diff-down">10 / 21</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="caption">Haiku 唯一一次没答对，是算出了正确值却没写 answer.json。DeepSeek 没检查的 3 次全部答错，都集中在第 1 轮。</p>
+
+  <h3>证据三：写明规则时，它全部做对</h3>
+  <div class="prose"><p>第 2 轮的 README 明确写了“同时出现在 A 组和 B 组的用户为污染样本，分析时剔除其全部记录”。这 7 道题 DeepSeek 全部答对。所以它有能力执行这个处理，差别只出在规则没有逐字写明的时候。</p></div>
+
+  <h3>它为什么选择不处理</h3>
+  <div class="prose"><p>在 8 次“发现了冲突却不处理”的运行里，DeepSeek 的思考过程反复出现以下理由（同一次运行可能出现多条）：</p></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>理由</th><th class="r">出现次数</th></tr></thead>
+      <tbody>
+        <tr><td>这是跨行或主键层面的约束，不属于“某个字段的值违反定义”，所以通用规范管不到</td><td class="r num">8 / 8</td></tr>
+        <tr><td>题目没要求处理重复用户</td><td class="r num">8 / 8</td></tr>
+        <tr><td>援引“不要因为看起来异常而修正或剔除”来支持保留</td><td class="r num">8 / 8</td></tr>
+        <tr><td>把“完全相同的重复记录只保留一条”当成唯一的去重规则</td><td class="r num">7 / 8</td></tr>
+        <tr><td>揣测出题人或参考答案的意图（如“通常此类 benchmark 期望……”）</td><td class="r num">6 / 8</td></tr>
+        <tr><td>已经算出了正确口径（整体剔除）的结果，仍然放弃</td><td class="r num">5 / 8</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <p style="margin:0"><b>DeepSeek（第 1 轮 #110）：</b>“user_id 重复不是值本身非法，而是跨行约束违反。规范未给出处理跨行唯一性冲突的方法。并且‘不要因为看起来异常而剔除’支持保留。”</p>
+    <p><b>Haiku（第 1 轮 #107）：</b>“这 30 个用户同时出现在 A 组和 B 组，违反‘每个用户只属于一个组’的字段定义。无法确定他们的分组，所以把 group 视为缺失，这些记录不参与计算。我用排除后的数据计算，并给出保留它们时的结果作对照。”</p>
+  </div>
+
+  <h3>根因归纳</h3>
+  <ul class="findings">
+    <li><span><b>字面、最小干预地解读规范。</b>DeepSeek 把明文写出的去重规则当成完整清单，又把“违反字段定义”限定为单个字段值本身非法。规范没有逐字覆盖的情况，它默认不处理。</span></li>
+    <li><span><b>把一条规范用错了地方。</b>“不要因看起来异常而剔除”本来是针对数值异常（比如单价误录 10 倍）写的，它被拿来为保留结构性冲突的数据辩护。</span></li>
+    <li><span><b>决策在多次运行之间摇摆。</b>同一道题会出现对、错、对交替（#109 为 ✗ ✓ ✗）。8 次里有 5 次已经算出了正确值仍然放弃，说明两种解释在它的推理里势均力敌，最后取哪一种近乎随机。</span></li>
+    <li><span><b>偶有推理失误和少量漏检。</b>第 2 轮 #120 中，它注意到转化用户里的 user_id 没有重复，就断定冲突用户“不影响本题”。实际上剔除这些用户后，有 5 个转化用户会被排除，结果确实会变。另有 3 次完全没有检查跨组情况。</span></li>
+  </ul>
+  <div class="prose">
+    <p>Haiku 面对同一份 README，把“每个用户只属于一个组”直接当作字段定义的一部分。冲突意味着组别无效，组别无效就不参与分组。这与 A/B 实验的常规做法一致，它 21 次都这样处理，说明里也常常附上保留这些用户时的对照结果。</p>
+  </div>
+
+  <h3>这部分差距有多少要算在出题上</h3>
+  <div class="prose">
+    <p>README 确实没有逐字写“跨组用户整体剔除”。DeepSeek 认为这是跨行约束、不是字段值，这个反对意见有一定道理。如果把“不处理”也算作可接受答案，DeepSeek 3 轮平均为 199.3/200，Haiku 为 199.0/200，两者持平。</p>
+    <p>所以对第 4 轮更准确的描述是：当规范没有逐字覆盖某种数据问题时，Haiku 倾向按领域惯例补全规范并说明理由，DeepSeek 倾向字面执行、最小干预，而且判断不稳定。对数据分析工作来说，前者通常更符合预期；但这体现的是判断风格的差异，不是计算能力的差距。</p>
+  </div>
+  <div class="callout">
+    <p style="margin:0"><b>使用建议：</b>用 DeepSeek 做数据分析时，把关键的处理规则逐条写进提示词，第 2 轮的结果说明写明后它能稳定执行。也可以明确要求它“遇到数据冲突时按领域惯例处理，并同时给出不处理时的对照结果”。</p>
+  </div>
+</section>
+
+<!-- ================= 效率与成本 ================= -->
+<section id="cost">
+  <div class="sec-head"><span class="sec-no">06</span><h2>效率与成本</h2></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>每题指标</th><th class="r">Haiku 有提示</th><th class="r">DeepSeek 有提示</th><th class="r">Haiku 无提示</th><th class="r">DeepSeek 无提示</th></tr></thead>
+      <tbody>
+        <tr><td>平均耗时</td><td class="r">15.0s</td><td class="r">9.6s</td><td class="r">19.7s</td><td class="r">20.8s</td></tr>
+        <tr><td>中位耗时</td><td class="r dim">—</td><td class="r dim">—</td><td class="r">16.8s</td><td class="r">12.2s</td></tr>
+        <tr><td>P90 耗时</td><td class="r dim">—</td><td class="r dim">—</td><td class="r">33.2s</td><td class="r">45.9s</td></tr>
+        <tr><td>工具调用次数</td><td class="r">4.1</td><td class="r">4.2</td><td class="r">4.6</td><td class="r">5.7</td></tr>
+        <tr><td>模型回合数</td><td class="r dim">—</td><td class="r dim">—</td><td class="r">5.0</td><td class="r">6.2</td></tr>
+        <tr><td>输入 token</td><td class="r">24.4K</td><td class="r">20.0K</td><td class="r">29.6K</td><td class="r">36.9K</td></tr>
+        <tr><td>输出 token</td><td class="r">1.94K</td><td class="r">1.14K</td><td class="r">2.57K</td><td class="r">2.53K</td></tr>
+        <tr><td>费用（每千题）</td><td class="r">$1.87</td><td class="r">$1.33</td><td class="r">$2.32</td><td class="r">$2.43</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="caption">有提示列来自第 2 轮单次运行（当时未统计中位数、P90 和回合数），无提示列为第 4 轮 3 次重复的均值。费用为 pi 按 newapi 渠道价格报告的金额。两轮均无超时，也没有因接口错误导致的失败。</p>
+  <div class="prose">
+    <p>DeepSeek 的耗时分布更分散：简单题通常很快，难题则需要多轮探查，所以中位数更低、P90 更高。批量跑大量简单查询时，DeepSeek 的吞吐更有优势；如果关注最坏情况下的响应时间，Haiku 更可预期。</p>
+  </div>
+</section>
+
+<!-- ================= 行为观察 ================= -->
+<section id="behavior">
+  <div class="sec-head"><span class="sec-no">07</span><h2>行为观察与评测本身的修正</h2></div>
+  <h3>遇到歧义时会多算几种口径</h3>
+  <div class="prose">
+    <p>第 2 轮 README 有一处没写清：revenue 为负的那一行，dau 是否仍然有效。两个模型都察觉到了歧义，从事件日志看，它们都把“整行剔除”和“只剔除 revenue”各算了一遍，最后都选了整行剔除。这类主动核对是两个模型的共同优点，但也说明口径不清时，“答错”可能只是选了另一种合理解释。</p>
+  </div>
+
+  <h3>写出到工作目录之外</h3>
+  <div class="prose">
+    <p>提示词要求只在当前工作目录内读写，但两个模型都有越界，Haiku 更频繁。它多数时候把脚本写成 <code>/tmp/calc.py</code>，有一次把 <code>answer.json</code> 写到了上两级目录。</p>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>运行</th><th class="r">Haiku 越界题数</th><th class="r">DeepSeek 越界题数</th></tr></thead>
+      <tbody>
+        <tr><td>第 2 轮（有提示）</td><td class="r">40 / 200（20.0%）</td><td class="r">9 / 200（4.5%）</td></tr>
+        <tr><td>第 4 轮 · 第 1 次</td><td class="r">36 / 200（18.0%）</td><td class="r">6 / 200（3.0%）</td></tr>
+        <tr><td>第 4 轮 · 第 2 次</td><td class="r">27 / 200（13.5%）</td><td class="r">8 / 200（4.0%）</td></tr>
+        <tr><td>第 4 轮 · 第 3 次</td><td class="r">33 / 200（16.5%）</td><td class="r">10 / 200（5.0%）</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose">
+    <p>3 次重复是并行运行的，多个任务会同时读写同一个 <code>/tmp/calc.py</code>，存在互相覆盖的风险。核查结果：Haiku 用到该文件的 60 个任务全部正确，没有任何一道失败题与文件覆盖有关，上面的结论不受影响。模型留在 <code>/tmp</code> 的 45 个文件已按事件日志逐一确认后删除。</p>
+  </div>
+
+  <h3>评测过程中发现并修正的题目缺陷</h3>
+  <div class="prose"><p>每次出现失败，都先判断是模型的错还是题目的错。下面这些属于题目的错。每项修正都对两个模型同时生效，受影响的题两个模型都重跑了。</p></div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>问题</th><th>怎么发现的</th><th>修正</th></tr></thead>
+      <tbody>
+        <tr><td>Python 内置 <code>round</code> 是银行家舍入，期望答案 5.25 被算成 5.2</td><td>两个模型都答 5.3</td><td>标准答案改用四舍五入</td></tr>
+        <tr><td>题目要求输出部门名称，期望答案却是部门 ID</td><td>两个模型都答“研发”</td><td>修正期望答案</td></tr>
+        <tr><td>题意有多种理解：持续天数是否含首日、样本还是总体标准差、并列时取哪个、重复行是否考虑 ID 列</td><td>审查失败用例时发现</td><td>在题面中写明定义</td></tr>
+        <tr><td>判分允许 0.5% 相对误差，过宽</td><td>226.8 被当成 226.5 判对</td><td>改为按要求的小数位允许 1 个末位单位</td></tr>
+        <tr><td>revenue 为负的那一行，dau 是否有效没有写明</td><td>两个模型都整行剔除</td><td>README 写明只有该字段无效；15 道题重跑</td></tr>
+        <tr><td>“文件行数”题与通用的“去重”规范冲突</td><td>两个模型都先去重再计数</td><td>题面注明按文件原样统计；10 道题重跑</td></tr>
+        <tr><td>README 的外键说明会让孤儿订单失去客户，与标准答案口径不一致</td><td>制作无提示版时逐题核对</td><td>去掉外键说明</td></tr>
+        <tr><td>多道“最多/最高”题出现并列</td><td>生成器检查并列时报错</td><td>改题，例如把“商品数最多的品牌”改为“平均价格最高的品牌”</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ================= 局限 ================= -->
+<section id="limits">
+  <div class="sec-head"><span class="sec-no">08</span><h2>局限</h2></div>
+  <ul class="findings">
+    <li><span><b>只覆盖了一种配置。</b>两个模型都用默认思考强度、同一个 newapi 渠道；没有测试关闭或提高思考强度的效果。</span></li>
+    <li><span><b>只有一个数据领域，题面全是中文。</b>结论来自电商场景下有唯一标准答案的计算题，不代表开放式分析、写报告或可视化能力。</span></li>
+    <li><span><b>结论依赖一个判分口径。</b>第 4 轮的差距主要来自 A/B 题的“整体剔除”口径。这个口径由 README 的两条规则推出，也符合实验分析惯例，但 README 没有逐字写明；如果同时接受“不处理”，两者持平（第 05 节）。</span></li>
+    <li><span><b>差距小，样本有限。</b>3 次重复足以说明 Haiku 更稳，但 1–2 个百分点的差距在其他题库上可能不同。A/B 题在 200 题中只占 7 道，这一类权重的变化会直接改变总分差。</span></li>
+    <li><span><b>沙箱只靠提示词约束。</b>模型以用户权限执行命令，越界写文件没有被系统层面阻止。</span></li>
+    <li><span><b>出题方与被测模型同属一家。</b>题目和判分由 Claude（Opus 5.5）设计。为减少偏向：标准答案从生成数据时的真值计算；两个模型使用完全相同的提示词；每道失败题都核对过事件日志，题目缺陷修正后两个模型一起重跑。即便如此，题目风格可能更接近 Claude 系模型的习惯，这一点无法完全排除。</span></li>
+  </ul>
+</section>
+
+<!-- ================= 复现 ================= -->
+<section id="repro">
+  <div class="sec-head"><span class="sec-no">09</span><h2>复现</h2></div>
+  <div class="prose"><p>所有脚本和结果都在 <code>/home/chenmx/project/dsflashVSluna/</code> 下。第 1 轮在根目录，第 2–4 轮在 <code>hard/</code> 下。</p></div>
+<pre class="cmd">cd /home/chenmx/project/dsflashVSluna/hard
+PY=../.venv/bin/python
+$PY gen_data.py                  # 生成脏数据与真值
+$PY gen_cases.py                 # 从真值计算 200 道题的标准答案
+$PY make_nohint.py               # 生成无提示版题目
+$PY run_eval.py --tag nohint_r1 --cases test_cases_nohint.json --readme README_nohint.md
+$PY compare_runs.py nohint_r1 nohint_r2 nohint_r3   # 多轮汇总与显著性检验</pre>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>文件</th><th>内容</th></tr></thead>
+      <tbody>
+        <tr><td><code>hard/data/</code></td><td>脏数据与有提示版 README</td></tr>
+        <tr><td><code>hard/README_nohint.md</code></td><td>无提示版数据字典</td></tr>
+        <tr><td><code>hard/test_cases.json</code>、<code>test_cases_nohint.json</code></td><td>两版题目（标准答案相同）</td></tr>
+        <tr><td><code>hard/results/repeat_summary.json</code></td><td>第 4 轮汇总、逐题通过率、配对检验</td></tr>
+        <tr><td><code>hard/work/&lt;轮次&gt;/&lt;模型&gt;/&lt;题号&gt;/</code></td><td>每次运行的事件日志、模型写的代码与产出文件</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  报告日期 2026-10-18。被测模型：newapi/claude-haiku-5-5、newapi/deepseek-flash（DeepSeek v4.1）。OpenRouter 渠道的 deepseek-v4.1-flash 在本账号下不可用（503），因此两者都走 newapi 渠道。
+</footer>
+</div>
+
+<script>
+const LEVELS = [
+  // 等级, 名称, Haiku 正确, DeepSeek 正确, Haiku 耗时, DeepSeek 耗时, Haiku $/千题, DeepSeek $/千题, 有提示耗时 H, D
+  [1, "基础读取", 20.0, 20.0, 10.7, 6.4, 1.3, 0.8, 10.7, 5.6],
+  [2, "过滤与类型解析", 20.0, 20.0, 13.6, 9.8, 1.7, 1.3, 10.8, 6.0],
+  [3, "分组聚合", 20.0, 20.0, 15.4, 14.2, 1.9, 1.7, 12.4, 6.4],
+  [4, "文本与正则", 20.0, 19.7, 16.0, 11.6, 1.9, 1.6, 12.8, 7.5],
+  [5, "日期与时区", 20.0, 20.0, 19.5, 18.7, 2.2, 2.1, 14.6, 9.5],
+  [6, "统计推断", 19.7, 17.0, 23.9, 21.8, 2.4, 2.9, 14.0, 8.5],
+  [7, "多表联结", 20.0, 20.0, 26.3, 34.4, 3.3, 4.1, 19.8, 13.0],
+  [8, "数据质量与清洗", 19.3, 20.0, 20.3, 22.6, 2.5, 2.9, 15.1, 10.2],
+  [9, "复杂变换", 20.0, 19.7, 24.8, 34.8, 3.0, 3.5, 20.0, 15.3],
+  [10, "高级分析", 20.0, 19.3, 26.0, 33.7, 3.1, 3.4, 19.9, 14.2],
+];
+const FAILS = [
+  [80, 4, "工单文本中的金额总和", [1,1,1], [1,0,1], "DeepSeek 一轮正则漏匹配"],
+  [107, 6, "双比例 z 检验的 z 值", [1,1,1], [1,1,0], "DeepSeek 未剔除重复分组用户"],
+  [108, 6, "双比例 z 检验的 p 值", [1,0,1], [1,0,1], "Haiku 算对未写答案；DeepSeek 未剔除"],
+  [109, 6, "Welch t 检验的 t 值", [1,1,1], [0,1,0], "DeepSeek 未剔除重复分组用户"],
+  [110, 6, "Welch t 检验的 p 值", [1,1,1], [0,0,0], "DeepSeek 未剔除重复分组用户"],
+  [120, 6, "Mann-Whitney U 统计量", [1,1,1], [0,0,1], "DeepSeek 未剔除重复分组用户"],
+  [158, 8, "时间不在 2024 年的事件数", [0,1,0], [1,1,1], "Haiku 把 9 位时间戳判为无效（有争议）"],
+  [168, 9, "各城市 GMV 最高的客户（CSV）", [1,1,1], [1,0,1], "DeepSeek 一轮 GMV 少算 15 元"],
+  [194, 10, "SRM 卡方检验 p 值", [1,1,1], [0,1,1], "DeepSeek 未剔除重复分组用户"],
+  [195, 10, "A/B 样本量估算", [1,1,1], [0,1,1], "DeepSeek 未剔除重复分组用户"],
+];
+
+const chip = ok => ok ? '<span class="chip ok" aria-label="正确">✓</span>' : '<span class="chip bad" aria-label="错误">✗</span>';
+const fmt1 = v => v.toFixed(1);
+
+document.getElementById("level-rows").innerHTML = LEVELS.map(r => {
+  const cls = (a, b) => a > b ? ' class="r diff-up"' : ' class="r"';
+  return `<tr><td>L${r[0]} ${r[1]}</td>
+    <td${r[2] < 20 ? ' class="r diff-down"' : ' class="r"'}>${fmt1(r[2])}</td>
+    <td${r[3] < 20 ? ' class="r diff-down"' : ' class="r"'}>${fmt1(r[3])}</td>
+    <td class="r">${fmt1(r[4])}s</td><td class="r">${fmt1(r[5])}s</td>
+    <td class="r">$${fmt1(r[6])}</td><td class="r">$${fmt1(r[7])}</td></tr>`;
+}).join("") + `<tr><td><b>合计</b></td><td class="r"><b>199.0</b></td><td class="r"><b>195.7</b></td>
+  <td class="r"><b>19.7s</b></td><td class="r"><b>20.8s</b></td><td class="r"><b>$2.3</b></td><td class="r"><b>$2.4</b></td></tr>`;
+
+document.getElementById("fail-rows").innerHTML = FAILS.map(f => `<tr>
+  <td class="mono">#${f[0]}</td><td>L${f[1]}</td><td>${f[2]}</td>
+  <td><span class="runs">${f[3].map(chip).join("")}</span></td>
+  <td><span class="runs">${f[4].map(chip).join("")}</span></td>
+  <td>${f[5]}</td></tr>`).join("");
+
+/* ---------- 折线图（带十字线与悬停提示） ---------- */
+function lineChart(host, cfg) {
+  const W = cfg.w || 640, H = cfg.h || 280;
+  const m = { t: 14, r: cfg.mr || 56, b: cfg.mb || 44, l: 40 };
+  const iw = W - m.l - m.r, ih = H - m.t - m.b, n = cfg.cats.length;
+  const x = i => m.l + (i + 0.5) * iw / n;
+  const y = v => m.t + ih - (v - cfg.y0) / (cfg.y1 - cfg.y0) * ih;
+  const NS = "http://www.w3.org/2000/svg";
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${cfg.aria}">`;
+  s += `<g class="grid">` + cfg.ticks.map(t => `<line x1="${m.l}" x2="${W - m.r}" y1="${y(t)}" y2="${y(t)}"></line>`).join("") + `</g>`;
+  s += cfg.ticks.map(t => `<text class="tick" x="${m.l - 8}" y="${y(t) + 4}" text-anchor="end">${cfg.tickFmt(t)}</text>`).join("");
+  s += `<line class="axis-base" x1="${m.l}" x2="${W - m.r}" y1="${m.t + ih}" y2="${m.t + ih}"></line>`;
+  cfg.cats.forEach((c, i) => {
+    const lines = c.split("\n");
+    s += `<text class="cat" text-anchor="middle" x="${x(i)}" y="${m.t + ih + 18}">` +
+      lines.map((l, k) => `<tspan x="${x(i)}" dy="${k ? 14 : 0}">${l}</tspan>`).join("") + `</text>`;
+  });
+  s += `<line class="cross" x1="0" x2="0" y1="${m.t}" y2="${m.t + ih}"></line>`;
+  cfg.series.forEach(se => {
+    (se.range || []).forEach((rg, i) => {
+      if (rg && rg[0] !== rg[1]) s += `<line class="whisker ${se.cls}" x1="${x(i) + se.off}" x2="${x(i) + se.off}" y1="${y(rg[0])}" y2="${y(rg[1])}"></line>`;
+    });
+    const d = se.values.map((v, i) => `${i ? "L" : "M"}${x(i) + (se.off || 0)},${y(v)}`).join("");
+    s += `<path class="ln ${se.cls}" d="${d}"></path>`;
+    se.values.forEach((v, i) => { s += `<circle class="dot ${se.cls}" r="4.5" cx="${x(i) + (se.off || 0)}" cy="${y(v)}"></circle>`; });
+    if (cfg.endLabels) {
+      const li = n - 1, v = se.values[li];
+      s += `<text class="endlabel" x="${x(li) + (se.off || 0) + 10}" y="${y(v) + 4}">${cfg.valFmt(v)}</text>`;
+    }
+  });
+  cfg.cats.forEach((c, i) => {
+    s += `<rect class="hit" tabindex="0" data-i="${i}" x="${m.l + i * iw / n}" y="${m.t}" width="${iw / n}" height="${ih}" aria-label="${c.replace("\n", " ")}"></rect>`;
+  });
+  s += `</svg>`;
+  host.innerHTML = s;
+  const tip = document.createElement("div");
+  tip.className = "tip"; tip.hidden = true; host.appendChild(tip);
+  const svg = host.querySelector("svg"), cross = svg.querySelector(".cross");
+  const show = i => {
+    const scale = svg.getBoundingClientRect().width / W;
+    cross.setAttribute("x1", x(i)); cross.setAttribute("x2", x(i)); cross.style.opacity = 1;
+    tip.innerHTML = `<b>${cfg.cats[i].replace("\n", " ")}</b>` + cfg.series.map(se => {
+      const rg = se.range && se.range[i];
+      const extra = rg && rg[0] !== rg[1] ? `（${cfg.valFmt(rg[0])}–${cfg.valFmt(rg[1])}）` : "";
+      return `<div class="row"><span class="key ${se.cls}"></span>${se.name}　${cfg.valFmt(se.values[i])}${extra}</div>`;
+    }).join("");
+    tip.hidden = false;
+    const tw = tip.offsetWidth, px = x(i) * scale;
+    const left = px + 14 + tw > host.clientWidth ? px - tw - 14 : px + 14;
+    tip.style.left = Math.max(0, left) + "px";
+    tip.style.top = (m.t * scale) + "px";
+  };
+  const hide = () => { tip.hidden = true; cross.style.opacity = 0; };
+  svg.querySelectorAll(".hit").forEach(r => {
+    const i = +r.dataset.i;
+    r.addEventListener("mouseenter", () => show(i));
+    r.addEventListener("focus", () => show(i));
+    r.addEventListener("touchstart", () => show(i), { passive: true });
+    r.addEventListener("mouseleave", hide);
+    r.addEventListener("blur", hide);
+  });
+}
+
+lineChart(document.getElementById("chart-acc"), {
+  aria: "三种出题方式下两个模型的正确率折线图",
+  cats: ["关闭工具\n题内小数据", "开启工具\n有提示", "开启工具\n无提示（3 轮）"],
+  y0: 97, y1: 100.5, ticks: [97, 98, 99, 100], tickFmt: t => t + "%",
+  valFmt: v => v.toFixed(v % 1 ? (Math.round(v * 100) % 10 ? 2 : 1) : 0) + "%",
+  endLabels: true, h: 300, mb: 52,
+  series: [
+    { name: "Haiku 5.5", cls: "h", off: -5, values: [99.5, 100, 99.5], range: [null, null, [99.5, 99.5]] },
+    { name: "DeepSeek", cls: "d", off: 5, values: [100, 100, 97.83], range: [null, null, [97.5, 98.5]] },
+  ],
+});
+const lvCats = LEVELS.map(r => "L" + r[0]);
+const timeCfg = (h, d, aria) => ({
+  aria, cats: lvCats, y0: 0, y1: 40, ticks: [0, 10, 20, 30, 40], tickFmt: t => t + "s",
+  valFmt: v => v.toFixed(1) + "s", endLabels: true, h: 260, mb: 34, mr: 52,
+  series: [
+    { name: "Haiku 5.5", cls: "h", off: 0, values: h },
+    { name: "DeepSeek", cls: "d", off: 0, values: d },
+  ],
+});
+lineChart(document.getElementById("chart-time-hint"), timeCfg(LEVELS.map(r => r[8]), LEVELS.map(r => r[9]), "有提示时各等级每题平均耗时"));
+lineChart(document.getElementById("chart-time-nohint"), timeCfg(LEVELS.map(r => r[4]), LEVELS.map(r => r[5]), "无提示时各等级每题平均耗时"));
+</script>

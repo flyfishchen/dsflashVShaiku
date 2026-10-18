@@ -1,0 +1,508 @@
+{
+ "tag": "nohint",
+ "overall": {
+  "claude-haiku-5-5": {
+   "n": 200,
+   "correct": 198,
+   "wall": 18.6,
+   "tools": 4.5,
+   "cost": 0.4705,
+   "tok_in": 5796444,
+   "tok_out": 528578,
+   "timeouts": 0,
+   "errors": 0
+  },
+  "deepseek-flash": {
+   "n": 200,
+   "correct": 194,
+   "wall": 20.7,
+   "tools": 5.7,
+   "cost": 0.5046,
+   "tok_in": 7349158,
+   "tok_out": 529915,
+   "timeouts": 0,
+   "errors": 0
+  }
+ },
+ "levels": {
+  "1": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 20,
+    "wall": 12.2,
+    "tools": 4.1,
+    "cost": 0.0295,
+    "tok_in": 438183,
+    "tok_out": 27251,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 20,
+    "wall": 6.8,
+    "tools": 3.9,
+    "cost": 0.0175,
+    "tok_in": 298398,
+    "tok_out": 14287,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "2": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 20,
+    "wall": 12.9,
+    "tools": 4.3,
+    "cost": 0.0345,
+    "tok_in": 487749,
+    "tok_out": 32315,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 20,
+    "wall": 8.7,
+    "tools": 4.7,
+    "cost": 0.0246,
+    "tok_in": 382399,
+    "tok_out": 19883,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "3": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 20,
+    "wall": 15.9,
+    "tools": 4.2,
+    "cost": 0.0407,
+    "tok_in": 521829,
+    "tok_out": 43552,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 20,
+    "wall": 12.3,
+    "tools": 5.0,
+    "cost": 0.0327,
+    "tok_in": 488354,
+    "tok_out": 28379,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "4": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 20,
+    "wall": 14.3,
+    "tools": 4.2,
+    "cost": 0.0369,
+    "tok_in": 481393,
+    "tok_out": 37386,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 19,
+    "wall": 10.5,
+    "tools": 4.8,
+    "cost": 0.0305,
+    "tok_in": 440048,
+    "tok_out": 26233,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "5": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 20,
+    "wall": 17.2,
+    "tools": 4.3,
+    "cost": 0.0435,
+    "tok_in": 538317,
+    "tok_out": 47878,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 20,
+    "wall": 15.6,
+    "tools": 5.7,
+    "cost": 0.044,
+    "tok_in": 712762,
+    "tok_out": 39405,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "6": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 20,
+    "wall": 18.9,
+    "tools": 4.6,
+    "cost": 0.0467,
+    "tok_in": 568686,
+    "tok_out": 52934,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 18,
+    "wall": 24.6,
+    "tools": 6.3,
+    "cost": 0.0659,
+    "tok_in": 918097,
+    "tok_out": 73452,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "7": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 20,
+    "wall": 24.0,
+    "tools": 4.7,
+    "cost": 0.0612,
+    "tok_in": 656075,
+    "tok_out": 75189,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 20,
+    "wall": 32.7,
+    "tools": 7.1,
+    "cost": 0.0844,
+    "tok_in": 1157732,
+    "tok_out": 100665,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "8": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 18,
+    "wall": 22.2,
+    "tools": 5.0,
+    "cost": 0.0539,
+    "tok_in": 687100,
+    "tok_out": 61733,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 20,
+    "wall": 26.4,
+    "tools": 5.5,
+    "cost": 0.0502,
+    "tok_in": 829169,
+    "tok_out": 48157,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "9": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 20,
+    "wall": 24.2,
+    "tools": 5.0,
+    "cost": 0.0613,
+    "tok_in": 724235,
+    "tok_out": 74060,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 19,
+    "wall": 33.3,
+    "tools": 6.5,
+    "cost": 0.0661,
+    "tok_in": 994204,
+    "tok_out": 72817,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "10": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 20,
+    "wall": 24.2,
+    "tools": 5.2,
+    "cost": 0.0622,
+    "tok_in": 692877,
+    "tok_out": 76280,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 18,
+    "wall": 36.0,
+    "tools": 7.2,
+    "cost": 0.0887,
+    "tok_in": 1127995,
+    "tok_out": 106637,
+    "timeouts": 0,
+    "errors": 0
+   }
+  }
+ },
+ "types": {
+  "csv": {
+   "claude-haiku-5-5": {
+    "n": 7,
+    "correct": 7,
+    "wall": 38.3,
+    "tools": 6.0,
+    "cost": 0.0329,
+    "tok_in": 352121,
+    "tok_out": 42627,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 7,
+    "correct": 7,
+    "wall": 70.1,
+    "tools": 8.6,
+    "cost": 0.0383,
+    "tok_in": 673231,
+    "tok_out": 41783,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "dict": {
+   "claude-haiku-5-5": {
+    "n": 9,
+    "correct": 9,
+    "wall": 14.1,
+    "tools": 3.9,
+    "cost": 0.0164,
+    "tok_in": 213905,
+    "tok_out": 16508,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 9,
+    "correct": 9,
+    "wall": 9.1,
+    "tools": 4.3,
+    "cost": 0.0114,
+    "tok_in": 152924,
+    "tok_out": 9931,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "integer": {
+   "claude-haiku-5-5": {
+    "n": 90,
+    "correct": 88,
+    "wall": 16.1,
+    "tools": 4.4,
+    "cost": 0.1816,
+    "tok_in": 2384768,
+    "tok_out": 193105,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 90,
+    "correct": 89,
+    "wall": 13.0,
+    "tools": 5.1,
+    "cost": 0.156,
+    "tok_in": 2341728,
+    "tok_out": 147017,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "list": {
+   "claude-haiku-5-5": {
+    "n": 7,
+    "correct": 7,
+    "wall": 15.7,
+    "tools": 4.1,
+    "cost": 0.0142,
+    "tok_in": 170671,
+    "tok_out": 15478,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 7,
+    "correct": 7,
+    "wall": 16.1,
+    "tools": 5.3,
+    "cost": 0.0168,
+    "tok_in": 322753,
+    "tok_out": 13212,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "number": {
+   "claude-haiku-5-5": {
+    "n": 60,
+    "correct": 60,
+    "wall": 20.2,
+    "tools": 4.6,
+    "cost": 0.1533,
+    "tok_in": 1781359,
+    "tok_out": 178204,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 60,
+    "correct": 55,
+    "wall": 25.9,
+    "tools": 6.3,
+    "cost": 0.2008,
+    "tok_in": 2634427,
+    "tok_out": 237446,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "string": {
+   "claude-haiku-5-5": {
+    "n": 27,
+    "correct": 27,
+    "wall": 20.5,
+    "tools": 4.9,
+    "cost": 0.0721,
+    "tok_in": 893620,
+    "tok_out": 82656,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 27,
+    "correct": 27,
+    "wall": 27.1,
+    "tools": 6.0,
+    "cost": 0.0812,
+    "tok_in": 1224095,
+    "tok_out": 80526,
+    "timeouts": 0,
+    "errors": 0
+   }
+  }
+ },
+ "failures": {
+  "claude-haiku-5-5": [
+   {
+    "id": 142,
+    "level": 8,
+    "expected": "80",
+    "parsed": null,
+    "reason": "缺少 answer.json",
+    "wall": 18.9,
+    "tool_calls": 5
+   },
+   {
+    "id": 158,
+    "level": 8,
+    "expected": "20",
+    "parsed": "14",
+    "reason": "答案不符",
+    "wall": 22.0,
+    "tool_calls": 5
+   }
+  ],
+  "deepseek-flash": [
+   {
+    "id": 80,
+    "level": 4,
+    "expected": "912047.35",
+    "parsed": null,
+    "reason": "缺少 answer.json",
+    "wall": 4.3,
+    "tool_calls": 3
+   },
+   {
+    "id": 110,
+    "level": 6,
+    "expected": "0.0071",
+    "parsed": "0.0076",
+    "reason": "答案不符",
+    "wall": 7.1,
+    "tool_calls": 4
+   },
+   {
+    "id": 120,
+    "level": 6,
+    "expected": "571410.0",
+    "parsed": "573616.5",
+    "reason": "答案不符",
+    "wall": 7.4,
+    "tool_calls": 5
+   },
+   {
+    "id": 167,
+    "level": 9,
+    "expected": "0.9158",
+    "parsed": "0.906",
+    "reason": "答案不符",
+    "wall": 36.4,
+    "tool_calls": 7
+   },
+   {
+    "id": 183,
+    "level": 10,
+    "expected": "204",
+    "parsed": "200",
+    "reason": "答案不符",
+    "wall": 80.4,
+    "tool_calls": 12
+   },
+   {
+    "id": 194,
+    "level": 10,
+    "expected": "0.0445",
+    "parsed": "0.0527",
+    "reason": "答案不符",
+    "wall": 87.1,
+    "tool_calls": 10
+   }
+  ]
+ },
+ "both_wrong": [],
+ "only": {
+  "claude-haiku-5-5": [
+   80,
+   110,
+   120,
+   167,
+   183,
+   194
+  ],
+  "deepseek-flash": [
+   142,
+   158
+  ]
+ }
+}

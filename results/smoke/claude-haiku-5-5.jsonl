@@ -1,0 +1,4 @@
+{"id": 2, "level": 1, "category": "基础运算", "model": "claude-haiku-5-5", "expected": 48, "parsed": 48.0, "correct": true, "output": "48", "latency": 2.58, "error": null}
+{"id": 1, "level": 1, "category": "基础运算", "model": "claude-haiku-5-5", "expected": 266, "parsed": 266.0, "correct": true, "output": "266", "latency": 3.5, "error": null}
+{"id": 170, "level": 10, "category": "高级分析", "model": "claude-haiku-5-5", "expected": 155.33, "parsed": 155.33, "correct": true, "output": "155.33", "latency": 4.1, "error": null}
+{"id": 171, "level": 10, "category": "高级分析", "model": "claude-haiku-5-5", "expected": 212.0, "parsed": 212.0, "correct": true, "output": "212.00", "latency": 5.64, "error": null}

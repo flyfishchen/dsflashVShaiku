@@ -1,0 +1,2449 @@
+[
+ {
+  "id": 1,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "orders.csv 文件共有多少行数据（不含表头）（按文件原样逐行统计，不应用 README 中的分析规范）？",
+  "answer_type": "integer",
+  "expected": 25190
+ },
+ {
+  "id": 2,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "products.csv"
+  ],
+  "question": "products.csv 中有多少个不同的 category？",
+  "answer_type": "integer",
+  "expected": 8
+ },
+ {
+  "id": 3,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "products.csv"
+  ],
+  "question": "products.csv 中 cost 列的总和是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 258867.23
+ },
+ {
+  "id": 4,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "products.csv"
+  ],
+  "question": "products.csv 中 cost 最高的商品的 product_id 是什么？",
+  "answer_type": "string",
+  "expected": "P0294"
+ },
+ {
+  "id": 5,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "order_items.csv"
+  ],
+  "question": "order_items.csv 文件共有多少行数据（不含表头）（按文件原样逐行统计，不应用 README 中的分析规范）？",
+  "answer_type": "integer",
+  "expected": 48996
+ },
+ {
+  "id": 6,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "order_items.csv"
+  ],
+  "question": "把 order_items.csv 文件中 quantity 列的数值逐行相加，总和是多少（按文件原样逐行统计，不应用 README 中的分析规范）？",
+  "answer_type": "integer",
+  "expected": 75647
+ },
+ {
+  "id": 7,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "customers.csv 文件共有多少行数据（不含表头）（按文件原样逐行统计，不应用 README 中的分析规范）？",
+  "answer_type": "integer",
+  "expected": 3080
+ },
+ {
+  "id": 8,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "customers.csv 整行去重后还剩多少行？",
+  "answer_type": "integer",
+  "expected": 3000
+ },
+ {
+  "id": 9,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "orders.csv 文件中 channel 为 app 的行有多少（按文件原样逐行统计，不应用 README 中的分析规范）？",
+  "answer_type": "integer",
+  "expected": 13763
+ },
+ {
+  "id": 10,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "fx_rates.csv"
+  ],
+  "question": "fx_rates.csv 中 USD 的 rate_to_cny 最大值是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 7.3005
+ },
+ {
+  "id": 11,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "daily_kpi.csv"
+  ],
+  "question": "daily_kpi.csv 中 dau 的平均值是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 13041.56
+ },
+ {
+  "id": 12,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "daily_kpi.csv"
+  ],
+  "question": "daily_kpi.csv 共有多少行数据（不含表头）？",
+  "answer_type": "integer",
+  "expected": 716
+ },
+ {
+  "id": 13,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "ab_test.csv"
+  ],
+  "question": "ab_test.csv 文件中 group 为 B 的行有多少（按文件原样逐行统计，不应用 README 中的分析规范）？",
+  "answer_type": "integer",
+  "expected": 9873
+ },
+ {
+  "id": 14,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "employees.csv"
+  ],
+  "question": "employees.csv 中 salary 的中位数是多少？保留1位小数。",
+  "answer_type": "number",
+  "expected": 22200.0
+ },
+ {
+  "id": 15,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "employees.csv"
+  ],
+  "question": "employees.csv 中有多少个不同的 dept？",
+  "answer_type": "integer",
+  "expected": 7
+ },
+ {
+  "id": 16,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "order_items.csv"
+  ],
+  "question": "order_items.csv 文件中有多少个不同的 product_id（按文件原样逐行统计，不应用 README 中的分析规范）？",
+  "answer_type": "integer",
+  "expected": 400
+ },
+ {
+  "id": 17,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "products.csv"
+  ],
+  "question": "products.csv 中有多少个不同的 supplier_id？",
+  "answer_type": "integer",
+  "expected": 30
+ },
+ {
+  "id": 18,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "orders.csv 文件中 coupon_code 非空的行有多少（按文件原样逐行统计，不应用 README 中的分析规范）？",
+  "answer_type": "integer",
+  "expected": 7474
+ },
+ {
+  "id": 19,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "events.csv"
+  ],
+  "question": "events.csv 文件共有多少行数据（不含表头）（按文件原样逐行统计，不应用 README 中的分析规范）？",
+  "answer_type": "integer",
+  "expected": 53797
+ },
+ {
+  "id": 20,
+  "level": 1,
+  "category": "基础读取",
+  "files": [
+   "events.csv"
+  ],
+  "question": "events.csv 文件中 event_type 为 purchase 的行有多少（按文件原样逐行统计，不应用 README 中的分析规范）？",
+  "answer_type": "integer",
+  "expected": 1242
+ },
+ {
+  "id": 21,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "products.csv"
+  ],
+  "question": "list_price 大于 1000 元的商品有多少个？",
+  "answer_type": "integer",
+  "expected": 134
+ },
+ {
+  "id": 22,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "products.csv"
+  ],
+  "question": "所有商品 list_price 的平均值是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 1039.63
+ },
+ {
+  "id": 23,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "products.csv"
+  ],
+  "question": "毛利率 (list_price − cost) / list_price 低于 30% 的商品有多少个？",
+  "answer_type": "integer",
+  "expected": 129
+ },
+ {
+  "id": 24,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "有效订单（paid）有多少个？",
+  "answer_type": "integer",
+  "expected": 21460
+ },
+ {
+  "id": 25,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "状态为 refunded 的订单有多少个？",
+  "answer_type": "integer",
+  "expected": 1918
+ },
+ {
+  "id": 26,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "shipping_fee 为 0 的有效订单有多少个？",
+  "answer_type": "integer",
+  "expected": 8541
+ },
+ {
+  "id": 27,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "没有等级（tier 为空）的客户有多少人？",
+  "answer_type": "integer",
+  "expected": 432
+ },
+ {
+  "id": 28,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "女性客户有多少人？",
+  "answer_type": "integer",
+  "expected": 1420
+ },
+ {
+  "id": 29,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "城市为上海的客户有多少人？",
+  "answer_type": "integer",
+  "expected": 419
+ },
+ {
+  "id": 30,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "年龄大于等于 40 岁的客户有多少人？",
+  "answer_type": "integer",
+  "expected": 1633
+ },
+ {
+  "id": 31,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "signup_date 在 2024 年内的客户有多少人？",
+  "answer_type": "integer",
+  "expected": 974
+ },
+ {
+  "id": 32,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "order_items.csv"
+  ],
+  "question": "order_items 中有多少条明细的 quantity 违反字段定义？",
+  "answer_type": "integer",
+  "expected": 238
+ },
+ {
+  "id": 33,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "order_items.csv"
+  ],
+  "question": "quantity 符合字段定义且 discount_rate 大于等于 0.2 的明细有多少条（不要求订单存在于 orders）？",
+  "answer_type": "integer",
+  "expected": 4869
+ },
+ {
+  "id": 34,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "products.csv"
+  ],
+  "question": "category 为 手机数码 且 list_price 低于 3000 元的商品有多少个？",
+  "answer_type": "integer",
+  "expected": 39
+ },
+ {
+  "id": 35,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "币种为 USD 的订单有多少个（任意状态）？",
+  "answer_type": "integer",
+  "expected": 1225
+ },
+ {
+  "id": 36,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "events.csv"
+  ],
+  "question": "北京时间 2024 年 6 月的事件有多少条？",
+  "answer_type": "integer",
+  "expected": 4405
+ },
+ {
+  "id": 37,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "legacy_sales.csv"
+  ],
+  "question": "legacy_sales.csv 中所有有效销售额的总和是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 670836546.17
+ },
+ {
+  "id": 38,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "legacy_sales.csv"
+  ],
+  "question": "legacy_sales.csv 中销售额大于 1,000,000 的记录有多少条？",
+  "answer_type": "integer",
+  "expected": 280
+ },
+ {
+  "id": 39,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "employees.csv"
+  ],
+  "question": "2020-01-01 之前入职的员工有多少人？",
+  "answer_type": "integer",
+  "expected": 189
+ },
+ {
+  "id": 40,
+  "level": 2,
+  "category": "过滤与类型解析",
+  "files": [
+   "ab_test.csv"
+  ],
+  "question": "A 组和 B 组中，converted = 1 且 revenue > 200 的用户一共有多少个？",
+  "answer_type": "integer",
+  "expected": 453
+ },
+ {
+  "id": 41,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "有效订单数最多的 channel 是哪个？",
+  "answer_type": "string",
+  "expected": "app"
+ },
+ {
+  "id": 42,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "products.csv"
+  ],
+  "question": "每个 category 各有多少个商品？键为 category。",
+  "answer_type": "dict",
+  "expected": {
+   "运动户外": 57,
+   "家用电器": 55,
+   "手机数码": 54,
+   "美妆个护": 51,
+   "图书文娱": 48,
+   "食品生鲜": 47,
+   "服饰鞋包": 47,
+   "电脑办公": 41
+  }
+ },
+ {
+  "id": 43,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "orders.csv",
+   "order_items.csv"
+  ],
+  "question": "在有效订单中，按 product_id 汇总 quantity，销量最高的 product_id 是什么？",
+  "answer_type": "string",
+  "expected": "P0161"
+ },
+ {
+  "id": 44,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "orders.csv",
+   "order_items.csv"
+  ],
+  "question": "币种为 CNY 的有效订单的 GMV 总和是多少（原币种即人民币）？保留2位小数。",
+  "answer_type": "number",
+  "expected": 82023059.21
+ },
+ {
+  "id": 45,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "客户数最多的前 3 个城市是哪些？按客户数降序，并列时按城市名升序，以数组给出。",
+  "answer_type": "list",
+  "expected": [
+   "北京",
+   "上海",
+   "广州"
+  ]
+ },
+ {
+  "id": 46,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "按 tier（金/银/铜，不含空值）统计客户的平均年龄。键为 tier，保留2位小数。",
+  "answer_type": "dict",
+  "expected": {
+   "金": 43.43,
+   "铜": 41.81,
+   "银": 42.18
+  }
+ },
+ {
+  "id": 47,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "按北京时间月份（YYYY-MM）统计有效订单数，订单数最多的月份是哪个？",
+  "answer_type": "string",
+  "expected": "2024-12"
+ },
+ {
+  "id": 48,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "北京时间 2024 年的有效订单有多少个？",
+  "answer_type": "integer",
+  "expected": 15921
+ },
+ {
+  "id": 49,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "有效订单数大于等于 10 的 customer_id 有多少个？",
+  "answer_type": "integer",
+  "expected": 429
+ },
+ {
+  "id": 50,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "只看币种为 CNY 的有效订单，各 channel 的平均 shipping_fee 是多少？键为 channel，保留2位小数。",
+  "answer_type": "dict",
+  "expected": {
+   "app": 5.38,
+   "mini_program": 5.41,
+   "web": 5.27
+  }
+ },
+ {
+  "id": 51,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "有效订单中，各 coupon_code（不含空值）分别有多少个订单？键为 coupon_code。",
+  "answer_type": "dict",
+  "expected": {
+   "FS": 1748,
+   "NEW10": 1684,
+   "VIP20": 1519,
+   "SALE15": 1406
+  }
+ },
+ {
+  "id": 52,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "employees.csv"
+  ],
+  "question": "不含“总裁办”，平均薪资最高的 dept 是哪个？",
+  "answer_type": "string",
+  "expected": "运营"
+ },
+ {
+  "id": 53,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "employees.csv"
+  ],
+  "question": "每个 dept 各有多少名员工？键为 dept。",
+  "answer_type": "dict",
+  "expected": {
+   "销售": 78,
+   "财务": 57,
+   "研发": 53,
+   "人力": 47,
+   "市场": 36,
+   "运营": 28,
+   "总裁办": 1
+  }
+ },
+ {
+  "id": 54,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "events.csv"
+  ],
+  "question": "只看北京时间 2024 年内的事件，各 event_type 分别有多少条记录？键为 event_type。",
+  "answer_type": "dict",
+  "expected": {
+   "view": 47119,
+   "add_to_cart": 3622,
+   "checkout": 1794,
+   "purchase": 1242
+  }
+ },
+ {
+  "id": 55,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "legacy_sales.csv"
+  ],
+  "question": "2024 年（月份 2024-01 至 2024-12）有效销售额合计最高的门店是哪个？",
+  "answer_type": "string",
+  "expected": "深圳一店"
+ },
+ {
+  "id": 56,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "daily_kpi.csv"
+  ],
+  "question": "按星期几统计 dau 的平均值，平均 dau 最高的是星期几（周一=1 … 周日=7）？",
+  "answer_type": "integer",
+  "expected": 6
+ },
+ {
+  "id": 57,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "products.csv"
+  ],
+  "question": "各 category 的平均 list_price 是多少？键为 category，保留2位小数。",
+  "answer_type": "dict",
+  "expected": {
+   "图书文娱": 87.35,
+   "家用电器": 2043.16,
+   "手机数码": 2376.16,
+   "服饰鞋包": 218.32,
+   "电脑办公": 3028.55,
+   "美妆个护": 188.47,
+   "运动户外": 426.45,
+   "食品生鲜": 55.78
+  }
+ },
+ {
+  "id": 58,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "order_items.csv"
+  ],
+  "question": "按 order_items 中的 order_id 分组，统计每个 order_id 中 quantity 符合字段定义的明细条数，求平均值（只统计至少有一条这样的明细的 order_id）。保留4位小数。",
+  "answer_type": "number",
+  "expected": 1.9495
+ },
+ {
+  "id": 59,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "ab_test.csv"
+  ],
+  "question": "A、B 两组的转化率（converted 的均值）分别是多少？键为 A、B，保留4位小数。",
+  "answer_type": "dict",
+  "expected": {
+   "A": 0.1007,
+   "B": 0.1074
+  }
+ },
+ {
+  "id": 60,
+  "level": 3,
+  "category": "分组聚合",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "有效订单按 currency 统计订单数。键为 currency。",
+  "answer_type": "dict",
+  "expected": {
+   "CNY": 19749,
+   "USD": 1063,
+   "HKD": 648
+  }
+ },
+ {
+  "id": 61,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "手机号有效（恰好 11 位数字且以 1 开头）的客户有多少人？",
+  "answer_type": "integer",
+  "expected": 2904
+ },
+ {
+  "id": 62,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "用正则 ^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$ 校验 email，不合法的客户有多少人？",
+  "answer_type": "integer",
+  "expected": 122
+ },
+ {
+  "id": 63,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "在 email 合法（规则：正则 ^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$）的客户中，把 @ 后的域名转为小写，出现次数最多的域名是哪个？",
+  "answer_type": "string",
+  "expected": "qq.com"
+ },
+ {
+  "id": 64,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "姓（name 的第一个字）为“王”的客户有多少人？",
+  "answer_type": "integer",
+  "expected": 318
+ },
+ {
+  "id": 65,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "name 恰好为 3 个字的客户有多少人？",
+  "answer_type": "integer",
+  "expected": 2100
+ },
+ {
+  "id": 66,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "products.csv"
+  ],
+  "question": "product_name 按空格分词后，最后一个词为 Pro 的商品有多少个？",
+  "answer_type": "integer",
+  "expected": 53
+ },
+ {
+  "id": 67,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "products.csv"
+  ],
+  "question": "product_name 按空格分词后第一个词为品牌名，一共有多少个不同的品牌？",
+  "answer_type": "integer",
+  "expected": 16
+ },
+ {
+  "id": 68,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "products.csv"
+  ],
+  "question": "按品牌（product_name 的第一个词）计算平均 list_price，平均价格最高的品牌是哪个？",
+  "answer_type": "string",
+  "expected": "米乐"
+ },
+ {
+  "id": 69,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "有效订单中 coupon_code 含数字的（如 VIP20 中的 20），这些数字的平均值是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 14.82
+ },
+ {
+  "id": 70,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "customers.csv 文件中 city 列按原样（逐字符比较）共有多少种不同的字符串取值？",
+  "answer_type": "integer",
+  "expected": 120
+ },
+ {
+  "id": 71,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "客户一共分布在多少个不同的城市？",
+  "answer_type": "integer",
+  "expected": 15
+ },
+ {
+  "id": 72,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "有多少位客户的 city 字段（去掉首尾空格后）只由英文字母和撇号组成？",
+  "answer_type": "integer",
+  "expected": 569
+ },
+ {
+  "id": 73,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "support_tickets.csv"
+  ],
+  "question": "text 中包含“退款”二字的工单有多少个？",
+  "answer_type": "integer",
+  "expected": 368
+ },
+ {
+  "id": 74,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "support_tickets.csv"
+  ],
+  "question": "text 中提到的订单号（字母 O 后跟 6 位数字）一共有多少个不同的订单号？",
+  "answer_type": "integer",
+  "expected": 1041
+ },
+ {
+  "id": 75,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "support_tickets.csv",
+   "orders.csv"
+  ],
+  "question": "text 中至少提到一个状态为 refunded 的订单的工单有多少个？",
+  "answer_type": "integer",
+  "expected": 88
+ },
+ {
+  "id": 76,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "support_tickets.csv"
+  ],
+  "question": "text 中带有 [P1] 标签的工单有多少个？",
+  "answer_type": "integer",
+  "expected": 245
+ },
+ {
+  "id": 77,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "support_tickets.csv"
+  ],
+  "question": "text 中同时包含“物流”和“延迟”的工单有多少个？",
+  "answer_type": "integer",
+  "expected": 246
+ },
+ {
+  "id": 78,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "support_tickets.csv"
+  ],
+  "question": "text 的平均字符数是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 25.93
+ },
+ {
+  "id": 79,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "support_tickets.csv"
+  ],
+  "question": "text 中出现手机号（1 开头的连续 11 位数字，前后都不是数字）的工单有多少个？",
+  "answer_type": "integer",
+  "expected": 240
+ },
+ {
+  "id": 80,
+  "level": 4,
+  "category": "文本与正则",
+  "files": [
+   "support_tickets.csv"
+  ],
+  "question": "text 中出现的金额（形如 ¥123.45 或 123.45元）的总和是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 912047.35
+ },
+ {
+  "id": 81,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "有多少个订单的 order_time 是以 Z 结尾的 UTC 时间写法？",
+  "answer_type": "integer",
+  "expected": 6290
+ },
+ {
+  "id": 82,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "北京时间日期为 2024-02-29 的有效订单有多少个？",
+  "answer_type": "integer",
+  "expected": 28
+ },
+ {
+  "id": 83,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "北京时间 00:00:00 至 05:59:59 下单的有效订单有多少个？",
+  "answer_type": "integer",
+  "expected": 1167
+ },
+ {
+  "id": 84,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "有效订单中，北京时间周六或周日下单的占比是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.2902
+ },
+ {
+  "id": 85,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "北京时间 2024 年有效订单数与 2023 年有效订单数之比（2024 ÷ 2023）是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 2.8743
+ },
+ {
+  "id": 86,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "orders.csv",
+   "customers.csv"
+  ],
+  "question": "对 customers 表中有有效订单的客户，计算“首个有效订单的北京时间日期 − signup_date”的天数，求中位数。保留1位小数。",
+  "answer_type": "number",
+  "expected": 115.0
+ },
+ {
+  "id": 87,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "对有效订单数 ≥ 2 的 customer_id，按下单时间排序后计算相邻两单的间隔天数（= 时间差秒数 / 86400），汇总所有间隔求平均值。保留2位小数。",
+  "answer_type": "number",
+  "expected": 26.46
+ },
+ {
+  "id": 88,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "按 ISO 周统计有效订单数，ISO 年为 2024 的各周中，订单数最多的是第几周？",
+  "answer_type": "integer",
+  "expected": 52
+ },
+ {
+  "id": 89,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "所有“当月最后一天”（北京时间）下单的有效订单一共有多少个？",
+  "answer_type": "integer",
+  "expected": 775
+ },
+ {
+  "id": 90,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "events.csv"
+  ],
+  "question": "只看北京时间 2024 年内的事件，按北京时间的小时（0–23）统计事件数，事件最多的是几点？",
+  "answer_type": "integer",
+  "expected": 3
+ },
+ {
+  "id": 91,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "events.csv"
+  ],
+  "question": "只看北京时间 2024 年内的事件，最早一条事件的北京时间是什么？格式 YYYY-MM-DD HH:MM:SS（直接舍去毫秒）。",
+  "answer_type": "string",
+  "expected": "2024-01-01 01:21:30"
+ },
+ {
+  "id": 92,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "fx_rates.csv"
+  ],
+  "question": "2024 年 USD 的 rate_to_cny 高于 7.2 的记录有多少条？",
+  "answer_type": "integer",
+  "expected": 104
+ },
+ {
+  "id": 93,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "fx_rates.csv"
+  ],
+  "question": "把 USD 汇率补齐到 2024-03-01 至 2024-03-31 的每一天（当天没有汇率就用之前最近一个有汇率的日期的值），这 31 天的平均汇率是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 7.1507
+ },
+ {
+  "id": 94,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "daily_kpi.csv"
+  ],
+  "question": "2023-01-01 至 2024-12-31 之间，daily_kpi 缺失了多少天？",
+  "answer_type": "integer",
+  "expected": 15
+ },
+ {
+  "id": 95,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "daily_kpi.csv"
+  ],
+  "question": "列出 2023-01-01 至 2024-12-31 之间 daily_kpi 缺失的所有日期（YYYY-MM-DD，升序）。",
+  "answer_type": "list",
+  "expected": [
+   "2023-03-28",
+   "2023-07-10",
+   "2023-09-25",
+   "2023-09-30",
+   "2023-12-22",
+   "2024-01-17",
+   "2024-03-24",
+   "2024-04-11",
+   "2024-06-02",
+   "2024-06-08",
+   "2024-07-28",
+   "2024-07-31",
+   "2024-09-17",
+   "2024-10-03",
+   "2024-11-28"
+  ]
+ },
+ {
+  "id": 96,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "employees.csv"
+  ],
+  "question": "截至 2025-01-01，员工平均司龄是多少年（司龄 = 天数 / 365.25）？保留2位小数。",
+  "answer_type": "number",
+  "expected": 7.28
+ },
+ {
+  "id": 97,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "employees.csv"
+  ],
+  "question": "哪个月份（1–12）入职的员工最多？",
+  "answer_type": "integer",
+  "expected": 1
+ },
+ {
+  "id": 98,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "support_tickets.csv"
+  ],
+  "question": "按北京时间，2024 年第四季度（10–12 月）创建的工单有多少个？",
+  "answer_type": "integer",
+  "expected": 268
+ },
+ {
+  "id": 99,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "support_tickets.csv",
+   "orders.csv"
+  ],
+  "question": "对提到订单号的工单，取 text 中第一个出现的订单号，计算“工单创建时间 − 该订单下单时间”的小时数，求中位数。保留2位小数。",
+  "answer_type": "number",
+  "expected": 244.74
+ },
+ {
+  "id": 100,
+  "level": 5,
+  "category": "日期与时区",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "按北京时间月份统计有效订单数，2024 年各月中环比增长率（相对上一个月，1 月对比 2023-12）最高的是哪个月？格式 YYYY-MM。",
+  "answer_type": "string",
+  "expected": "2024-12"
+ },
+ {
+  "id": 101,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "orders.csv",
+   "order_items.csv"
+  ],
+  "question": "币种为 CNY 的有效订单 GMV 的中位数是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 2339.26
+ },
+ {
+  "id": 102,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "orders.csv",
+   "order_items.csv"
+  ],
+  "question": "币种为 CNY 的有效订单 GMV 的 90% 分位数是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 10620.22
+ },
+ {
+  "id": 103,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "orders.csv",
+   "order_items.csv"
+  ],
+  "question": "币种为 CNY 的有效订单 GMV 的样本标准差是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 5175.62
+ },
+ {
+  "id": 104,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "products.csv"
+  ],
+  "question": "list_price 与 cost 的皮尔逊相关系数是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.9716
+ },
+ {
+  "id": 105,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "orders.csv",
+   "order_items.csv"
+  ],
+  "question": "按 1.5×IQR 规则，币种为 CNY 的有效订单 GMV 中有多少个异常值（小于 Q1−1.5IQR 或大于 Q3+1.5IQR）？",
+  "answer_type": "integer",
+  "expected": 1096
+ },
+ {
+  "id": 106,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "daily_kpi.csv"
+  ],
+  "question": "dau 与 revenue 的 Spearman 秩相关系数是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.9004
+ },
+ {
+  "id": 107,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "ab_test.csv"
+  ],
+  "question": "对 A、B 两组转化率做合并比例的双比例 z 检验，z 值（B − A）是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 1.5426
+ },
+ {
+  "id": 108,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "ab_test.csv"
+  ],
+  "question": "对 A、B 两组转化率做合并比例的双比例 z 检验，双侧 p 值是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.1229
+ },
+ {
+  "id": 109,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "ab_test.csv"
+  ],
+  "question": "只看 A、B 两组中 converted = 1 的用户，对 revenue 做 Welch t 检验（B 组减 A 组），t 值是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 2.6931
+ },
+ {
+  "id": 110,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "ab_test.csv"
+  ],
+  "question": "只看 A、B 两组中 converted = 1 的用户，对 revenue 做 Welch t 检验，双侧 p 值是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.0071
+ },
+ {
+  "id": 111,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "ab_test.csv"
+  ],
+  "question": "B 组转化率的 95% Wald 置信区间下限是多少（z = 1.959964）？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.1013
+ },
+ {
+  "id": 112,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "对有效订单的 channel × currency 列联表做卡方独立性检验，卡方统计量是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 6.1625
+ },
+ {
+  "id": 113,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "customers.csv",
+   "orders.csv"
+  ],
+  "question": "对 customers 表中每个客户（没有有效订单的记为 0 单），年龄与有效订单数的皮尔逊相关系数是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.0295
+ },
+ {
+  "id": 114,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "employees.csv"
+  ],
+  "question": "salary 的偏度是多少（使用 scipy.stats.skew 默认参数）？保留4位小数。",
+  "answer_type": "number",
+  "expected": 6.4704
+ },
+ {
+  "id": 115,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "employees.csv"
+  ],
+  "question": "salary 的峰度是多少（使用 scipy.stats.kurtosis 默认参数，即 Fisher 定义）？保留4位小数。",
+  "answer_type": "number",
+  "expected": 68.2356
+ },
+ {
+  "id": 116,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "daily_kpi.csv"
+  ],
+  "question": "dau 的变异系数（样本标准差 ÷ 均值）是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.1462
+ },
+ {
+  "id": 117,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "orders.csv",
+   "order_items.csv"
+  ],
+  "question": "对币种为 CNY 的有效订单 GMV，按 channel 分组做单因素方差分析，F 值是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.3791
+ },
+ {
+  "id": 118,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "legacy_sales.csv"
+  ],
+  "question": "在每个门店内部对有效销售额做 Z-score 标准化（样本标准差），|z| > 2.5 的记录有多少条？",
+  "answer_type": "integer",
+  "expected": 3
+ },
+ {
+  "id": 119,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "products.csv"
+  ],
+  "question": "计算每个 category 的 list_price 中位数，这些中位数中的最大值是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 2521.02
+ },
+ {
+  "id": 120,
+  "level": 6,
+  "category": "统计推断",
+  "files": [
+   "ab_test.csv"
+  ],
+  "question": "只看 A、B 两组中 converted = 1 的用户，对 revenue 做 Mann-Whitney U 检验（scipy.stats.mannwhitneyu，B 组作为第一个参数，其余默认），U 统计量是多少？保留1位小数。",
+  "answer_type": "number",
+  "expected": 571410.0
+ },
+ {
+  "id": 121,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "orders.csv",
+   "order_items.csv",
+   "fx_rates.csv"
+  ],
+  "question": "北京时间 2024 年有效订单的 GMV 合计（换算为人民币）是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 66170195.72
+ },
+ {
+  "id": 122,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "orders.csv",
+   "order_items.csv",
+   "products.csv",
+   "fx_rates.csv"
+  ],
+  "question": "按 category 汇总有效订单的商品金额（行金额换算为人民币，不含运费），金额最高的 category 是哪个？",
+  "answer_type": "string",
+  "expected": "手机数码"
+ },
+ {
+  "id": 123,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "customers.csv",
+   "orders.csv"
+  ],
+  "question": "customers 表中从未有过有效订单的客户有多少人？",
+  "answer_type": "integer",
+  "expected": 811
+ },
+ {
+  "id": 124,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "customers.csv",
+   "orders.csv",
+   "order_items.csv",
+   "fx_rates.csv"
+  ],
+  "question": "按客户所在城市汇总北京时间 2024 年有效订单的人民币 GMV，最高的城市是哪个？",
+  "answer_type": "string",
+  "expected": "北京"
+ },
+ {
+  "id": 125,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "customers.csv",
+   "orders.csv",
+   "order_items.csv",
+   "fx_rates.csv"
+  ],
+  "question": "金级客户的有效订单平均客单价（人民币 GMV 合计 ÷ 订单数）是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 4209.74
+ },
+ {
+  "id": 126,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "orders.csv",
+   "order_items.csv",
+   "products.csv"
+  ],
+  "question": "按 supplier_id 汇总有效订单的 quantity，销量最高的 supplier_id 是哪个？",
+  "answer_type": "string",
+  "expected": "S20"
+ },
+ {
+  "id": 127,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "orders.csv",
+   "order_items.csv",
+   "products.csv",
+   "fx_rates.csv"
+  ],
+  "question": "有效订单的总毛利是多少？毛利 = Σ quantity × (unit_price × (1 − discount_rate) × 汇率 − cost)。保留2位小数。",
+  "answer_type": "number",
+  "expected": 28754989.68
+ },
+ {
+  "id": 128,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "orders.csv",
+   "customers.csv"
+  ],
+  "question": "下单时间的北京日期早于客户 signup_date 的订单有多少个（任意状态，只看 customer_id 在 customers 表中的订单）？",
+  "answer_type": "integer",
+  "expected": 30
+ },
+ {
+  "id": 129,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "orders.csv",
+   "customers.csv"
+  ],
+  "question": "customer_id 不在 customers 表中的订单有多少个（任意状态）？",
+  "answer_type": "integer",
+  "expected": 40
+ },
+ {
+  "id": 130,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "order_items.csv",
+   "orders.csv"
+  ],
+  "question": "order_items 中有多少条明细的 order_id 不在 orders 表中？",
+  "answer_type": "integer",
+  "expected": 25
+ },
+ {
+  "id": 131,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "orders.csv",
+   "order_items.csv"
+  ],
+  "question": "状态为 refunded 的订单中，按 product_id 汇总 quantity，最多的 product_id 是哪个？",
+  "answer_type": "string",
+  "expected": "P0161"
+ },
+ {
+  "id": 132,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "orders.csv",
+   "order_items.csv",
+   "fx_rates.csv"
+  ],
+  "question": "按 customer_id 汇总有效订单的人民币 GMV，取 GMV 最高的前 10% 客户（个数 = ceil(有有效订单的 customer_id 数 × 0.1)），他们的 GMV 占全部有效订单 GMV 的比例是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.6487
+ },
+ {
+  "id": 133,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "support_tickets.csv",
+   "customers.csv"
+  ],
+  "question": "按客户所在城市统计工单数（没有客户的工单不计），工单最多的城市是哪个？",
+  "answer_type": "string",
+  "expected": "上海"
+ },
+ {
+  "id": 134,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "support_tickets.csv",
+   "customers.csv",
+   "orders.csv"
+  ],
+  "question": "对 customers 表中的客户，有工单的客户的平均有效订单数减去没有工单的客户的平均有效订单数，差值是多少（无有效订单记为 0）？保留4位小数。",
+  "answer_type": "number",
+  "expected": 14.0774
+ },
+ {
+  "id": 135,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "orders.csv",
+   "order_items.csv",
+   "fx_rates.csv"
+  ],
+  "question": "币种为 USD 的有效订单 GMV 合计换算为人民币是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 4192461.05
+ },
+ {
+  "id": 136,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "orders.csv",
+   "order_items.csv",
+   "products.csv"
+  ],
+  "question": "有效订单的明细中，按 quantity 加权的平均 discount_rate 最高的 category 是哪个？",
+  "answer_type": "string",
+  "expected": "电脑办公"
+ },
+ {
+  "id": 137,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "events.csv",
+   "products.csv"
+  ],
+  "question": "只看北京时间 2024 年内的事件，把 purchase 事件按 product_id 关联到 category，purchase 次数最多的 category 是哪个？",
+  "answer_type": "string",
+  "expected": "手机数码"
+ },
+ {
+  "id": 138,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "employees.csv"
+  ],
+  "question": "薪资高于其直属上级薪资的员工有多少人（两人薪资都不缺失时才比较）？",
+  "answer_type": "integer",
+  "expected": 31
+ },
+ {
+  "id": 139,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "employees.csv"
+  ],
+  "question": "直接下属人数最多的员工有多少名直接下属？",
+  "answer_type": "integer",
+  "expected": 8
+ },
+ {
+  "id": 140,
+  "level": 7,
+  "category": "多表联结",
+  "files": [
+   "legacy_sales.csv"
+  ],
+  "question": "以门店名前两个字作为城市，汇总 2024 年有效销售额，最高的城市是哪个？",
+  "answer_type": "string",
+  "expected": "上海"
+ },
+ {
+  "id": 141,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "orders.csv 原始文件中有多少行是多余的完全重复行（原始行数 − 整行去重后行数）？",
+  "answer_type": "integer",
+  "expected": 150
+ },
+ {
+  "id": 142,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "customers.csv 原始文件中有多少行是多余的完全重复行？",
+  "answer_type": "integer",
+  "expected": 80
+ },
+ {
+  "id": 143,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "有多少位客户的 birth_date 使用“YYYY年M月D日”的中文写法？",
+  "answer_type": "integer",
+  "expected": 473
+ },
+ {
+  "id": 144,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "orders.csv 原始文件中 status 字段（不做任何处理，区分大小写和空格）有多少种不同的取值？",
+  "answer_type": "integer",
+  "expected": 15
+ },
+ {
+  "id": 145,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "customers.csv"
+  ],
+  "question": "生成清洗后的客户表 customers_clean.csv，列依次为 customer_id,name,gender,birth_date,city,signup_date,tier。要求：整行去重；name 去除首尾空格；gender 统一为 M/F（未知留空）；birth_date 统一为 YYYY-MM-DD；city 归一化；tier 为空则留空；按 customer_id 升序。",
+  "answer_type": "csv",
+  "expected": "customers_clean.csv",
+  "key_cols": [
+   "customer_id"
+  ],
+  "num_tol": {}
+ },
+ {
+  "id": 146,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "生成清洗后的订单表 orders_clean.csv，列依次为 order_id,customer_id,order_time,status,channel,currency,shipping_fee,coupon_code。要求：整行去重；order_time 统一为北京时间 YYYY-MM-DD HH:MM:SS；status 统一为小写且去除空格；coupon_code 为空则留空；按 order_id 升序。",
+  "answer_type": "csv",
+  "expected": "orders_clean.csv",
+  "key_cols": [
+   "order_id"
+  ],
+  "num_tol": {
+   "shipping_fee": 1e-09
+  }
+ },
+ {
+  "id": 147,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "products.csv"
+  ],
+  "question": "生成 products_clean.csv，列依次为 product_id,list_price,cost,gross_margin。list_price 解析为数值；gross_margin = (list_price − cost) / list_price，保留4位小数；按 product_id 升序。",
+  "answer_type": "csv",
+  "expected": "products_clean.csv",
+  "key_cols": [
+   "product_id"
+  ],
+  "num_tol": {
+   "list_price": 0.001,
+   "cost": 0.001,
+   "gross_margin": 0.0001
+  }
+ },
+ {
+  "id": 148,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "order_items.csv",
+   "orders.csv",
+   "products.csv",
+   "fx_rates.csv"
+  ],
+  "question": "检查价格异常：对属于 orders 表中订单、且 quantity 符合字段定义的明细，计算 |unit_price × 汇率 − list_price| ÷ list_price，大于 0.5 的明细有多少条？",
+  "answer_type": "integer",
+  "expected": 20
+ },
+ {
+  "id": 149,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "daily_kpi.csv"
+  ],
+  "question": "把 daily_kpi 补全为 2023-01-01 至 2024-12-31 的每一天，缺失日的 dau 用线性插值填充，补全后 dau 的总和是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 9542112.0
+ },
+ {
+  "id": 150,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "daily_kpi.csv"
+  ],
+  "question": "daily_kpi 中有多少行的 revenue 违反字段定义？",
+  "answer_type": "integer",
+  "expected": 3
+ },
+ {
+  "id": 151,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "employees.csv"
+  ],
+  "question": "manager_id 指向不存在员工的记录有多少条？",
+  "answer_type": "integer",
+  "expected": 2
+ },
+ {
+  "id": 152,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "employees.csv"
+  ],
+  "question": "salary 缺失的员工有多少人？",
+  "answer_type": "integer",
+  "expected": 5
+ },
+ {
+  "id": 153,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "employees.csv"
+  ],
+  "question": "用所在 dept 的薪资中位数填充缺失薪资后，全体员工薪资总和是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 7445150.0
+ },
+ {
+  "id": 154,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "support_tickets.csv"
+  ],
+  "question": "customer_id 为空的工单有多少个？",
+  "answer_type": "integer",
+  "expected": 38
+ },
+ {
+  "id": 155,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "orders.csv",
+   "order_items.csv"
+  ],
+  "question": "对币种为 CNY 的有效订单 GMV 做 1%/99% 缩尾（低于 1% 分位数的取 1% 分位数，高于 99% 分位数的取 99% 分位数），缩尾后的均值是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 4092.11
+ },
+ {
+  "id": 156,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "order_items.csv"
+  ],
+  "question": "order_items.csv 原始文件中有多少行是多余的完全重复行？",
+  "answer_type": "integer",
+  "expected": 15
+ },
+ {
+  "id": 157,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "ab_test.csv"
+  ],
+  "question": "ab_test 中同时出现在 A 组和 B 组的用户有多少个？",
+  "answer_type": "integer",
+  "expected": 30
+ },
+ {
+  "id": 158,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "events.csv"
+  ],
+  "question": "events 中有多少条记录的 event_time 转换为北京时间后不在 2024 年内？",
+  "answer_type": "integer",
+  "expected": 20
+ },
+ {
+  "id": 159,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "legacy_sales.csv"
+  ],
+  "question": "legacy_sales.csv 中销售额为 N/A 的记录有多少条？",
+  "answer_type": "integer",
+  "expected": 4
+ },
+ {
+  "id": 160,
+  "level": 8,
+  "category": "数据质量与清洗",
+  "files": [
+   "orders.csv",
+   "order_items.csv",
+   "fx_rates.csv"
+  ],
+  "question": "生成有效订单汇总表 order_summary.csv，每个有效订单一行，列依次为 order_id,order_date,customer_id,items_qty,goods_amount_cny,shipping_fee_cny,gmv_cny。order_date 为北京时间日期 YYYY-MM-DD；items_qty 为该订单 quantity 之和（没有明细为 0）；三个金额列为换算成人民币后的值，保留2位小数；按 order_id 升序。",
+  "answer_type": "csv",
+  "expected": "order_summary.csv",
+  "key_cols": [
+   "order_id"
+  ],
+  "num_tol": {
+   "items_qty": 1e-09,
+   "goods_amount_cny": 0.011,
+   "shipping_fee_cny": 0.011,
+   "gmv_cny": 0.011
+  }
+ },
+ {
+  "id": 161,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "events.csv"
+  ],
+  "question": "只看北京时间 2024 年内的事件，对每个 user_id 按时间排序，相邻两个事件间隔超过 30 分钟则开始一个新会话。一共有多少个会话？",
+  "answer_type": "integer",
+  "expected": 10497
+ },
+ {
+  "id": 162,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "events.csv"
+  ],
+  "question": "只看北京时间 2024 年内的事件，对每个 user_id 按时间排序，相邻两个事件间隔超过 30 分钟则开始一个新会话。平均每个会话有多少个事件？保留4位小数。",
+  "answer_type": "number",
+  "expected": 5.1231
+ },
+ {
+  "id": 163,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "events.csv"
+  ],
+  "question": "只看北京时间 2024 年内的事件，对每个 user_id 按时间排序，相邻两个事件间隔超过 30 分钟则开始一个新会话。会话时长（最后一个事件时间 − 第一个事件时间，单位秒，含毫秒）的中位数是多少？保留1位小数。",
+  "answer_type": "number",
+  "expected": 1800.5
+ },
+ {
+  "id": 164,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "events.csv"
+  ],
+  "question": "只看北京时间 2024 年内的事件，对每个 user_id 按时间排序，相邻两个事件间隔超过 30 分钟则开始一个新会话。包含 purchase 事件的会话占全部会话的比例是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.1183
+ },
+ {
+  "id": 165,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "orders.csv",
+   "order_items.csv",
+   "fx_rates.csv"
+  ],
+  "question": "生成透视表 monthly_pivot.csv：行为北京时间月份 2023-01 至 2024-12（共 24 行），列依次为 month,app,web,mini_program，值为该月该渠道有效订单的人民币 GMV 合计，保留2位小数，没有订单填 0；按 month 升序。",
+  "answer_type": "csv",
+  "expected": "monthly_pivot.csv",
+  "key_cols": [
+   "month"
+  ],
+  "num_tol": {
+   "app": 0.011,
+   "web": 0.011,
+   "mini_program": 0.011
+  }
+ },
+ {
+  "id": 166,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "daily_kpi.csv"
+  ],
+  "question": "把 daily_kpi 补全为 2023-01-01 至 2024-12-31 的每一天（缺失日的 dau 保持为空，不填充），计算 7 日滚动平均 dau（窗口为当天及前 6 天，窗口内必须 7 天都有值），最大值是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 15950.43
+ },
+ {
+  "id": 167,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "orders.csv",
+   "order_items.csv",
+   "fx_rates.csv"
+  ],
+  "question": "对有效订单数 ≥ 2 的 customer_id，按下单时间排序，计算“第 2 单人民币 GMV ÷ 第 1 单人民币 GMV”（第 1 单 GMV 为 0 的客户跳过），求中位数。保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.9158
+ },
+ {
+  "id": 168,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "customers.csv",
+   "orders.csv",
+   "order_items.csv",
+   "fx_rates.csv"
+  ],
+  "question": "生成 city_top_customer.csv：对每个城市，找出该城市有效订单人民币 GMV 合计最高的客户（只看 customers 表中的客户）。列依次为 city,customer_id,gmv_cny（保留2位小数），每个城市一行，按 gmv_cny 降序。",
+  "answer_type": "csv",
+  "expected": "city_top_customer.csv",
+  "key_cols": [
+   "city"
+  ],
+  "num_tol": {
+   "gmv_cny": 0.011
+  }
+ },
+ {
+  "id": 169,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "customers.csv",
+   "orders.csv"
+  ],
+  "question": "对 customers 表中的客户，以首个有效订单的北京时间月份作为“新客月份”，列出 2024-01 至 2024-12 每月的新客数（长度 12 的数组）。",
+  "answer_type": "list",
+  "expected": [
+   87,
+   78,
+   88,
+   81,
+   99,
+   89,
+   95,
+   91,
+   83,
+   109,
+   110,
+   121
+  ]
+ },
+ {
+  "id": 170,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "orders.csv",
+   "order_items.csv",
+   "fx_rates.csv"
+  ],
+  "question": "按北京时间日期累计有效订单的人民币 GMV，累计值首次达到全部有效订单 GMV 50% 的日期是哪天？格式 YYYY-MM-DD。",
+  "answer_type": "string",
+  "expected": "2024-06-20"
+ },
+ {
+  "id": 171,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "按 ISO 周统计有效订单数，只考虑 2023-W01 至 2024-W52，计算每周相对上一周的环比增长率，增长率最高的是哪一周？格式 YYYY-Www（如 2024-W05）。",
+  "answer_type": "string",
+  "expected": "2023-W30"
+ },
+ {
+  "id": 172,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "customers.csv",
+   "orders.csv"
+  ],
+  "question": "对 customers 表中有有效订单的客户，计算 Recency = 2025-01-01 − 最近一次有效订单的北京时间日期（天数），求平均值。保留2位小数。",
+  "answer_type": "number",
+  "expected": 130.14
+ },
+ {
+  "id": 173,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "events.csv"
+  ],
+  "question": "只看北京时间 2024 年内的事件，对每个 user_id 按时间排序，相邻两个事件间隔超过 30 分钟则开始一个新会话。按会话计算漏斗转化率：含 add_to_cart 的会话数 ÷ 含 view 的会话数、含 checkout ÷ 含 add_to_cart、含 purchase ÷ 含 checkout，以长度 3 的数组给出，保留4位小数。",
+  "answer_type": "list",
+  "expected": [
+   0.3451,
+   0.4953,
+   0.6923
+  ]
+ },
+ {
+  "id": 174,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "orders.csv",
+   "order_items.csv"
+  ],
+  "question": "在有效订单中（同一订单内同一商品只算一次），同时出现次数最多的商品对是哪一对？用 \"小的product_id,大的product_id\" 格式给出（如 \"P0001,P0002\"）。",
+  "answer_type": "string",
+  "expected": "P0161,P0267"
+ },
+ {
+  "id": 175,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "legacy_sales.csv"
+  ],
+  "question": "对每个门店计算 2024 年各月相对 2023 年同月的同比增长率（任一侧为 N/A 的月份跳过），再求平均，平均同比增长率最高的门店是哪个？",
+  "answer_type": "string",
+  "expected": "北京一店"
+ },
+ {
+  "id": 176,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "employees.csv"
+  ],
+  "question": "组织树（以 CEO 为根，CEO 为第 1 层）最深有几层？",
+  "answer_type": "integer",
+  "expected": 6
+ },
+ {
+  "id": 177,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "employees.csv"
+  ],
+  "question": "除 CEO 外，所有层级下属总数（直接和间接）最多的员工是谁？给出 emp_id。",
+  "answer_type": "string",
+  "expected": "E004"
+ },
+ {
+  "id": 178,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "employees.csv"
+  ],
+  "question": "在每个 dept 内按薪资降序做 dense rank，取排名第 2 的薪资值，把所有部门的这个值加起来是多少（没有第 2 名的部门跳过）？保留2位小数。",
+  "answer_type": "number",
+  "expected": 255500.0
+ },
+ {
+  "id": 179,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "daily_kpi.csv"
+  ],
+  "question": "计算 2024 年每月 revenue 占全年 revenue 的比例（缺失日期不补），以长度 12 的数组给出（1 月到 12 月），保留4位小数。",
+  "answer_type": "list",
+  "expected": [
+   0.0762,
+   0.074,
+   0.0798,
+   0.0774,
+   0.0861,
+   0.0782,
+   0.0806,
+   0.0881,
+   0.0863,
+   0.0895,
+   0.0873,
+   0.0965
+  ]
+ },
+ {
+  "id": 180,
+  "level": 9,
+  "category": "复杂变换",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "对每个 customer_id，找出其“连续每个月都有有效订单”（北京时间月份）的最长连续月数，所有客户中的最大值是多少？",
+  "answer_type": "integer",
+  "expected": 24
+ },
+ {
+  "id": 181,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "customers.csv",
+   "orders.csv"
+  ],
+  "question": "对 customers 表中的客户，以首个有效订单的北京时间月份为 cohort，某客户在 cohort 月份之后第 k 个月（k=0 为 cohort 当月）有有效订单即视为该月留存，留存率 = 留存客户数 ÷ cohort 客户数。2024-01 cohort 在 k = 3 时的留存率是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.2644
+ },
+ {
+  "id": 182,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "customers.csv",
+   "orders.csv"
+  ],
+  "question": "对 customers 表中的客户，以首个有效订单的北京时间月份为 cohort，某客户在 cohort 月份之后第 k 个月（k=0 为 cohort 当月）有有效订单即视为该月留存，留存率 = 留存客户数 ÷ cohort 客户数。生成 cohort_retention.csv：行为 cohort 2024-01 至 2024-06，列依次为 cohort,m0,m1,m2,m3,m4,m5,m6（对应 k=0..6 的留存率，保留4位小数），按 cohort 升序。",
+  "answer_type": "csv",
+  "expected": "cohort_retention.csv",
+  "key_cols": [
+   "cohort"
+  ],
+  "num_tol": {
+   "m0": 0.00010000100000000001,
+   "m1": 0.00010000100000000001,
+   "m2": 0.00010000100000000001,
+   "m3": 0.00010000100000000001,
+   "m4": 0.00010000100000000001,
+   "m5": 0.00010000100000000001,
+   "m6": 0.00010000100000000001
+  }
+ },
+ {
+  "id": 183,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "customers.csv",
+   "orders.csv",
+   "order_items.csv",
+   "fx_rates.csv"
+  ],
+  "question": "对 customers 表中有有效订单的客户做 RFM 打分：Recency = 2025-01-01 − 最近一次有效订单北京日期（天），Frequency = 有效订单数，Monetary = 有效订单人民币 GMV 合计。先按 customer_id 升序排列，R 分 = pd.qcut(recency.rank(method='first', ascending=False), 5, labels=[1,2,3,4,5])，F 分 = pd.qcut(frequency.rank(method='first'), 5, labels=[1..5])，M 分 = pd.qcut(monetary.rank(method='first'), 5, labels=[1..5])。R、F、M 都为 5 分的客户有多少人？",
+  "answer_type": "integer",
+  "expected": 204
+ },
+ {
+  "id": 184,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "daily_kpi.csv"
+  ],
+  "question": "用最小二乘法拟合 revenue = a × dau + b（缺失日期不补），斜率 a 是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 12.3257
+ },
+ {
+  "id": 185,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "daily_kpi.csv"
+  ],
+  "question": "用最小二乘法拟合 revenue = a × dau + b（缺失日期不补），R² 是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.8123
+ },
+ {
+  "id": 186,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "daily_kpi.csv"
+  ],
+  "question": "异常检测：把 daily_kpi 补全为 2023-01-01 至 2024-12-31 的每一天（缺失日 dau 为空，不插值）；计算居中 7 日滚动中位数 med = dau.rolling(7, center=True, min_periods=4).median()；残差 r = dau − med；阈值 = 3 × r 的样本标准差（忽略空值）。列出 |r| > 阈值的所有日期（YYYY-MM-DD，升序）。",
+  "answer_type": "list",
+  "expected": [
+   "2023-05-03",
+   "2023-07-25",
+   "2023-09-15",
+   "2024-02-06",
+   "2024-07-09",
+   "2024-11-01"
+  ]
+ },
+ {
+  "id": 187,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "orders.csv",
+   "order_items.csv",
+   "fx_rates.csv"
+  ],
+  "question": "帕累托分析：按 product_id 汇总有效订单的人民币商品金额（不含运费），按金额降序累计，累计占比首次达到 80% 时共用了多少个商品？",
+  "answer_type": "integer",
+  "expected": 37
+ },
+ {
+  "id": 188,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "orders.csv",
+   "order_items.csv"
+  ],
+  "question": "关联规则：在有效订单中（同一订单内同一商品只算一次），对共同出现订单数 ≥ 20 的商品对计算 lift = support(A,B) ÷ (support(A) × support(B))，support 为包含该商品（对）的订单数 ÷ 订单总数（订单总数 = 至少含一件商品的有效订单数）。lift 最高的商品对是哪一对？用 \"小的product_id,大的product_id\" 格式给出。",
+  "answer_type": "string",
+  "expected": "P0063,P0136"
+ },
+ {
+  "id": 189,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "events.csv"
+  ],
+  "question": "只看北京时间 2024 年内的事件，在有过 view 事件的用户中，有过 purchase 事件的用户占比是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.574
+ },
+ {
+  "id": 190,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "orders.csv",
+   "order_items.csv",
+   "fx_rates.csv"
+  ],
+  "question": "计算北京时间 2024 年每个月的 ARPU（当月有效订单人民币 GMV 合计 ÷ 当月有有效订单的 customer_id 数），再求 12 个月的平均值。保留2位小数。",
+  "answer_type": "number",
+  "expected": 10242.51
+ },
+ {
+  "id": 191,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "orders.csv",
+   "order_items.csv",
+   "products.csv"
+  ],
+  "question": "按 category 计算复购率：在有效订单中购买过该类目的 customer_id 里，在 ≥ 2 个不同有效订单中购买过该类目的客户所占比例。复购率最高的 category 是哪个？",
+  "answer_type": "string",
+  "expected": "手机数码"
+ },
+ {
+  "id": 192,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "daily_kpi.csv"
+  ],
+  "question": "计算 dau 的星期季节指数：各星期几的 dau 均值 ÷ 全部行的 dau 均值（缺失日期不补），以长度 7 的数组给出（周一到周日），保留4位小数。",
+  "answer_type": "list",
+  "expected": [
+   0.968,
+   0.9711,
+   0.9785,
+   0.9781,
+   1.0095,
+   1.0519,
+   1.0431
+  ]
+ },
+ {
+  "id": 193,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "orders.csv",
+   "order_items.csv",
+   "fx_rates.csv"
+  ],
+  "question": "按北京时间月份汇总有效订单人民币 GMV（2023-01 至 2024-12，x = 1..24），用最小二乘线性趋势 y = a·x + b 拟合，预测 2025-01（x = 25）的值。保留2位小数。",
+  "answer_type": "number",
+  "expected": 7606069.13
+ },
+ {
+  "id": 194,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "ab_test.csv"
+  ],
+  "question": "样本比例失衡（SRM）检查：用卡方拟合优度检验 A、B 两组用户数是否符合 1:1，p 值是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.0445
+ },
+ {
+  "id": 195,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "ab_test.csv"
+  ],
+  "question": "样本量估算：以 A 组的转化率为 p1，p2 = p1 + 0.01，α = 0.05（双侧）、检验功效 0.8，每组所需样本量 n = (z_{0.975} + z_{0.8})² × (p1(1−p1) + p2(1−p2)) ÷ (p2 − p1)²，向上取整。n 是多少？",
+  "answer_type": "integer",
+  "expected": 14838
+ },
+ {
+  "id": 196,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "orders.csv"
+  ],
+  "question": "流失分析：北京时间 2024 年上半年（1–6 月）有有效订单、但下半年（7–12 月）没有有效订单的 customer_id 有多少个？",
+  "answer_type": "integer",
+  "expected": 328
+ },
+ {
+  "id": 197,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "orders.csv",
+   "order_items.csv",
+   "products.csv",
+   "fx_rates.csv"
+  ],
+  "question": "按 (category, channel) 组合汇总有效订单的毛利（毛利 = Σ quantity × (unit_price × (1 − discount_rate) × 汇率 − cost)），毛利最高的组合是哪个？用 \"category|channel\" 格式给出。",
+  "answer_type": "string",
+  "expected": "手机数码|app"
+ },
+ {
+  "id": 198,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "customers.csv",
+   "orders.csv"
+  ],
+  "question": "2023 年注册的客户中，在注册后 365 天内（0 ≤ 有效订单北京日期 − signup_date ≤ 365 天）有过有效订单的客户占比是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.6365
+ },
+ {
+  "id": 199,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "legacy_sales.csv"
+  ],
+  "question": "对每个门店，用 2024 年各月有效销售额（x = 月份 1..12，N/A 月份跳过）做最小二乘线性拟合，斜率为正的门店有多少个？",
+  "answer_type": "integer",
+  "expected": 11
+ },
+ {
+  "id": 200,
+  "level": 10,
+  "category": "高级分析",
+  "files": [
+   "employees.csv"
+  ],
+  "question": "对每个至少有 2 名“薪资不缺失的直接下属”且自身薪资不缺失的员工，计算“直接下属平均薪资 ÷ 本人薪资”，比值最高的是谁？给出 emp_id。",
+  "answer_type": "string",
+  "expected": "E042"
+ }
+]

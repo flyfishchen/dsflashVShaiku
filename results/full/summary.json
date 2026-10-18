@@ -1,0 +1,154 @@
+{
+  "tag": "full",
+  "models": {
+    "claude-haiku-5-5": {
+      "n": 200,
+      "correct": 199,
+      "errors": 0,
+      "avg_latency": 3.67,
+      "p50_latency": 3.16
+    },
+    "deepseek-flash": {
+      "n": 200,
+      "correct": 200,
+      "errors": 0,
+      "avg_latency": 1.92,
+      "p50_latency": 1.63
+    }
+  },
+  "levels": {
+    "1": {
+      "claude-haiku-5-5": {
+        "n": 20,
+        "correct": 20,
+        "avg_latency": 2.76
+      },
+      "deepseek-flash": {
+        "n": 20,
+        "correct": 20,
+        "avg_latency": 1.6
+      }
+    },
+    "2": {
+      "claude-haiku-5-5": {
+        "n": 20,
+        "correct": 20,
+        "avg_latency": 3.12
+      },
+      "deepseek-flash": {
+        "n": 20,
+        "correct": 20,
+        "avg_latency": 1.48
+      }
+    },
+    "3": {
+      "claude-haiku-5-5": {
+        "n": 20,
+        "correct": 20,
+        "avg_latency": 3.69
+      },
+      "deepseek-flash": {
+        "n": 20,
+        "correct": 20,
+        "avg_latency": 1.75
+      }
+    },
+    "4": {
+      "claude-haiku-5-5": {
+        "n": 20,
+        "correct": 20,
+        "avg_latency": 3.31
+      },
+      "deepseek-flash": {
+        "n": 20,
+        "correct": 20,
+        "avg_latency": 2.02
+      }
+    },
+    "5": {
+      "claude-haiku-5-5": {
+        "n": 20,
+        "correct": 20,
+        "avg_latency": 3.52
+      },
+      "deepseek-flash": {
+        "n": 20,
+        "correct": 20,
+        "avg_latency": 1.81
+      }
+    },
+    "6": {
+      "claude-haiku-5-5": {
+        "n": 20,
+        "correct": 20,
+        "avg_latency": 4.89
+      },
+      "deepseek-flash": {
+        "n": 20,
+        "correct": 20,
+        "avg_latency": 2.69
+      }
+    },
+    "7": {
+      "claude-haiku-5-5": {
+        "n": 20,
+        "correct": 20,
+        "avg_latency": 3.13
+      },
+      "deepseek-flash": {
+        "n": 20,
+        "correct": 20,
+        "avg_latency": 1.52
+      }
+    },
+    "8": {
+      "claude-haiku-5-5": {
+        "n": 20,
+        "correct": 20,
+        "avg_latency": 3.56
+      },
+      "deepseek-flash": {
+        "n": 20,
+        "correct": 20,
+        "avg_latency": 1.86
+      }
+    },
+    "9": {
+      "claude-haiku-5-5": {
+        "n": 20,
+        "correct": 20,
+        "avg_latency": 3.36
+      },
+      "deepseek-flash": {
+        "n": 20,
+        "correct": 20,
+        "avg_latency": 1.56
+      }
+    },
+    "10": {
+      "claude-haiku-5-5": {
+        "n": 20,
+        "correct": 19,
+        "avg_latency": 5.33
+      },
+      "deepseek-flash": {
+        "n": 20,
+        "correct": 20,
+        "avg_latency": 2.88
+      }
+    }
+  },
+  "failures": {
+    "claude-haiku-5-5": [
+      {
+        "id": 197,
+        "level": 10,
+        "expected": 226.5,
+        "parsed": 226.8,
+        "error": null,
+        "output": "**226.80**"
+      }
+    ]
+  },
+  "both_wrong": []
+}

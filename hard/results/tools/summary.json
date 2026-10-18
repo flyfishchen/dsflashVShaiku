@@ -1,0 +1,421 @@
+{
+ "tag": "tools",
+ "overall": {
+  "claude-haiku-5-5": {
+   "n": 200,
+   "correct": 200,
+   "wall": 15.0,
+   "tools": 4.1,
+   "cost": 0.3733,
+   "tok_in": 4887940,
+   "tok_out": 387839,
+   "timeouts": 0,
+   "errors": 0
+  },
+  "deepseek-flash": {
+   "n": 200,
+   "correct": 200,
+   "wall": 9.6,
+   "tools": 4.2,
+   "cost": 0.2661,
+   "tok_in": 3990514,
+   "tok_out": 228762,
+   "timeouts": 0,
+   "errors": 0
+  }
+ },
+ "levels": {
+  "1": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 20,
+    "wall": 10.7,
+    "tools": 4.0,
+    "cost": 0.0259,
+    "tok_in": 405930,
+    "tok_out": 22035,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 20,
+    "wall": 5.6,
+    "tools": 3.5,
+    "cost": 0.0147,
+    "tok_in": 242318,
+    "tok_out": 8537,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "2": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 20,
+    "wall": 10.8,
+    "tools": 4.0,
+    "cost": 0.0278,
+    "tok_in": 405841,
+    "tok_out": 24901,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 20,
+    "wall": 6.0,
+    "tools": 3.5,
+    "cost": 0.017,
+    "tok_in": 260095,
+    "tok_out": 11185,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "3": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 20,
+    "wall": 12.4,
+    "tools": 4.2,
+    "cost": 0.0319,
+    "tok_in": 453181,
+    "tok_out": 30270,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 20,
+    "wall": 6.4,
+    "tools": 3.5,
+    "cost": 0.0186,
+    "tok_in": 265284,
+    "tok_out": 13306,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "4": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 20,
+    "wall": 12.8,
+    "tools": 3.9,
+    "cost": 0.0331,
+    "tok_in": 445669,
+    "tok_out": 31481,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 20,
+    "wall": 7.5,
+    "tools": 3.9,
+    "cost": 0.0207,
+    "tok_in": 311553,
+    "tok_out": 15418,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "5": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 20,
+    "wall": 14.6,
+    "tools": 4.0,
+    "cost": 0.0353,
+    "tok_in": 472857,
+    "tok_out": 36178,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 20,
+    "wall": 9.5,
+    "tools": 4.5,
+    "cost": 0.026,
+    "tok_in": 406603,
+    "tok_out": 22130,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "6": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 20,
+    "wall": 14.0,
+    "tools": 3.9,
+    "cost": 0.0354,
+    "tok_in": 462633,
+    "tok_out": 36511,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 20,
+    "wall": 8.5,
+    "tools": 4.0,
+    "cost": 0.0231,
+    "tok_in": 334516,
+    "tok_out": 19380,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "7": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 20,
+    "wall": 19.8,
+    "tools": 4.6,
+    "cost": 0.0521,
+    "tok_in": 620217,
+    "tok_out": 59288,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 20,
+    "wall": 13.0,
+    "tools": 4.8,
+    "cost": 0.0356,
+    "tok_in": 501366,
+    "tok_out": 35972,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "8": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 20,
+    "wall": 15.1,
+    "tools": 4.0,
+    "cost": 0.0386,
+    "tok_in": 481823,
+    "tok_out": 41380,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 20,
+    "wall": 10.2,
+    "tools": 4.6,
+    "cost": 0.0335,
+    "tok_in": 586817,
+    "tok_out": 25583,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "9": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 20,
+    "wall": 20.0,
+    "tools": 4.2,
+    "cost": 0.0465,
+    "tok_in": 559817,
+    "tok_out": 52769,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 20,
+    "wall": 15.3,
+    "tools": 5.2,
+    "cost": 0.0396,
+    "tok_in": 560522,
+    "tok_out": 37954,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "10": {
+   "claude-haiku-5-5": {
+    "n": 20,
+    "correct": 20,
+    "wall": 19.9,
+    "tools": 4.5,
+    "cost": 0.0466,
+    "tok_in": 579972,
+    "tok_out": 53026,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 20,
+    "correct": 20,
+    "wall": 14.2,
+    "tools": 5.0,
+    "cost": 0.0372,
+    "tok_in": 521440,
+    "tok_out": 39297,
+    "timeouts": 0,
+    "errors": 0
+   }
+  }
+ },
+ "types": {
+  "csv": {
+   "claude-haiku-5-5": {
+    "n": 7,
+    "correct": 7,
+    "wall": 26.5,
+    "tools": 4.7,
+    "cost": 0.0248,
+    "tok_in": 261327,
+    "tok_out": 30462,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 7,
+    "correct": 7,
+    "wall": 24.3,
+    "tools": 6.1,
+    "cost": 0.0253,
+    "tok_in": 425231,
+    "tok_out": 21804,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "dict": {
+   "claude-haiku-5-5": {
+    "n": 9,
+    "correct": 9,
+    "wall": 12.0,
+    "tools": 4.1,
+    "cost": 0.0137,
+    "tok_in": 193918,
+    "tok_out": 13093,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 9,
+    "correct": 9,
+    "wall": 6.2,
+    "tools": 3.4,
+    "cost": 0.0082,
+    "tok_in": 113103,
+    "tok_out": 5667,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "integer": {
+   "claude-haiku-5-5": {
+    "n": 90,
+    "correct": 90,
+    "wall": 13.4,
+    "tools": 4.1,
+    "cost": 0.147,
+    "tok_in": 2042913,
+    "tok_out": 142590,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 90,
+    "correct": 90,
+    "wall": 7.8,
+    "tools": 4.0,
+    "cost": 0.0978,
+    "tok_in": 1499470,
+    "tok_out": 76437,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "list": {
+   "claude-haiku-5-5": {
+    "n": 7,
+    "correct": 7,
+    "wall": 12.2,
+    "tools": 3.6,
+    "cost": 0.0108,
+    "tok_in": 142939,
+    "tok_out": 11229,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 7,
+    "correct": 7,
+    "wall": 10.3,
+    "tools": 4.6,
+    "cost": 0.0099,
+    "tok_in": 150873,
+    "tok_out": 9256,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "number": {
+   "claude-haiku-5-5": {
+    "n": 60,
+    "correct": 60,
+    "wall": 16.1,
+    "tools": 4.1,
+    "cost": 0.1193,
+    "tok_in": 1516297,
+    "tok_out": 129005,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 60,
+    "correct": 60,
+    "wall": 10.5,
+    "tools": 4.4,
+    "cost": 0.0826,
+    "tok_in": 1187981,
+    "tok_out": 78177,
+    "timeouts": 0,
+    "errors": 0
+   }
+  },
+  "string": {
+   "claude-haiku-5-5": {
+    "n": 27,
+    "correct": 27,
+    "wall": 16.7,
+    "tools": 4.3,
+    "cost": 0.0577,
+    "tok_in": 730546,
+    "tok_out": 61460,
+    "timeouts": 0,
+    "errors": 0
+   },
+   "deepseek-flash": {
+    "n": 27,
+    "correct": 27,
+    "wall": 10.8,
+    "tools": 4.4,
+    "cost": 0.0424,
+    "tok_in": 613856,
+    "tok_out": 37421,
+    "timeouts": 0,
+    "errors": 0
+   }
+  }
+ },
+ "failures": {},
+ "both_wrong": [],
+ "only": {
+  "claude-haiku-5-5": [],
+  "deepseek-flash": []
+ }
+}
