@@ -1,3 +1,14 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root { color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
 <title>Haiku 5.5 与 DeepSeek 数据处理评测</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -171,7 +182,8 @@ pre.cmd { margin: 14px 0 0; background: var(--surface); border: 1px solid var(--
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
-
+</head>
+<body>
 <div class="page">
 
 <header class="top">
@@ -680,3 +692,5 @@ const timeCfg = (h, d, aria) => ({
 lineChart(document.getElementById("chart-time-hint"), timeCfg(LEVELS.map(r => r[8]), LEVELS.map(r => r[9]), "有提示时各等级每题平均耗时"));
 lineChart(document.getElementById("chart-time-nohint"), timeCfg(LEVELS.map(r => r[4]), LEVELS.map(r => r[5]), "无提示时各等级每题平均耗时"));
 </script>
+</body>
+</html>
