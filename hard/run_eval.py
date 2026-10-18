@@ -32,6 +32,8 @@ HINT = {
     "string": "答案为字符串（JSON string）。",
     "list": "答案为 JSON 数组，元素顺序按题目要求。",
     "dict": "答案为 JSON 对象，键为字符串。",
+    "set": "答案为 JSON 数组，顺序不限。",
+    "json": "答案为 JSON 对象，字段名与题目一致。",
 }
 
 PROMPT = """当前工作目录是一个数据分析工作区，包含数据文件：{files}，以及 README.md（数据字典与统一口径，必须先阅读并严格遵守）。
@@ -60,7 +62,7 @@ def build_prompt(case):
 
 
 def parse_events(path):
-    m = {"turns": 0, "tool_calls": 0, "tool_errors": 0, "tokens_in": 0, "tokens_out": 0, "cost": 0.0, "final_text": ""}
+    m = {"turns": 0, "tool_calls": 0, "tool_errors": 0, "tokens_in": 0, "tokens_out": 0, "cost": 0.0, "final_text": "", "api_error": None}
     if not path.exists():
         return m
     for line in path.open(encoding="utf-8", errors="replace"):
@@ -76,6 +78,8 @@ def parse_events(path):
                 m["tokens_in"] += (u.get("input") or 0) + (u.get("cacheRead") or 0) + (u.get("cacheWrite") or 0)
                 m["tokens_out"] += u.get("output") or 0
                 m["cost"] += (u.get("cost") or {}).get("total") or 0
+                if msg.get("stopReason") == "error":
+                    m["api_error"] = (msg.get("errorMessage") or "unknown")[:300]
                 content = msg.get("content") or []
                 m["tool_calls"] += sum(1 for c in content if c.get("type") == "toolCall")
                 texts = [c.get("text", "") for c in content if c.get("type") == "text"]
@@ -105,7 +109,12 @@ def run_once(name, case, args, wd):
         shutil.rmtree(wd)
     wd.mkdir(parents=True)
     for f in case["files"]:
-        shutil.copy(DATA / f, wd / f)
+        src, dst = Path(args.data) / f, wd / f
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        if src.is_dir():
+            shutil.copytree(src, dst)
+        else:
+            shutil.copy(src, dst)
     shutil.copy(args.readme, wd / "README.md")
     provider, model = MODELS[name]
     cmd = ["pi", "--provider", provider, "--model", model, "-p", "--no-session", "-nc", "-ns", "-np", "-ne",
@@ -131,7 +140,10 @@ def run_once(name, case, args, wd):
     wall = time.time() - t0
     m = parse_events(wd / "events.jsonl")
     stderr = (wd / "stderr.txt").read_text(errors="replace")[-400:]
-    infra = (not timed_out) and (p.returncode != 0 or m["turns"] == 0)
+    # 接口报错（额度不足、限流、5xx 等）会中断模型的工作，属于基础设施失败，需要重试，不能算模型答错
+    infra = (not timed_out) and (p.returncode != 0 or m["turns"] == 0 or m["api_error"] is not None)
+    if infra and m["api_error"]:
+        stderr = m["api_error"]
     return wall, timed_out, infra, m, stderr, p.returncode
 
 
@@ -146,7 +158,14 @@ def run_case(name, case, args, out_path):
     if timed_out:
         reason = "超时；" + reason
     for f in case["files"] + ["README.md"]:
-        (wd / f).unlink(missing_ok=True)
+        p = wd / f
+        if p.is_dir():
+            shutil.rmtree(p)
+        else:
+            p.unlink(missing_ok=True)
+    for d in sorted((x for x in wd.rglob("*") if x.is_dir()), reverse=True):
+        if not any(d.iterdir()):
+            d.rmdir()
     rec = {"id": case["id"], "qhash": qhash(case), "level": case["level"], "category": case["category"],
            "model": name, "answer_type": case["answer_type"], "expected": short(case["expected"]),
            "parsed": parsed, "correct": correct, "reason": reason, "wall": round(wall, 1),
@@ -169,6 +188,7 @@ def main():
     ap.add_argument("--tag", default="tools")
     ap.add_argument("--cases", default=str(ROOT / "test_cases.json"))
     ap.add_argument("--readme", default=str(DATA / "README.md"))
+    ap.add_argument("--data", default=str(DATA), help="题目 files 所在的数据目录")
     ap.add_argument("--sandbox", choices=["bwrap", "none"], default="bwrap",
                     help="bwrap：每题在 bubblewrap 沙箱中运行（默认）；none：不隔离")
     args = ap.parse_args()
@@ -206,14 +226,23 @@ def main():
                 f.write(json.dumps(r, ensure_ascii=False) + "\n")
         jobs += [(name, c, out_path) for c in cases if c["id"] not in done]
 
+    jobs.sort(key=lambda j: (j[1]["id"], j[0]))  # 两个模型交替排队，中途出问题时双方进度一致
     print(f"待运行 {len(jobs)} 个任务，并发 {args.workers}，单题超时 {args.timeout}s", flush=True)
+    quota_streak, tripped = 0, False
     with ThreadPoolExecutor(args.workers) as ex:
         futs = [ex.submit(run_case, n, c, args, p) for n, c, p in jobs]
         for i, fu in enumerate(as_completed(futs), 1):
+            if fu.cancelled():
+                continue
             r = fu.result()
             mark = "✓" if r["correct"] else ("E" if r["error"] else "✗")
             print(f"[{i}/{len(jobs)}] {r['model']:<17} L{r['level']:<2} #{r['id']:<3} {mark} {r['wall']:>6}s "
-                  f"tools={r['tool_calls']:<3} ${r['cost']:.4f} {'' if r['correct'] else r['reason'][:60]}", flush=True)
+                  f"tools={r['tool_calls']:<3} ${r['cost']:.4f} {'' if r['correct'] else (r['error'] or r['reason'])[:60]}", flush=True)
+            quota_streak = quota_streak + 1 if r["error"] and "quota" in r["error"] else 0
+            if quota_streak >= 8 and not tripped:
+                tripped = True
+                n = sum(f.cancel() for f in futs)
+                print(f"连续 {quota_streak} 个任务因额度不足失败，已取消剩余 {n} 个未开始的任务。补充额度后用同一个 --tag 重跑即可。", flush=True)
     print(f"完成。结果目录：{outdir}")
 
 

@@ -86,8 +86,29 @@ def score(case, workdir):
         f = workdir / exp
         if not f.exists():
             return False, short(ans), f"缺少输出文件 {exp}"
-        ok, why = cmp_csv(EXP / f"{case['id']:03d}_{exp}", f, case["key_cols"], case["num_tol"])
+        ef = Path(__file__).parent / case["exp_path"] if "exp_path" in case else EXP / f"{case['id']:03d}_{exp}"
+        ok, why = cmp_csv(ef, f, case["key_cols"], case["num_tol"])
         return ok, exp, why
+    if t == "set":
+        if not isinstance(ans, list):
+            return False, short(ans), "不是数组"
+        ok = sorted(map(norm, exp)) == sorted(map(norm, ans))
+        return ok, short(ans), "ok" if ok else "集合不符"
+    if t == "json":
+        if not isinstance(ans, dict):
+            return False, short(ans), "不是对象"
+        g = {norm(k): v for k, v in ans.items()}
+        bad = []
+        for k, ev in exp.items():
+            tk = 10 ** -case.get("tols", {})[k] + 1e-9 if k in case.get("tols", {}) else 1e-9
+            gv = g.get(norm(k))
+            if isinstance(ev, list):
+                fine = isinstance(gv, list) and len(gv) == len(ev) and all(same(a, b, tk) for a, b in zip(ev, gv))
+            else:
+                fine = gv is not None and same(ev, gv, tk)
+            if not fine:
+                bad.append(k)
+        return not bad, short(ans), "ok" if not bad else f"字段不符：{','.join(bad)}"
     if t in ("integer", "number", "string"):
         ok = same(exp, ans, 1e-9 if t == "integer" else tol)
         return ok, short(ans), "ok" if ok else "答案不符"

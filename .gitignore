@@ -2,8 +2,14 @@
 __pycache__/
 logs/
 
-# 每次运行的完整事件日志（约 950MB），可用 run_eval.py 重新生成
+# 每次运行的完整事件日志（约 2.3GB），可用 run_eval.py 重新生成
 hard/work/
 # 由 gen_data.py / gen_cases.py 重新生成
 hard/truth/
 hard/expected/
+hard/v2/data/
+hard/v2/truth/
+hard/v2/expected/
+
+# Claude Code 会话文件
+.claude/

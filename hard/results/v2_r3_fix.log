@@ -1,0 +1,12 @@
+待运行 10 个任务，并发 5，单题超时 1200s
+[1/10] deepseek-flash    L6  #106 ✓   16.0s tools=6   $0.0023 
+[2/10] claude-haiku-5-5  L6  #106 ✓   18.2s tools=4   $0.0023 
+[3/10] claude-haiku-5-5  L6  #114 ✓   47.8s tools=8   $0.0062 
+[4/10] deepseek-flash    L3  #56  ✓   57.0s tools=11  $0.0057 
+[5/10] claude-haiku-5-5  L10 #192 ✓   28.9s tools=5   $0.0037 
+[6/10] deepseek-flash    L6  #114 ✓   73.0s tools=17  $0.0141 
+[7/10] claude-haiku-5-5  L10 #190 ✓   80.6s tools=12  $0.0101 
+[8/10] deepseek-flash    L10 #190 ✓   53.8s tools=9   $0.0066 
+[9/10] deepseek-flash    L10 #192 ✓   31.4s tools=7   $0.0047 
+[10/10] claude-haiku-5-5  L3  #56  ✓  144.1s tools=6   $0.0054 
+完成。结果目录：/home/chenmx/project/dsflashVSluna/hard/results/v2_r3

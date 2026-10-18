@@ -1,0 +1,2782 @@
+[
+ {
+  "id": 1,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "sales/legacy"
+  ],
+  "question": "sales/legacy/ 下 12 个文件按原样逐行统计，一共有多少行数据（不含表头）？",
+  "answer_type": "integer",
+  "expected": 46567
+ },
+ {
+  "id": 2,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "sales/legacy"
+  ],
+  "question": "旧系统文件中一共有多少个不同的订单（不按日期筛选）？",
+  "answer_type": "integer",
+  "expected": 46409
+ },
+ {
+  "id": 3,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "sales/legacy"
+  ],
+  "question": "旧系统文件中全部 completed 订单（不按日期筛选）的原价合计，按币种分别是多少？键为币种，保留2位小数。",
+  "answer_type": "dict",
+  "expected": {
+   "CNY": 13207496.53,
+   "USD": 465308.56
+  }
+ },
+ {
+  "id": 4,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "sales/legacy"
+  ],
+  "question": "旧系统文件中全部人民币 completed 订单（不按日期筛选）的折扣合计是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 660292.59
+ },
+ {
+  "id": 5,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "2024 年新系统一共有多少个不同的订单？",
+  "answer_type": "integer",
+  "expected": 45872
+ },
+ {
+  "id": 6,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "2024 年新系统中，最终状态为 cancelled 的订单有多少个？",
+  "answer_type": "integer",
+  "expected": 5018
+ },
+ {
+  "id": 7,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "2024 年新系统所有订单（每个订单只算一次）的明细行一共有多少条？",
+  "answer_type": "integer",
+  "expected": 91691
+ },
+ {
+  "id": 8,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "2024 年新系统中使用过促销码 FLASH20 的订单有多少个（任意状态）？",
+  "answer_type": "integer",
+  "expected": 3102
+ },
+ {
+  "id": 9,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "2024 年新系统 completed 订单一共卖出多少件商品（明细 qty 之和）？",
+  "answer_type": "integer",
+  "expected": 108040
+ },
+ {
+  "id": 10,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "finance/gl_2024.txt"
+  ],
+  "question": "gl_2024.txt 中一共有多少张凭证（不同的 journal_id）？",
+  "answer_type": "integer",
+  "expected": 3000
+ },
+ {
+  "id": 11,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "finance/gl_2024.txt"
+  ],
+  "question": "gl_2024.txt 中所有分录的借方金额合计是多少（不剔除任何行）？保留2位小数。",
+  "answer_type": "number",
+  "expected": 23703082.06
+ },
+ {
+  "id": 12,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "finance/gl_2024.txt"
+  ],
+  "question": "gl_2024.txt 中所有分录的贷方金额合计是多少（不剔除任何行，取正数）？保留2位小数。",
+  "answer_type": "number",
+  "expected": 23703651.59
+ },
+ {
+  "id": 13,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "finance/gl_2024.txt"
+  ],
+  "question": "gl_2024.txt 中金额字段带千分位逗号的分录有多少行？",
+  "answer_type": "integer",
+  "expected": 289
+ },
+ {
+  "id": 14,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "logs/access.log"
+  ],
+  "question": "access.log 中格式完整、能按日志格式解析的行有多少？",
+  "answer_type": "integer",
+  "expected": 299102
+ },
+ {
+  "id": 15,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "logs/access.log"
+  ],
+  "question": "能解析的请求中，状态码为 404 的有多少个？",
+  "answer_type": "integer",
+  "expected": 5896
+ },
+ {
+  "id": 16,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "logs/access.log"
+  ],
+  "question": "能解析的请求中（含爬虫），请求次数最多的 IP 是哪个？",
+  "answer_type": "string",
+  "expected": "181.145.165.56"
+ },
+ {
+  "id": 17,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "iot/readings.csv.gz"
+  ],
+  "question": "readings.csv.gz 按原样逐行统计，一共有多少行数据（不含表头）？",
+  "answer_type": "integer",
+  "expected": 1037000
+ },
+ {
+  "id": 18,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "iot/readings.csv.gz"
+  ],
+  "question": "readings.csv.gz 中一共出现了多少台不同的设备？",
+  "answer_type": "integer",
+  "expected": 60
+ },
+ {
+  "id": 19,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "catalog/product_cdc.jsonl"
+  ],
+  "question": "product_cdc.jsonl 按原样逐行统计，一共有多少条事件？",
+  "answer_type": "integer",
+  "expected": 1603
+ },
+ {
+  "id": 20,
+  "level": 1,
+  "category": "多格式读取与解析",
+  "files": [
+   "catalog/product_cdc.jsonl"
+  ],
+  "question": "product_cdc.jsonl 中一共有多少个不同的事件（按 lsn）？",
+  "answer_type": "integer",
+  "expected": 1563
+ },
+ {
+  "id": 21,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "sales/legacy"
+  ],
+  "question": "旧系统中，同一个订单号出现在两个或以上月份文件中的订单有多少个？",
+  "answer_type": "integer",
+  "expected": 122
+ },
+ {
+  "id": 22,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "sales/legacy"
+  ],
+  "question": "把 12 个旧系统文件统一字段后合并，完全重复的多余行有多少？",
+  "answer_type": "integer",
+  "expected": 158
+ },
+ {
+  "id": 23,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "sales/legacy",
+   "stores.csv"
+  ],
+  "question": "旧系统中，下单时间因夏令时开始而不存在的订单有多少个？",
+  "answer_type": "integer",
+  "expected": 5
+ },
+ {
+  "id": 24,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "sales/legacy",
+   "stores.csv"
+  ],
+  "question": "旧系统中，下单时间因夏令时结束而出现两次（有歧义）的订单有多少个？",
+  "answer_type": "integer",
+  "expected": 8
+ },
+ {
+  "id": 25,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "新系统中，有多少个订单先以 completed 导出、后来又以 cancelled 状态导出？",
+  "answer_type": "integer",
+  "expected": 1376
+ },
+ {
+  "id": 26,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "新系统导出文件中，内容完全相同的多余记录有多少条？",
+  "answer_type": "integer",
+  "expected": 447
+ },
+ {
+  "id": 27,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "iot/readings.csv.gz",
+   "iot/devices.csv"
+  ],
+  "question": "有几台设备实际上是以华氏度上报温度的？列出这些设备（JSON 数组，顺序不限）。",
+  "answer_type": "set",
+  "expected": [
+   "DEV012",
+   "DEV016",
+   "DEV019",
+   "DEV027",
+   "DEV029",
+   "DEV031"
+  ]
+ },
+ {
+  "id": 28,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "iot/readings.csv.gz",
+   "iot/devices.csv"
+  ],
+  "question": "把以华氏度上报的设备换算为摄氏度、并去掉完全重复的行之后，仍超出合理范围的读数有多少条？",
+  "answer_type": "integer",
+  "expected": 515
+ },
+ {
+  "id": 29,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "iot/readings.csv.gz"
+  ],
+  "question": "readings.csv.gz 中完全重复的多余行有多少？",
+  "answer_type": "integer",
+  "expected": 5159
+ },
+ {
+  "id": 30,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "iot/readings.csv.gz",
+   "iot/devices.csv"
+  ],
+  "question": "统一时区、换算华氏度、去重并剔除无效值后，有效读数一共有多少条？",
+  "answer_type": "integer",
+  "expected": 1031326
+ },
+ {
+  "id": 31,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "crm/members_shop.csv"
+  ],
+  "question": "members_shop 中有多少条记录的手机号是有效的中国大陆手机号（统一写法后为 1 开头的 11 位数字）？",
+  "answer_type": "integer",
+  "expected": 4425
+ },
+ {
+  "id": 32,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv"
+  ],
+  "question": "members_shop 与 contacts_crm 两个文件中，统一写法后一共出现了多少个不同的手机号？",
+  "answer_type": "integer",
+  "expected": 5133
+ },
+ {
+  "id": 33,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "crm/members_shop.csv"
+  ],
+  "question": "members_shop 中统一写法后（去首尾空格、转小写）有多少个不同的邮箱？",
+  "answer_type": "integer",
+  "expected": 4383
+ },
+ {
+  "id": 34,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "finance/gl_2024.txt"
+  ],
+  "question": "gl_2024.txt 中记账日期不是合法日期的分录有多少行？",
+  "answer_type": "integer",
+  "expected": 15
+ },
+ {
+  "id": 35,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "finance/gl_2024.txt"
+  ],
+  "question": "gl_2024.txt 中借贷不平衡的凭证有哪些？以 JSON 数组按凭证号升序给出。",
+  "answer_type": "list",
+  "expected": [
+   "JE000069",
+   "JE000964",
+   "JE001033",
+   "JE001935",
+   "JE002427",
+   "JE002540"
+  ]
+ },
+ {
+  "id": 36,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "logs/access.log"
+  ],
+  "question": "能解析的请求中，爬虫请求（User-Agent 含 bot、spider 或 crawler，不区分大小写）占多少比例？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.151
+ },
+ {
+  "id": 37,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "logs/access.log"
+  ],
+  "question": "能解析的请求中，时间带 -0700 时区偏移的有多少个？",
+  "answer_type": "integer",
+  "expected": 89809
+ },
+ {
+  "id": 38,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "catalog/product_cdc.jsonl"
+  ],
+  "question": "被删除过（出现过 op = d）的 SKU 有多少个？",
+  "answer_type": "integer",
+  "expected": 20
+ },
+ {
+  "id": 39,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "catalog/product_cdc.jsonl"
+  ],
+  "question": "删除后又被重新创建（op = c）的 SKU 有哪些？以 JSON 数组按 SKU 升序给出。",
+  "answer_type": "list",
+  "expected": [
+   "SKU0165",
+   "SKU0175",
+   "SKU0258"
+  ]
+ },
+ {
+  "id": 40,
+  "level": 2,
+  "category": "清洗与异常识别",
+  "files": [
+   "sales/legacy"
+  ],
+  "question": "旧系统文件在年中改过字段名。改名后的“订单原价”和“折扣”字段名分别是什么？用 \"原价字段名,折扣字段名\" 格式给出。",
+  "answer_type": "string",
+  "expected": "total_amount,discount_amt"
+ },
+ {
+  "id": 41,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "payments/gateway_settlement.csv"
+  ],
+  "question": "有多少个 completed 订单没有任何 SUCCESS 支付记录？（只看 2024 年新系统中最终状态为 completed 的订单；SUCCESS 记录即一次成功扣款）",
+  "answer_type": "integer",
+  "expected": 594
+ },
+ {
+  "id": 42,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "payments/gateway_settlement.csv"
+  ],
+  "question": "有多少个 completed 订单被重复扣款（SUCCESS 记录 ≥ 2 条）？（只看 2024 年新系统中最终状态为 completed 的订单；SUCCESS 记录即一次成功扣款）",
+  "answer_type": "integer",
+  "expected": 408
+ },
+ {
+  "id": 43,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "payments/gateway_settlement.csv"
+  ],
+  "question": "被重复扣款的订单多收的金额（SUCCESS 金额合计 − 订单净额）按币种分别合计是多少？键为币种，保留2位小数。（只看 2024 年新系统中最终状态为 completed 的订单；SUCCESS 记录即一次成功扣款）",
+  "answer_type": "dict",
+  "expected": {
+   "CNY": 163317.38,
+   "USD": 5122.99
+  }
+ },
+ {
+  "id": 44,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "payments/gateway_settlement.csv"
+  ],
+  "question": "只有 1 条 SUCCESS 记录、且扣款金额比订单净额少 0.01 以上的 completed 订单有多少个？（只看 2024 年新系统中最终状态为 completed 的订单；SUCCESS 记录即一次成功扣款）",
+  "answer_type": "integer",
+  "expected": 452
+ },
+ {
+  "id": 45,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "payments/gateway_settlement.csv"
+  ],
+  "question": "只有 1 条 SUCCESS 记录、扣款金额与订单净额不完全相等但差额不超过 0.01 的 completed 订单有多少个？（只看 2024 年新系统中最终状态为 completed 的订单；SUCCESS 记录即一次成功扣款）",
+  "answer_type": "integer",
+  "expected": 201
+ },
+ {
+  "id": 46,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "payments/gateway_settlement.csv",
+   "payments/refunds.csv"
+  ],
+  "question": "2024 年新系统中最终状态为 cancelled、有 SUCCESS 扣款、但没有任何退款记录的订单有多少个？",
+  "answer_type": "integer",
+  "expected": 244
+ },
+ {
+  "id": 47,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "payments/gateway_settlement.csv"
+  ],
+  "question": "支付记录中，order_id 在新系统订单里找不到的有多少条？",
+  "answer_type": "integer",
+  "expected": 20
+ },
+ {
+  "id": 48,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "payments/gateway_settlement.csv",
+   "payments/refunds.csv"
+  ],
+  "question": "退款金额合计超过该订单实际扣款（SUCCESS 金额合计 − REVERSED 金额合计）的订单有哪些？以 JSON 数组按订单号升序给出。",
+  "answer_type": "list",
+  "expected": [
+   "A014452",
+   "A028490",
+   "A028652",
+   "A045237"
+  ]
+ },
+ {
+  "id": 49,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "payments/gateway_settlement.csv",
+   "payments/refunds.csv"
+  ],
+  "question": "CNY 的实收合计是多少？实收 = SUCCESS 金额合计 − REVERSED 金额合计 − 退款金额合计，只统计能对应到新系统订单的记录。保留2位小数。",
+  "answer_type": "number",
+  "expected": 16308853.63
+ },
+ {
+  "id": 50,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "payments/gateway_settlement.csv",
+   "payments/refunds.csv"
+  ],
+  "question": "USD 的实收合计是多少？实收 = SUCCESS 金额合计 − REVERSED 金额合计 − 退款金额合计，只统计能对应到新系统订单的记录。保留2位小数。",
+  "answer_type": "number",
+  "expected": 563008.62
+ },
+ {
+  "id": 51,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "payments/gateway_settlement.csv"
+  ],
+  "question": "支付文件中所有 CNY 记录的手续费合计是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 104512.18
+ },
+ {
+  "id": 52,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "payments/gateway_settlement.csv"
+  ],
+  "question": "发生过拒付（有 REVERSED 记录）的订单有多少个？",
+  "answer_type": "integer",
+  "expected": 128
+ },
+ {
+  "id": 53,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "payments/gateway_settlement.csv"
+  ],
+  "question": "先有 FAILED 记录、又有 SUCCESS 记录的订单有多少个？",
+  "answer_type": "integer",
+  "expected": 831
+ },
+ {
+  "id": 54,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "payments/gateway_settlement.csv",
+   "payments/refunds.csv"
+  ],
+  "question": "生成对账表 reconciliation.csv：2024 年新系统每个最终 completed 订单一行，列依次为 order_id,expected,paid,reversed,refunded,result。expected 为订单净额，paid 为 SUCCESS 金额合计，reversed 为 REVERSED 金额合计，refunded 为退款金额合计（均为原币种，保留2位小数，没有记录为 0）。result 规则：SUCCESS 条数为 0 → missing；≥ 2 → double；否则 paid − expected < −0.01 → underpaid，> 0.01 → overpaid，其余 → matched。按 order_id 升序。",
+  "answer_type": "csv",
+  "expected": "reconciliation.csv",
+  "key_cols": [
+   "order_id"
+  ],
+  "num_tol": {
+   "expected": 0.011,
+   "paid": 0.011,
+   "reversed": 0.011,
+   "refunded": 0.011
+  },
+  "exp_path": "v2/expected/054_reconciliation.csv"
+ },
+ {
+  "id": 55,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl",
+   "payments/gateway_settlement.csv"
+  ],
+  "question": "按门店汇总没有任何 SUCCESS 支付记录的 completed 订单的净额（换算为人民币），金额最高的门店是哪个？给出 store_id。（只看 2024 年新系统中最终状态为 completed 的订单；SUCCESS 记录即一次成功扣款）",
+  "answer_type": "string",
+  "expected": "S01"
+ },
+ {
+  "id": 56,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "payments/gateway_settlement.csv"
+  ],
+  "question": "对 matched 订单（恰好有 1 条 SUCCESS 记录，且 |SUCCESS 金额 − 订单净额| ≤ 0.01），SUCCESS 扣款时间与下单时间之差（秒）的中位数是多少？保留1位小数。（只看 2024 年新系统中最终状态为 completed 的订单；SUCCESS 记录即一次成功扣款）",
+  "answer_type": "number",
+  "expected": 903.0
+ },
+ {
+  "id": 57,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "finance/gl_2024.txt",
+   "finance/chart_of_accounts.csv"
+  ],
+  "question": "剔除借贷不平衡的凭证后，各科目类型的余额（借方 − 贷方）是多少？键为 type，保留2位小数。",
+  "answer_type": "dict",
+  "expected": {
+   "asset": -1576760.09,
+   "expense": 10239660.92,
+   "liability": -3138077.19,
+   "revenue": -5524823.64
+  }
+ },
+ {
+  "id": 58,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "finance/gl_2024.txt",
+   "finance/chart_of_accounts.csv"
+  ],
+  "question": "剔除借贷不平衡的凭证和记账日期无效的行后，2024 年收入（revenue 类科目贷方 − 借方）合计是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 5524823.64
+ },
+ {
+  "id": 59,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "finance/gl_2024.txt",
+   "finance/chart_of_accounts.csv"
+  ],
+  "question": "剔除借贷不平衡的凭证和记账日期无效的行后，2024 年净利润（收入 − 费用；费用为 expense 类科目借方 − 贷方）是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": -4680234.64
+ },
+ {
+  "id": 60,
+  "level": 3,
+  "category": "对账",
+  "files": [
+   "finance/gl_2024.txt",
+   "finance/chart_of_accounts.csv"
+  ],
+  "question": "剔除借贷不平衡的凭证和记账日期无效的行后，2024 年第三季度（按记账日期）主营业务收入（科目 6001，贷方 − 借方）是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 733124.72
+ },
+ {
+  "id": 61,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。合并后一共有多少个簇？",
+  "answer_type": "integer",
+  "expected": 4930
+ },
+ {
+  "id": 62,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。只包含 members_shop 记录（没有任何 CRM 记录）的簇有多少个？",
+  "answer_type": "integer",
+  "expected": 733
+ },
+ {
+  "id": 63,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。只包含 contacts_crm 记录的簇有多少个？",
+  "answer_type": "integer",
+  "expected": 453
+ },
+ {
+  "id": 64,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。同时包含两个系统记录的簇有多少个？",
+  "answer_type": "integer",
+  "expected": 3744
+ },
+ {
+  "id": 65,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。最大的簇包含多少条记录？",
+  "answer_type": "integer",
+  "expected": 6
+ },
+ {
+  "id": 66,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。包含 2 个及以上 member_id 的簇有多少个？",
+  "answer_type": "integer",
+  "expected": 169
+ },
+ {
+  "id": 67,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。簇内出现 2 个及以上不同手机号（统一写法后）的簇有多少个？",
+  "answer_type": "integer",
+  "expected": 298
+ },
+ {
+  "id": 68,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。簇内出现 2 个及以上不同邮箱（统一写法后）的簇有多少个？",
+  "answer_type": "integer",
+  "expected": 133
+ },
+ {
+  "id": 69,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv",
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。按簇统计 2024 年的订单数，订单数最多的簇有多少笔订单？（订单只算 completed，下单时间无效的订单不计；金额为订单净额换算成的人民币）",
+  "answer_type": "integer",
+  "expected": 27
+ },
+ {
+  "id": 70,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv",
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。按簇统计 2023–2024 两年的订单金额合计，最高的簇金额是多少？保留2位小数。（订单只算 completed，下单时间无效的订单不计；金额为订单净额换算成的人民币）",
+  "answer_type": "number",
+  "expected": 22006.4
+ },
+ {
+  "id": 71,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv",
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。按簇统计 2023–2024 两年的订单金额合计，金额最高的簇的代表 ID 是什么？（订单只算 completed，下单时间无效的订单不计；金额为订单净额换算成的人民币）",
+  "answer_type": "string",
+  "expected": "M000035"
+ },
+ {
+  "id": 72,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv",
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。2023 年和 2024 年都有订单的簇有多少个？（订单只算 completed，下单时间无效的订单不计；金额为订单净额换算成的人民币）",
+  "answer_type": "integer",
+  "expected": 4476
+ },
+ {
+  "id": 73,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv",
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。2023 年有订单、2024 年没有订单的簇有多少个？（订单只算 completed，下单时间无效的订单不计；金额为订单净额换算成的人民币）",
+  "answer_type": "integer",
+  "expected": 1
+ },
+ {
+  "id": 74,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv",
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。2024 年有订单的不同 member_id 数，比 2024 年有订单的簇数多多少？（订单只算 completed，下单时间无效的订单不计；金额为订单净额换算成的人民币）",
+  "answer_type": "integer",
+  "expected": 173
+ },
+ {
+  "id": 75,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv",
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。2024 年有 2 笔及以上订单的簇，占 2024 年有订单的簇的比例是多少？保留4位小数。（订单只算 completed，下单时间无效的订单不计；金额为订单净额换算成的人民币）",
+  "answer_type": "number",
+  "expected": 0.998
+ },
+ {
+  "id": 76,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv",
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。生成 person_ltv.csv：按 2023–2024 两年订单金额合计取前 100 个簇，列依次为 cluster_key,members,orders,net_cny（members 为簇内 member_id 个数，orders 为订单数，net_cny 保留2位小数），按 net_cny 降序。（订单只算 completed，下单时间无效的订单不计；金额为订单净额换算成的人民币）",
+  "answer_type": "csv",
+  "expected": "person_ltv.csv",
+  "key_cols": [
+   "cluster_key"
+  ],
+  "num_tol": {
+   "members": 1e-09,
+   "orders": 1e-09,
+   "net_cny": 0.011
+  },
+  "exp_path": "v2/expected/076_person_ltv.csv"
+ },
+ {
+  "id": 77,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv",
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。包含至少一条 city 为“上海”的 CRM 记录的簇，2024 年订单金额合计是多少？保留2位小数。（订单只算 completed，下单时间无效的订单不计；金额为订单净额换算成的人民币）",
+  "answer_type": "number",
+  "expected": 2612852.81
+ },
+ {
+  "id": 78,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。簇内 member_id 的注册时间（register_time）最早与最晚相差超过 365 天的簇有多少个？",
+  "answer_type": "integer",
+  "expected": 44
+ },
+ {
+  "id": 79,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv",
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。2024 年在 2 家及以上门店下过单的簇有多少个？（订单只算 completed，下单时间无效的订单不计；金额为订单净额换算成的人民币）",
+  "answer_type": "integer",
+  "expected": 4453
+ },
+ {
+  "id": 80,
+  "level": 4,
+  "category": "实体合并",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv",
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。2024 年“按簇计算的人均订单金额”是“按 member_id 计算的人均订单金额”的多少倍？人均 = 订单金额合计 ÷ 有订单的簇数（或 member_id 数）。保留4位小数。（订单只算 completed，下单时间无效的订单不计；金额为订单净额换算成的人民币）",
+  "answer_type": "number",
+  "expected": 1.0387
+ },
+ {
+  "id": 81,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "sales/legacy",
+   "stores.csv"
+  ],
+  "question": "2023 年旧系统美国门店（S05、S06）的 completed 订单，按 UTC 日期统计订单数，最多的是哪一天？格式 YYYY-MM-DD。",
+  "answer_type": "string",
+  "expected": "2023-12-17"
+ },
+ {
+  "id": 82,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "sales/legacy",
+   "stores.csv"
+  ],
+  "question": "S05 在 2023-11-05 本地时间 01:00–01:59 之间的订单（任意状态），换算成 UTC 后最早的一笔是什么时间？格式 YYYY-MM-DD HH:MM:SS。",
+  "answer_type": "string",
+  "expected": "2023-11-05 08:09:00"
+ },
+ {
+  "id": 83,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "stores.csv"
+  ],
+  "question": "按业务日期，S06 在 2024-03-10 有多少个订单（任意最终状态）？",
+  "answer_type": "integer",
+  "expected": 11
+ },
+ {
+  "id": 84,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "2023–2024 年全部门店的 completed 订单，按北京时间日期统计订单数，最多的是哪一天？格式 YYYY-MM-DD。",
+  "answer_type": "string",
+  "expected": "2023-12-24"
+ },
+ {
+  "id": 85,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "stores.csv"
+  ],
+  "question": "2024 年新系统 completed 订单按门店本地时间的小时（0–23）统计，订单最多的是几点？",
+  "answer_type": "integer",
+  "expected": 20
+ },
+ {
+  "id": 86,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "stores.csv"
+  ],
+  "question": "2024 年新系统 completed 订单按 UTC 时间的小时（0–23）统计，订单最多的是几点？",
+  "answer_type": "integer",
+  "expected": 12
+ },
+ {
+  "id": 87,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "iot/readings.csv.gz"
+  ],
+  "question": "所有设备的断线次数合计是多少？（统一为 UTC、去掉完全重复的行；断线 = 同一设备相邻两条读数的时间间隔超过 1 小时）",
+  "answer_type": "integer",
+  "expected": 109
+ },
+ {
+  "id": 88,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "iot/readings.csv.gz"
+  ],
+  "question": "最长的一次断线持续了多少小时（相邻读数时间差）？保留2位小数。（统一为 UTC、去掉完全重复的行；断线 = 同一设备相邻两条读数的时间间隔超过 1 小时）",
+  "answer_type": "number",
+  "expected": 31.26
+ },
+ {
+  "id": 89,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "iot/readings.csv.gz"
+  ],
+  "question": "最长的一次断线发生在哪台设备？（统一为 UTC、去掉完全重复的行；断线 = 同一设备相邻两条读数的时间间隔超过 1 小时）",
+  "answer_type": "string",
+  "expected": "DEV008"
+ },
+ {
+  "id": 90,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "iot/readings.csv.gz",
+   "iot/devices.csv"
+  ],
+  "question": "2024-11-15（UTC）各仓库的日均温度是多少？先求每台设备每个 UTC 小时的平均温度，再对同一仓库当天所有“设备-小时”值求平均。键为 site，保留2位小数。（以华氏度上报的设备换算为摄氏度，去重并剔除无效值，时间统一为 UTC）",
+  "answer_type": "dict",
+  "expected": {
+   "上海仓": 13.66,
+   "广州仓": 19.43,
+   "成都仓": 10.94,
+   "苏州仓": 12.68
+  }
+ },
+ {
+  "id": 91,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "iot/readings.csv.gz",
+   "iot/devices.csv"
+  ],
+  "question": "2024 年 11 月（UTC）每台设备的数据完整率 = 有效读数条数 ÷ (30 × 288)，完整率最低的是哪台设备？（以华氏度上报的设备换算为摄氏度，去重并剔除无效值，时间统一为 UTC）",
+  "answer_type": "string",
+  "expected": "DEV033"
+ },
+ {
+  "id": 92,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "iot/readings.csv.gz",
+   "iot/devices.csv"
+  ],
+  "question": "按 UTC 日期，单台设备单日温差（当日最高 − 最低）最大的是哪台设备、哪一天？用 \"device_id|YYYY-MM-DD\" 格式给出。（以华氏度上报的设备换算为摄氏度，去重并剔除无效值，时间统一为 UTC）",
+  "answer_type": "string",
+  "expected": "DEV044|2024-11-14"
+ },
+ {
+  "id": 93,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "subscriptions/subscription_events.csv"
+  ],
+  "question": "所有账户中，付费期段数最多的账户有几段付费期？（账户 MRR 从 0 变为正数开始一段付费期，再次变为 0 时该段结束；截至最后一个事件仍在付费的当前一段也算一段；同一账户的事件按 event_date、seq 排序）",
+  "answer_type": "integer",
+  "expected": 4
+ },
+ {
+  "id": 94,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "subscriptions/subscription_events.csv"
+  ],
+  "question": "2024-12-31 日终仍在付费的账户，其当前这段付费期已持续的天数（2024-12-31 − 本段开始日期）的中位数是多少？保留1位小数。（账户 MRR 从 0 变为正数开始一段付费期，再次变为 0 时该段结束；截至最后一个事件仍在付费的当前一段也算一段；同一账户的事件按 event_date、seq 排序）",
+  "answer_type": "number",
+  "expected": 279.5
+ },
+ {
+  "id": 95,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "logs/access.log"
+  ],
+  "question": "能解析的请求中（含爬虫），5xx 状态码最多的 UTC 小时是哪个？格式 YYYY-MM-DD HH。",
+  "answer_type": "string",
+  "expected": "2024-10-15 06"
+ },
+ {
+  "id": 96,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "logs/access.log"
+  ],
+  "question": "一共有多少个会话？（只看能解析的非爬虫请求；同一 IP 相邻请求间隔超过 30 分钟即开始新会话）",
+  "answer_type": "integer",
+  "expected": 116175
+ },
+ {
+  "id": 97,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "logs/access.log"
+  ],
+  "question": "平均每个会话有多少个请求？保留4位小数。（只看能解析的非爬虫请求；同一 IP 相邻请求间隔超过 30 分钟即开始新会话）",
+  "answer_type": "number",
+  "expected": 2.1858
+ },
+ {
+  "id": 98,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "marketing/touchpoints.csv",
+   "marketing/conversions.csv"
+  ],
+  "question": "对每笔转化，找到该用户在转化之前（不限时间窗）的最后一个触点，两者的时间间隔（小时）的中位数是多少？没有更早触点的转化不计。保留2位小数。",
+  "answer_type": "number",
+  "expected": 64.67
+ },
+ {
+  "id": 99,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "fx_daily.csv"
+  ],
+  "question": "把 2024 年每个日历日都补上汇率（当天没有就用之前最近一天的），全年 366 天的平均汇率是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 7.3233
+ },
+ {
+  "id": 100,
+  "level": 5,
+  "category": "时间与时区",
+  "files": [
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "按业务日期，S05 在 2023-01-01 至 2024-12-31 期间有多少天没有任何 completed 订单？",
+  "answer_type": "integer",
+  "expected": 0
+ },
+ {
+  "id": 101,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "catalog/product_cdc.jsonl"
+  ],
+  "question": "回放变更日志：截至 2024-06-30 23:59:59（UTC），处于存在状态（未被删除）的 SKU 有多少个？",
+  "answer_type": "integer",
+  "expected": 295
+ },
+ {
+  "id": 102,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "catalog/product_cdc.jsonl"
+  ],
+  "question": "回放变更日志：截至 2024-06-30 23:59:59（UTC），存在的 SKU 的平均标价是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 232.64
+ },
+ {
+  "id": 103,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "catalog/product_cdc.jsonl"
+  ],
+  "question": "回放变更日志：截至 2023-12-31 23:59:59（UTC），各类目分别有多少个存在的 SKU？键为 category。",
+  "answer_type": "dict",
+  "expected": {
+   "箱包": 39,
+   "家居": 38,
+   "数码配件": 44,
+   "美妆": 45,
+   "食品": 35,
+   "鞋靴": 33,
+   "运动": 35,
+   "服饰": 31
+  }
+ },
+ {
+  "id": 104,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "catalog/product_cdc.jsonl"
+  ],
+  "question": "价格（price_cny）发生变化的更新事件一共有多少次？",
+  "answer_type": "integer",
+  "expected": 1210
+ },
+ {
+  "id": 105,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "catalog/product_cdc.jsonl"
+  ],
+  "question": "价格变化次数达到 8 次及以上的 SKU 有多少个？",
+  "answer_type": "integer",
+  "expected": 16
+ },
+ {
+  "id": 106,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "catalog/product_cdc.jsonl"
+  ],
+  "question": "通过更新事件（op = u，且 before 与 after 的 category 不同）改变过类目的 SKU 有多少个？",
+  "answer_type": "integer",
+  "expected": 30
+ },
+ {
+  "id": 107,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "catalog/product_cdc.jsonl"
+  ],
+  "question": "生成价格历史拉链表 sku_price_history.csv，列依次为 sku,price_cny,valid_from,valid_to。规则：SKU 首次出现、重新创建或价格变化时开始一个新版本；只有类目等其他字段变化时不开新版本；删除时结束当前版本；valid_to 为下一版本的开始时间或删除时间，当前仍有效的版本留空；时间为 UTC，格式 YYYY-MM-DD HH:MM:SS。按 sku、valid_from 升序。",
+  "answer_type": "csv",
+  "expected": "sku_price_history.csv",
+  "key_cols": [
+   "sku",
+   "valid_from"
+  ],
+  "num_tol": {
+   "price_cny": 0.001
+  },
+  "exp_path": "v2/expected/107_sku_price_history.csv"
+ },
+ {
+  "id": 108,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "catalog/product_cdc.jsonl",
+   "stores.csv"
+  ],
+  "question": "成交单价高于下单时刻标价的明细有多少行？（标价取下单时刻该 SKU 在变更日志中的 price_cny；只看 2024 年新系统中国门店 S01–S04 最终 completed 订单的明细）",
+  "answer_type": "integer",
+  "expected": 651
+ },
+ {
+  "id": 109,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "catalog/product_cdc.jsonl",
+   "stores.csv"
+  ],
+  "question": "平均折扣深度 = 1 − Σ(qty × unit_price) ÷ Σ(qty × 下单时刻标价) 是多少？保留4位小数。（标价取下单时刻该 SKU 在变更日志中的 price_cny；只看 2024 年新系统中国门店 S01–S04 最终 completed 订单的明细）",
+  "answer_type": "number",
+  "expected": 0.0725
+ },
+ {
+  "id": 110,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "catalog/product_cdc.jsonl",
+   "stores.csv"
+  ],
+  "question": "下单时刻在变更日志中不存在（未创建或已删除）的 SKU 出现在多少行明细中？（标价取下单时刻该 SKU 在变更日志中的 price_cny；只看 2024 年新系统中国门店 S01–S04 最终 completed 订单的明细）",
+  "answer_type": "integer",
+  "expected": 0
+ },
+ {
+  "id": 111,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "catalog/product_cdc.jsonl",
+   "stores.csv"
+  ],
+  "question": "按下单时刻标价计算的标价总额 Σ(qty × 标价) 是多少？保留2位小数。（标价取下单时刻该 SKU 在变更日志中的 price_cny；只看 2024 年新系统中国门店 S01–S04 最终 completed 订单的明细）",
+  "answer_type": "number",
+  "expected": 18181000.53
+ },
+ {
+  "id": 112,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "catalog/product_cdc.jsonl",
+   "stores.csv"
+  ],
+  "question": "按销售额（qty × unit_price）汇总类目，分别按“下单时刻的类目”和“2023-01-01 初始快照中的类目”归类，销售额第一的类目各是什么？用 \"下单时刻类目|初始快照类目\" 格式给出。（标价取下单时刻该 SKU 在变更日志中的 price_cny；只看 2024 年新系统中国门店 S01–S04 最终 completed 订单的明细）",
+  "answer_type": "string",
+  "expected": "家居|家居"
+ },
+ {
+  "id": 113,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "stores.csv",
+   "fx_daily.csv"
+  ],
+  "question": "2024 年新系统美国门店 completed 订单净额按业务日期汇率换算为人民币，合计是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 4185548.72
+ },
+ {
+  "id": 114,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "stores.csv",
+   "fx_daily.csv"
+  ],
+  "question": "2024 年新系统美国门店 completed 订单净额换算为人民币，分别按业务日期和按 UTC 日期取汇率（其余汇率规则同 README），两种合计之差（按 UTC 日期 − 按业务日期）是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 37.05
+ },
+ {
+  "id": 115,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "subscriptions/subscription_events.csv"
+  ],
+  "question": "2024-06-30 日终全部账户的 MRR 合计是多少（美元）？",
+  "answer_type": "integer",
+  "expected": 416955
+ },
+ {
+  "id": 116,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "subscriptions/subscription_events.csv"
+  ],
+  "question": "2024-12-31 日终全部账户的 MRR 合计是多少（美元）？",
+  "answer_type": "integer",
+  "expected": 475894
+ },
+ {
+  "id": 117,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "subscriptions/subscription_events.csv"
+  ],
+  "question": "2024-12-31 日终 MRR 大于 0 的账户有多少个？",
+  "answer_type": "integer",
+  "expected": 726
+ },
+ {
+  "id": 118,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "如果不按 updated_at 取每个订单的最新记录，只是去掉完全重复的行，然后数 status 为 completed 的行，会比正确的 completed 订单数多出多少？",
+  "answer_type": "integer",
+  "expected": 1376
+ },
+ {
+  "id": 119,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "stores.csv"
+  ],
+  "question": "2024 年新系统中国门店（S01–S04）completed 订单的净额合计是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 16542508.08
+ },
+ {
+  "id": 120,
+  "level": 6,
+  "category": "增量与历史数据",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "catalog/product_cdc.jsonl",
+   "stores.csv"
+  ],
+  "question": "2024 年新系统最终 completed 的订单中（全部门店），至少有一行明细的商品在下单时刻属于“数码配件”类目的订单有多少个？",
+  "answer_type": "integer",
+  "expected": 17014
+ },
+ {
+  "id": 121,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "subscriptions/subscription_events.csv"
+  ],
+  "question": "生成 2024 年 MRR 瀑布表 mrr_waterfall_2024.csv，每月一行，列依次为 month,start_mrr,new,expansion,contraction,churn,reactivation,end_mrr（month 形如 2024-01，金额为美元整数）。（按月末日终快照比较：上月末 MRR 为 p、本月末为 c。p = 0 且 c > 0：若该账户在上月末之前（含）从未有过正 MRR 记为 new，否则记为 reactivation；p > 0 且 c = 0 记为 churn（金额 −p）；p、c 都大于 0 时 c > p 记为 expansion（c − p），c < p 记为 contraction（c − p，为负数）。月内的中间变化不计。）",
+  "answer_type": "csv",
+  "expected": "mrr_waterfall_2024.csv",
+  "key_cols": [
+   "month"
+  ],
+  "num_tol": {
+   "start_mrr": 1e-06,
+   "new": 1e-06,
+   "expansion": 1e-06,
+   "contraction": 1e-06,
+   "churn": 1e-06,
+   "reactivation": 1e-06,
+   "end_mrr": 1e-06
+  },
+  "exp_path": "v2/expected/121_mrr_waterfall_2024.csv"
+ },
+ {
+  "id": 122,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "subscriptions/subscription_events.csv"
+  ],
+  "question": "2024 年全年 new MRR 合计是多少（美元）？（按月末日终快照比较：上月末 MRR 为 p、本月末为 c。p = 0 且 c > 0：若该账户在上月末之前（含）从未有过正 MRR 记为 new，否则记为 reactivation；p > 0 且 c = 0 记为 churn（金额 −p）；p、c 都大于 0 时 c > p 记为 expansion（c − p），c < p 记为 contraction（c − p，为负数）。月内的中间变化不计。）",
+  "answer_type": "integer",
+  "expected": 214107
+ },
+ {
+  "id": 123,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "subscriptions/subscription_events.csv"
+  ],
+  "question": "2024 年全年 churn MRR 合计是多少（美元，负数）？（按月末日终快照比较：上月末 MRR 为 p、本月末为 c。p = 0 且 c > 0：若该账户在上月末之前（含）从未有过正 MRR 记为 new，否则记为 reactivation；p > 0 且 c = 0 记为 churn（金额 −p）；p、c 都大于 0 时 c > p 记为 expansion（c − p），c < p 记为 contraction（c − p，为负数）。月内的中间变化不计。）",
+  "answer_type": "integer",
+  "expected": -294400
+ },
+ {
+  "id": 124,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "subscriptions/subscription_events.csv"
+  ],
+  "question": "净收入留存率 NRR = 2023-12-31 日终 MRR > 0 的账户在 2024-12-31 的 MRR 合计 ÷ 这些账户在 2023-12-31 的 MRR 合计，是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.7583
+ },
+ {
+  "id": 125,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "subscriptions/subscription_events.csv"
+  ],
+  "question": "毛收入留存率 GRR = Σ min(账户 2024-12-31 MRR, 账户 2023-12-31 MRR) ÷ Σ 账户 2023-12-31 MRR（只看 2023-12-31 MRR > 0 的账户），是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.3803
+ },
+ {
+  "id": 126,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "subscriptions/subscription_events.csv"
+  ],
+  "question": "2023-12-31 日终 MRR > 0 的账户中，2024-12-31 日终 MRR 为 0 的比例（logo churn）是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.4756
+ },
+ {
+  "id": 127,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "subscriptions/subscription_events.csv"
+  ],
+  "question": "2024 年 SaaS Quick Ratio = (new + expansion + reactivation) ÷ |churn + contraction|（12 个月合计）是多少？保留4位小数。（按月末日终快照比较：上月末 MRR 为 p、本月末为 c。p = 0 且 c > 0：若该账户在上月末之前（含）从未有过正 MRR 记为 new，否则记为 reactivation；p > 0 且 c = 0 记为 churn（金额 −p）；p、c 都大于 0 时 c > p 记为 expansion（c − p），c < p 记为 contraction（c − p，为负数）。月内的中间变化不计。）",
+  "answer_type": "number",
+  "expected": 1.3384
+ },
+ {
+  "id": 128,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "subscriptions/subscription_events.csv"
+  ],
+  "question": "2024-12-31 日终的 ARPA（MRR 合计 ÷ MRR > 0 的账户数）是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 655.5
+ },
+ {
+  "id": 129,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "subscriptions/subscription_events.csv"
+  ],
+  "question": "2024 年哪些月份的 MRR 净变动（月末 − 上月末）为负？以 JSON 数组按月份升序给出（形如 2024-03）。",
+  "answer_type": "list",
+  "expected": [
+   "2024-01",
+   "2024-08"
+  ]
+ },
+ {
+  "id": 130,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "subscriptions/subscription_events.csv"
+  ],
+  "question": "2024-12-31 日终各套餐（按账户最后一个事件的 plan）的 MRR 合计是多少（美元）？键为 plan。",
+  "answer_type": "dict",
+  "expected": {
+   "basic": 38726,
+   "enterprise": 336455,
+   "pro": 100713
+  }
+ },
+ {
+  "id": 131,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "inventory/purchases.csv",
+   "inventory/shipments.csv"
+  ],
+  "question": "按先进先出法，2024 年销货成本合计是多少？保留2位小数。（同一天先入库后出库；2023-12-31 入库的批次为期初库存）",
+  "answer_type": "number",
+  "expected": 6975343.83
+ },
+ {
+  "id": 132,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "inventory/purchases.csv",
+   "inventory/shipments.csv"
+  ],
+  "question": "按先进先出法，2024-12-31 期末库存价值是多少？保留2位小数。（同一天先入库后出库；2023-12-31 入库的批次为期初库存）",
+  "answer_type": "number",
+  "expected": 334519.19
+ },
+ {
+  "id": 133,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "inventory/purchases.csv",
+   "inventory/shipments.csv"
+  ],
+  "question": "按移动加权平均法（每次入库后重新计算平均单位成本，出库按当时平均成本结转，不做中间四舍五入），2024 年销货成本合计是多少？保留2位小数。（同一天先入库后出库；2023-12-31 入库的批次为期初库存）",
+  "answer_type": "number",
+  "expected": 6976160.66
+ },
+ {
+  "id": 134,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "inventory/purchases.csv",
+   "inventory/shipments.csv"
+  ],
+  "question": "先进先出法与移动加权平均法的 2024 年销货成本之差（绝对值）最大的 SKU 是哪个？（同一天先入库后出库；2023-12-31 入库的批次为期初库存）",
+  "answer_type": "string",
+  "expected": "INV08"
+ },
+ {
+  "id": 135,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "inventory/purchases.csv",
+   "inventory/shipments.csv"
+  ],
+  "question": "按先进先出法，2024-12-31 期末仍有剩余数量的批次中，最早的入库日期是哪天？格式 YYYY-MM-DD。（同一天先入库后出库；2023-12-31 入库的批次为期初库存）",
+  "answer_type": "string",
+  "expected": "2024-12-01"
+ },
+ {
+  "id": 136,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "inventory/purchases.csv",
+   "inventory/shipments.csv"
+  ],
+  "question": "2024 年库存周转率 = 先进先出销货成本 ÷ ((期初库存价值 + 期末库存价值) ÷ 2) 是多少？保留4位小数。（同一天先入库后出库；2023-12-31 入库的批次为期初库存）",
+  "answer_type": "number",
+  "expected": 21.9829
+ },
+ {
+  "id": 137,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "inventory/purchases.csv",
+   "inventory/shipments.csv"
+  ],
+  "question": "2024 年“缺货 SKU-天”有多少个？缺货指某 SKU 在某天入库之后、出库之前的库存为 0。（同一天先入库后出库；2023-12-31 入库的批次为期初库存）",
+  "answer_type": "integer",
+  "expected": 0
+ },
+ {
+  "id": 138,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "inventory/shipments.csv"
+  ],
+  "question": "shipments.csv 中完全重复的多余行有多少？",
+  "answer_type": "integer",
+  "expected": 10
+ },
+ {
+  "id": 139,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "2024 年各门店 completed 订单净额（换算为人民币）占全部门店的比例中，最高的是哪家门店、占比多少？以 JSON 对象给出，字段为 store_id、share（保留4位小数）。",
+  "answer_type": "json",
+  "expected": {
+   "store_id": "S01",
+   "share": 0.2499
+  },
+  "tols": {
+   "share": 4
+  }
+ },
+ {
+  "id": 140,
+  "level": 7,
+  "category": "业务指标",
+  "files": [
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "2024 年 completed 订单按渠道的客单价（净额换算为人民币后的合计 ÷ 订单数）是多少？键为 channel，保留2位小数。",
+  "answer_type": "dict",
+  "expected": {
+   "app": 500.21,
+   "pos": 511.22,
+   "web": 516.64
+  }
+ },
+ {
+  "id": 141,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/ab_users.csv"
+  ],
+  "question": "A、B 两组的总体转化率分别是多少？键为 A、B，保留4位小数。",
+  "answer_type": "dict",
+  "expected": {
+   "A": 0.1159,
+   "B": 0.0925
+  }
+ },
+ {
+  "id": 142,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/ab_users.csv"
+  ],
+  "question": "按 segment 分层后各组的转化率是多少？键形如 new_A、new_B、returning_A、returning_B，保留4位小数。",
+  "answer_type": "dict",
+  "expected": {
+   "new_A": 0.0462,
+   "new_B": 0.056,
+   "returning_A": 0.1531,
+   "returning_B": 0.1611
+  }
+ },
+ {
+  "id": 143,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/ab_users.csv"
+  ],
+  "question": "B 组是否在每个 segment 内的转化率都高于 A 组、但总体转化率低于 A 组？回答“是”或“否”。",
+  "answer_type": "string",
+  "expected": "是"
+ },
+ {
+  "id": 144,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/ab_users.csv"
+  ],
+  "question": "以 A 组的 segment 构成为权重，对 B 组做直接标准化后的转化率 Σ_s w_s(A) × p_s(B) 是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.1246
+ },
+ {
+  "id": 145,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/ab_users.csv"
+  ],
+  "question": "按 segment 分层的 Mantel-Haenszel 风险差 Σ_s w_s (p_sB − p_sA) ÷ Σ_s w_s（w_s = n_sA × n_sB ÷ (n_sA + n_sB)）是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.0089
+ },
+ {
+  "id": 146,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/ab_users.csv"
+  ],
+  "question": "CUPED：θ = cov(post_revenue, pre_revenue) ÷ var(pre_revenue)（全部用户合并计算），调整后指标 = post_revenue − θ × (pre_revenue − pre_revenue 的均值）。θ 是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.5861
+ },
+ {
+  "id": 147,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/ab_users.csv"
+  ],
+  "question": "CUPED：θ = cov(post_revenue, pre_revenue) ÷ var(pre_revenue)（全部用户合并计算），调整后指标 = post_revenue − θ × (pre_revenue − pre_revenue 的均值）。调整后指标的组间均值差（B − A）是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 1.9577
+ },
+ {
+  "id": 148,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/ab_users.csv"
+  ],
+  "question": "未调整的 post_revenue 组间均值差（B − A）是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": -2.9503
+ },
+ {
+  "id": 149,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/ab_users.csv"
+  ],
+  "question": "CUPED：θ = cov(post_revenue, pre_revenue) ÷ var(pre_revenue)（全部用户合并计算），调整后指标 = post_revenue − θ × (pre_revenue − pre_revenue 的均值）。方差缩减比例 1 − var(调整后指标) ÷ var(post_revenue) 是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.6805
+ },
+ {
+  "id": 150,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/ab_users.csv"
+  ],
+  "question": "CUPED：θ = cov(post_revenue, pre_revenue) ÷ var(pre_revenue)（全部用户合并计算），调整后指标 = post_revenue − θ × (pre_revenue − pre_revenue 的均值）。对调整后指标做 Welch t 检验（B vs A），双侧 p 值是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.0
+ },
+ {
+  "id": 151,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/did_stores.csv"
+  ],
+  "question": "双重差分（2×2）：(处理组后期均值 − 处理组前期均值) − (对照组后期均值 − 对照组前期均值)，后期为 week ≥ 11，是多少？保留2位小数。",
+  "answer_type": "number",
+  "expected": 1540.27
+ },
+ {
+  "id": 152,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/did_stores.csv"
+  ],
+  "question": "对 ln(sales) 做同样的 2×2 双重差分，结果是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.0703
+ },
+ {
+  "id": 153,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/did_stores.csv"
+  ],
+  "question": "平行趋势检验：只用 week 1–10，对 ln(sales) 做 OLS 回归 ln(sales) ~ 1 + treated + week + treated × week，交互项系数是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": -0.0002
+ },
+ {
+  "id": 154,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/did_stores.csv"
+  ],
+  "question": "双向固定效应回归 ln(sales) ~ D + 门店固定效应 + 周固定效应（D = 处理组且 week ≥ 11 时为 1），D 的系数是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.0703
+ },
+ {
+  "id": 155,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/multi_metric.csv"
+  ],
+  "question": "对 m01–m12 分别做 Welch t 检验（B vs A，双侧）。未校正时 p < 0.05 的指标有哪些？以 JSON 数组按指标名升序给出。",
+  "answer_type": "list",
+  "expected": [
+   "m01",
+   "m03",
+   "m04",
+   "m07"
+  ]
+ },
+ {
+  "id": 156,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/multi_metric.csv"
+  ],
+  "question": "对 m01–m12 分别做 Welch t 检验（B vs A，双侧）。Bonferroni 校正（α = 0.05）后显著的指标有哪些？以 JSON 数组按指标名升序给出。",
+  "answer_type": "list",
+  "expected": [
+   "m01",
+   "m04",
+   "m07"
+  ]
+ },
+ {
+  "id": 157,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/multi_metric.csv"
+  ],
+  "question": "对 m01–m12 分别做 Welch t 检验（B vs A，双侧）。Benjamini–Hochberg 校正（q = 0.05）后显著的指标有哪些？以 JSON 数组按指标名升序给出。",
+  "answer_type": "list",
+  "expected": [
+   "m01",
+   "m03",
+   "m04",
+   "m07"
+  ]
+ },
+ {
+  "id": 158,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/multi_metric.csv"
+  ],
+  "question": "对 m01–m12 分别做 Welch t 检验（B vs A，双侧）。m10 的 Benjamini–Hochberg 调整后 p 值（q 值）是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.1261
+ },
+ {
+  "id": 159,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/ab_users.csv"
+  ],
+  "question": "OLS 回归 post_revenue ~ 1 + B + new + B × new（B、new 为 0/1 指示变量），交互项系数是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": -0.4796
+ },
+ {
+  "id": 160,
+  "level": 8,
+  "category": "统计推断进阶",
+  "files": [
+   "experiments/ab_users.csv"
+  ],
+  "question": "以 A 组 returning 用户的转化率为 p1、p2 = p1 + 0.01，双侧 α = 0.05、功效 0.8，每组所需样本量 n = (z_{0.975} + z_{0.8})² × (p1(1−p1) + p2(1−p2)) ÷ (p2 − p1)²，向上取整，是多少？",
+  "answer_type": "integer",
+  "expected": 20887
+ },
+ {
+  "id": 161,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "marketing/touchpoints.csv",
+   "marketing/conversions.csv"
+  ],
+  "question": "归因窗口：一笔转化的候选触点为同一用户、时间在 (该用户上一笔转化时间, 本笔转化时间] 之间且不早于本笔转化前 30 天（含）的触点，按时间排序。没有候选触点的转化记为 unattributed。答案为 JSON 对象，包含全部 6 个渠道和 unattributed，没有归因收入的记为 0。首次触点归因（全部收入归第一个触点）下，各渠道的归因收入是多少？保留2位小数。",
+  "answer_type": "dict",
+  "expected": {
+   "paid_search": 213895.49,
+   "social": 130103.77,
+   "email": 209533.18,
+   "affiliate": 78015.57,
+   "display": 58607.12,
+   "direct": 95775.05,
+   "unattributed": 25640.38
+  }
+ },
+ {
+  "id": 162,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "marketing/touchpoints.csv",
+   "marketing/conversions.csv"
+  ],
+  "question": "归因窗口：一笔转化的候选触点为同一用户、时间在 (该用户上一笔转化时间, 本笔转化时间] 之间且不早于本笔转化前 30 天（含）的触点，按时间排序。没有候选触点的转化记为 unattributed。答案为 JSON 对象，包含全部 6 个渠道和 unattributed，没有归因收入的记为 0。末次触点归因下，各渠道的归因收入是多少？保留2位小数。",
+  "answer_type": "dict",
+  "expected": {
+   "paid_search": 201541.78,
+   "social": 88352.16,
+   "email": 262525.0,
+   "affiliate": 85020.96,
+   "display": 41552.5,
+   "direct": 106937.78,
+   "unattributed": 25640.38
+  }
+ },
+ {
+  "id": 163,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "marketing/touchpoints.csv",
+   "marketing/conversions.csv"
+  ],
+  "question": "归因窗口：一笔转化的候选触点为同一用户、时间在 (该用户上一笔转化时间, 本笔转化时间] 之间且不早于本笔转化前 30 天（含）的触点，按时间排序。没有候选触点的转化记为 unattributed。答案为 JSON 对象，包含全部 6 个渠道和 unattributed，没有归因收入的记为 0。线性归因（收入平均分给每个触点）下，各渠道的归因收入是多少？保留2位小数。",
+  "answer_type": "dict",
+  "expected": {
+   "paid_search": 208567.11,
+   "social": 108893.43,
+   "email": 233905.9,
+   "affiliate": 81887.55,
+   "display": 50963.13,
+   "direct": 101713.06,
+   "unattributed": 25640.38
+  }
+ },
+ {
+  "id": 164,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "marketing/touchpoints.csv",
+   "marketing/conversions.csv"
+  ],
+  "question": "归因窗口：一笔转化的候选触点为同一用户、时间在 (该用户上一笔转化时间, 本笔转化时间] 之间且不早于本笔转化前 30 天（含）的触点，按时间排序。没有候选触点的转化记为 unattributed。答案为 JSON 对象，包含全部 6 个渠道和 unattributed，没有归因收入的记为 0。时间衰减归因（触点权重 = 0.5^(距转化天数 ÷ 7)，天数可为小数，权重归一化后分配收入）下，各渠道的归因收入是多少？保留2位小数。",
+  "answer_type": "dict",
+  "expected": {
+   "paid_search": 205339.59,
+   "social": 97754.48,
+   "email": 249247.88,
+   "affiliate": 82771.57,
+   "display": 46272.63,
+   "direct": 104544.02,
+   "unattributed": 25640.38
+  }
+ },
+ {
+  "id": 165,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "marketing/touchpoints.csv",
+   "marketing/conversions.csv"
+  ],
+  "question": "归因窗口：一笔转化的候选触点为同一用户、时间在 (该用户上一笔转化时间, 本笔转化时间] 之间且不早于本笔转化前 30 天（含）的触点，按时间排序。没有候选触点的转化记为 unattributed。答案为 JSON 对象，包含全部 6 个渠道和 unattributed，没有归因收入的记为 0。位置归因（1 个触点得 100%；2 个触点各 50%；3 个及以上首末各 40%，中间触点平分 20%）下，各渠道的归因收入是多少？保留2位小数。",
+  "answer_type": "dict",
+  "expected": {
+   "paid_search": 208292.96,
+   "social": 109000.27,
+   "email": 234779.32,
+   "affiliate": 81665.5,
+   "display": 50618.01,
+   "direct": 101574.12,
+   "unattributed": 25640.38
+  }
+ },
+ {
+  "id": 166,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "marketing/touchpoints.csv",
+   "marketing/conversions.csv"
+  ],
+  "question": "归因窗口：一笔转化的候选触点为同一用户、时间在 (该用户上一笔转化时间, 本笔转化时间] 之间且不早于本笔转化前 30 天（含）的触点，按时间排序。没有候选触点的转化记为 unattributed。unattributed 的转化笔数占全部转化笔数的比例是多少？保留4位小数。",
+  "answer_type": "number",
+  "expected": 0.039
+ },
+ {
+  "id": 167,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "marketing/touchpoints.csv",
+   "marketing/conversions.csv"
+  ],
+  "question": "归因窗口：一笔转化的候选触点为同一用户、时间在 (该用户上一笔转化时间, 本笔转化时间] 之间且不早于本笔转化前 30 天（含）的触点，按时间排序。没有候选触点的转化记为 unattributed。有候选触点的转化，平均有多少个候选触点？保留4位小数。",
+  "answer_type": "number",
+  "expected": 1.4309
+ },
+ {
+  "id": 168,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "marketing/touchpoints.csv",
+   "marketing/conversions.csv"
+  ],
+  "question": "归因窗口：一笔转化的候选触点为同一用户、时间在 (该用户上一笔转化时间, 本笔转化时间] 之间且不早于本笔转化前 30 天（含）的触点，按时间排序。没有候选触点的转化记为 unattributed。有候选触点的转化中，最常见的渠道路径是什么？路径为按时间排序的渠道名，用 \">\" 连接（如 social>email）。",
+  "answer_type": "string",
+  "expected": "email"
+ },
+ {
+  "id": 169,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "marketing/touchpoints.csv",
+   "marketing/conversions.csv",
+   "marketing/spend.csv"
+  ],
+  "question": "归因窗口：一笔转化的候选触点为同一用户、时间在 (该用户上一笔转化时间, 本笔转化时间] 之间且不早于本笔转化前 30 天（含）的触点，按时间排序。没有候选触点的转化记为 unattributed。按线性归因收入计算 ROAS（归因收入 ÷ 全年投放花费），在有投放花费的渠道中 ROAS 最高的是哪个？",
+  "answer_type": "string",
+  "expected": "email"
+ },
+ {
+  "id": 170,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "marketing/touchpoints.csv",
+   "marketing/conversions.csv"
+  ],
+  "question": "归因窗口：一笔转化的候选触点为同一用户、时间在 (该用户上一笔转化时间, 本笔转化时间] 之间且不早于本笔转化前 30 天（含）的触点，按时间排序。没有候选触点的转化记为 unattributed。首次触点归因收入减去末次触点归因收入，差值最大的渠道是哪个？",
+  "answer_type": "string",
+  "expected": "social"
+ },
+ {
+  "id": 171,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "2024 年 8 月相比 7 月，订单净额合计变化了多少（8 月 − 7 月）？保留2位小数。（2024 年新系统最终 completed 订单，按业务月份，净额换算为人民币）",
+  "answer_type": "number",
+  "expected": -104449.36
+ },
+ {
+  "id": 172,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "按“门店 × 渠道”分解 8 月相比 7 月的净额变化，贡献最负的组合是哪个？用 \"store_id|channel\" 格式给出。（2024 年新系统最终 completed 订单，按业务月份，净额换算为人民币）",
+  "answer_type": "string",
+  "expected": "S01|app"
+ },
+ {
+  "id": 173,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "贡献最负的“门店 × 渠道”组合，8 月相比 7 月的净额变化是多少？保留2位小数。（2024 年新系统最终 completed 订单，按业务月份，净额换算为人民币）",
+  "answer_type": "number",
+  "expected": -152701.86
+ },
+ {
+  "id": 174,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "对贡献最负的“门店 × 渠道”组合，把该组合的变化拆为订单量效应 = (N8 − N7) × AOV7 与客单价效应 = N8 × (AOV8 − AOV7)，N 为订单数，AOV 为客单价（净额 ÷ 订单数）。订单量效应是多少？保留2位小数。（2024 年新系统最终 completed 订单，按业务月份，净额换算为人民币）",
+  "answer_type": "number",
+  "expected": -153701.13
+ },
+ {
+  "id": 175,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "剔除贡献最负的“门店 × 渠道”组合后，其余组合 8 月相比 7 月的净额变化合计是多少？保留2位小数。（2024 年新系统最终 completed 订单，按业务月份，净额换算为人民币）",
+  "answer_type": "number",
+  "expected": 48252.5
+ },
+ {
+  "id": 176,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "catalog/product_cdc.jsonl",
+   "stores.csv"
+  ],
+  "question": "8 月相比 7 月的价格效应 Σ_c (P8_c − P7_c) × Q8_c 是多少？保留2位小数。（中国门店 S01–S04 最终 completed 订单的明细，按下单时刻类目；P_c 为类目平均成交单价 = 销售额 ÷ 件数，Q_c 为件数，销售额 = qty × unit_price）",
+  "answer_type": "number",
+  "expected": 24273.49
+ },
+ {
+  "id": 177,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "catalog/product_cdc.jsonl",
+   "stores.csv"
+  ],
+  "question": "8 月相比 7 月的数量效应 Σ_c (Q8_c − Q7_c) × P7_c 是多少？保留2位小数。（中国门店 S01–S04 最终 completed 订单的明细，按下单时刻类目；P_c 为类目平均成交单价 = 销售额 ÷ 件数，Q_c 为件数，销售额 = qty × unit_price）",
+  "answer_type": "number",
+  "expected": -121758.43
+ },
+ {
+  "id": 178,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "2024 年 2–12 月中，订单净额相对上月下降比例最大的是哪个月？格式 YYYY-MM。（2024 年新系统最终 completed 订单，按业务月份，净额换算为人民币）",
+  "answer_type": "string",
+  "expected": "2024-02"
+ },
+ {
+  "id": 179,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "S01 的 app 渠道净额占 S01 全部净额的比例，8 月比 7 月变化了多少个百分点（8 月 − 7 月）？保留2位小数。（2024 年新系统最终 completed 订单，按业务月份，净额换算为人民币）",
+  "answer_type": "number",
+  "expected": -26.57
+ },
+ {
+  "id": 180,
+  "level": 9,
+  "category": "归因与分解",
+  "files": [
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "按 ISO 周（门店本地日期）统计 2024 年 S01 app 渠道的 completed 订单数，从第 9 周起，第一个订单数低于前 8 周平均值 50% 的是哪一周？格式 2024-Wxx（两位周数）。",
+  "answer_type": "string",
+  "expected": "2024-W32"
+ },
+ {
+  "id": 181,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "2024 年新系统经营摘要：orders（completed 订单数）、gmv_cny（completed 订单净额换算为人民币的合计，保留2位小数）、aov_cny（gmv_cny ÷ orders，保留2位小数）、cancel_rate（最终 cancelled 订单数 ÷ 全部订单数，保留4位小数）。以 JSON 对象给出，字段名与题目一致。",
+  "answer_type": "json",
+  "expected": {
+   "orders": 40854,
+   "gmv_cny": 20728056.8,
+   "aov_cny": 507.37,
+   "cancel_rate": 0.1094
+  },
+  "tols": {
+   "gmv_cny": 2,
+   "aov_cny": 2,
+   "cancel_rate": 4
+  }
+ },
+ {
+  "id": 182,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "生成 2023-01 至 2024-12 的月度经营表 monthly_kpi.csv（新旧系统合并），每月一行，列依次为 month,orders,gmv_cny,aov_cny,active_members：按业务月份统计 completed 订单数、净额换算为人民币的合计、客单价、有订单的不同 member_id 数（非会员订单不计入 active_members）。下单时间无效的订单不计。金额保留2位小数，按 month 升序。",
+  "answer_type": "csv",
+  "expected": "monthly_kpi.csv",
+  "key_cols": [
+   "month"
+  ],
+  "num_tol": {
+   "orders": 1e-09,
+   "gmv_cny": 0.011,
+   "aov_cny": 0.011,
+   "active_members": 1e-09
+  },
+  "exp_path": "v2/expected/182_monthly_kpi.csv"
+ },
+ {
+  "id": 183,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "payments/gateway_settlement.csv",
+   "payments/refunds.csv"
+  ],
+  "question": "人民币订单对账摘要（只看 2024 年新系统最终 completed 的 CNY 订单）：expected（订单净额合计）、collected（这些订单的 SUCCESS 合计 − REVERSED 合计 − 退款合计）、gap（expected − collected），均保留2位小数。以 JSON 对象给出，字段名与题目一致。",
+  "answer_type": "json",
+  "expected": {
+   "expected": 16542508.08,
+   "collected": 16213390.62,
+   "gap": 329117.46
+  },
+  "tols": {
+   "expected": 2,
+   "collected": 2,
+   "gap": 2
+  }
+ },
+ {
+  "id": 184,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "payments/gateway_settlement.csv",
+   "payments/refunds.csv"
+  ],
+  "question": "生成门店对账表 store_recon.csv（只看 2024 年新系统最终 completed 的订单），每家门店一行，列依次为 store_id,completed_orders,expected,collected,missing_orders,double_orders。expected 为订单净额合计，collected 为这些订单的 SUCCESS 合计 − REVERSED 合计 − 退款合计（均为原币种，保留2位小数）；missing_orders 为没有 SUCCESS 记录的订单数，double_orders 为 SUCCESS 记录 ≥ 2 条的订单数。按 store_id 升序。",
+  "answer_type": "csv",
+  "expected": "store_recon.csv",
+  "key_cols": [
+   "store_id"
+  ],
+  "num_tol": {
+   "completed_orders": 1e-09,
+   "expected": 0.011,
+   "collected": 0.011,
+   "missing_orders": 1e-09,
+   "double_orders": 1e-09
+  },
+  "exp_path": "v2/expected/184_store_recon.csv"
+ },
+ {
+  "id": 185,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "iot/readings.csv.gz",
+   "iot/devices.csv"
+  ],
+  "question": "传感器健康摘要：fahrenheit_devices（以华氏度上报的设备，按 device_id 升序的数组）、worst_completeness_device（2024 年 11 月 UTC 有效读数最少的设备）、longest_outage_hours（最长断线小时数，保留2位小数；断线 = 同一设备相邻读数间隔超过 1 小时）。以 JSON 对象给出，字段名与题目一致。",
+  "answer_type": "json",
+  "expected": {
+   "fahrenheit_devices": [
+    "DEV012",
+    "DEV016",
+    "DEV019",
+    "DEV027",
+    "DEV029",
+    "DEV031"
+   ],
+   "worst_completeness_device": "DEV033",
+   "longest_outage_hours": 31.26
+  },
+  "tols": {
+   "longest_outage_hours": 2
+  }
+ },
+ {
+  "id": 186,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "iot/readings.csv.gz",
+   "iot/devices.csv"
+  ],
+  "question": "生成 device_daily.csv：上海仓所有设备在 2024 年 11 月（UTC 日期）每台设备每天一行（只输出当天有有效读数的日期），列依次为 device_id,date,readings,mean_c,min_c,max_c（温度为摄氏度，保留2位小数）。按 device_id、date 升序。（以华氏度上报的设备换算为摄氏度，去重并剔除无效值，时间统一为 UTC）",
+  "answer_type": "csv",
+  "expected": "device_daily.csv",
+  "key_cols": [
+   "device_id",
+   "date"
+  ],
+  "num_tol": {
+   "readings": 1e-09,
+   "mean_c": 0.011,
+   "min_c": 0.011,
+   "max_c": 0.011
+  },
+  "exp_path": "v2/expected/186_device_daily.csv"
+ },
+ {
+  "id": 187,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "experiments/ab_users.csv"
+  ],
+  "question": "实验结论摘要：overall_diff（B − A 总体转化率差）、mh_diff（按 segment 分层的 Mantel-Haenszel 风险差，权重 n_sA × n_sB ÷ (n_sA + n_sB)）、cuped_diff（CUPED 调整后 post_revenue 的 B − A 均值差，θ 用全部用户合并计算）、cuped_p（调整后指标 Welch t 检验双侧 p 值），均保留4位小数。以 JSON 对象给出，字段名与题目一致。",
+  "answer_type": "json",
+  "expected": {
+   "overall_diff": -0.0234,
+   "mh_diff": 0.0089,
+   "cuped_diff": 1.9577,
+   "cuped_p": 0.0
+  },
+  "tols": {
+   "overall_diff": 4,
+   "mh_diff": 4,
+   "cuped_diff": 4,
+   "cuped_p": 4
+  }
+ },
+ {
+  "id": 188,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "marketing/touchpoints.csv",
+   "marketing/conversions.csv"
+  ],
+  "question": "归因窗口：一笔转化的候选触点为同一用户、时间在 (该用户上一笔转化时间, 本笔转化时间] 之间且不早于本笔转化前 30 天（含）的触点，按时间排序。没有候选触点的转化记为 unattributed。归因摘要：top_channel_linear（线性归因收入最高的渠道，不含 unattributed）、top_channel_last（末次触点归因收入最高的渠道，不含 unattributed）、unattributed_share（unattributed 转化笔数占比，保留4位小数）。以 JSON 对象给出，字段名与题目一致。",
+  "answer_type": "json",
+  "expected": {
+   "top_channel_linear": "email",
+   "top_channel_last": "email",
+   "unattributed_share": 0.039
+  },
+  "tols": {
+   "unattributed_share": 4
+  }
+ },
+ {
+  "id": 189,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "marketing/touchpoints.csv",
+   "marketing/conversions.csv"
+  ],
+  "question": "归因窗口：一笔转化的候选触点为同一用户、时间在 (该用户上一笔转化时间, 本笔转化时间] 之间且不早于本笔转化前 30 天（含）的触点，按时间排序。没有候选触点的转化记为 unattributed。生成 channel_attribution.csv：6 个渠道和 unattributed 各一行，列依次为 channel,first,last,linear,time_decay,position，分别为首次触点、末次触点、线性、时间衰减（权重 0.5^(距转化天数 ÷ 7)）、位置归因（40/20/40）的归因收入，保留2位小数。",
+  "answer_type": "csv",
+  "expected": "channel_attribution.csv",
+  "key_cols": [
+   "channel"
+  ],
+  "num_tol": {
+   "first": 0.011,
+   "last": 0.011,
+   "linear": 0.011,
+   "time_decay": 0.011,
+   "position": 0.011
+  },
+  "exp_path": "v2/expected/189_channel_attribution.csv"
+ },
+ {
+  "id": 190,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "GMV 下滑根因摘要（2024 年 8 月相比 7 月）：cell（按“门店 × 渠道”分解后贡献最负的组合，格式 store_id|channel）、delta_cny（该组合净额变化）、volume_effect（该组合的订单量效应 (N8 − N7) × AOV7）、price_effect（该组合的客单价效应 N8 × (AOV8 − AOV7)），其中 N 为该组合的订单数、AOV 为该组合的客单价（净额 ÷ 订单数），金额保留2位小数。（2024 年新系统最终 completed 订单，按业务月份，净额换算为人民币）以 JSON 对象给出，字段名与题目一致。",
+  "answer_type": "json",
+  "expected": {
+   "cell": "S01|app",
+   "delta_cny": -152701.86,
+   "volume_effect": -153701.13,
+   "price_effect": 999.27
+  },
+  "tols": {
+   "delta_cny": 2,
+   "volume_effect": 2,
+   "price_effect": 2
+  }
+ },
+ {
+  "id": 191,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv",
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。生成 cohort_2023.csv：按簇的首笔订单月份（只看首单在 2023 年的簇）分组，每月一行，列依次为 cohort,size,retained_2024,rate：size 为簇数，retained_2024 为其中 2024 年有订单的簇数，rate = retained_2024 ÷ size（保留4位小数）。按 cohort 升序。（订单只算 completed，下单时间无效的订单不计；金额为订单净额换算成的人民币）",
+  "answer_type": "csv",
+  "expected": "cohort_2023.csv",
+  "key_cols": [
+   "cohort"
+  ],
+  "num_tol": {
+   "size": 1e-09,
+   "retained_2024": 1e-09,
+   "rate": 0.00010000100000000001
+  },
+  "exp_path": "v2/expected/191_cohort_2023.csv"
+ },
+ {
+  "id": 192,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "subscriptions/subscription_events.csv"
+  ],
+  "question": "订阅健康摘要：mrr_2024_end（2024-12-31 日终 MRR 合计，美元整数）、nrr（2023-12-31 日终 MRR > 0 的账户在 2024-12-31 的 MRR 合计 ÷ 这些账户在 2023-12-31 的 MRR 合计）、grr（对同一批账户，Σ min(2024-12-31 MRR, 2023-12-31 MRR) ÷ Σ 2023-12-31 MRR）、quick_ratio（2024 年 12 个月合计的 (new + expansion + reactivation) ÷ |churn + contraction|），比率保留4位小数。（按月末日终快照比较：上月末 MRR 为 p、本月末为 c。p = 0 且 c > 0：若该账户在上月末之前（含）从未有过正 MRR 记为 new，否则记为 reactivation；p > 0 且 c = 0 记为 churn（金额 −p）；p、c 都大于 0 时 c > p 记为 expansion（c − p），c < p 记为 contraction（c − p，为负数）。月内的中间变化不计。）以 JSON 对象给出，字段名与题目一致。",
+  "answer_type": "json",
+  "expected": {
+   "mrr_2024_end": 475894,
+   "nrr": 0.7583,
+   "grr": 0.3803,
+   "quick_ratio": 1.3384
+  },
+  "tols": {
+   "nrr": 4,
+   "grr": 4,
+   "quick_ratio": 4
+  }
+ },
+ {
+  "id": 193,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "inventory/purchases.csv",
+   "inventory/shipments.csv"
+  ],
+  "question": "库存摘要：fifo_cogs（先进先出 2024 年销货成本）、wac_cogs（移动加权平均 2024 年销货成本）、ending_value_fifo（先进先出期末库存价值），均保留2位小数；stockout_sku_days（入库后出库前库存为 0 的 SKU-天数）。（同一天先入库后出库；2023-12-31 入库的批次为期初库存）以 JSON 对象给出，字段名与题目一致。",
+  "answer_type": "json",
+  "expected": {
+   "fifo_cogs": 6975343.83,
+   "wac_cogs": 6976160.66,
+   "ending_value_fifo": 334519.19,
+   "stockout_sku_days": 0
+  },
+  "tols": {
+   "fifo_cogs": 2,
+   "wac_cogs": 2,
+   "ending_value_fifo": 2
+  }
+ },
+ {
+  "id": 194,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "inventory/purchases.csv",
+   "inventory/shipments.csv"
+  ],
+  "question": "生成 inventory_sku.csv：每个 SKU 一行，列依次为 sku,fifo_cogs,wac_cogs,ending_qty,ending_value_fifo（2024 年先进先出销货成本、移动加权平均销货成本、期末数量、先进先出期末价值，金额保留2位小数）。按 sku 升序。（同一天先入库后出库；2023-12-31 入库的批次为期初库存）",
+  "answer_type": "csv",
+  "expected": "inventory_sku.csv",
+  "key_cols": [
+   "sku"
+  ],
+  "num_tol": {
+   "fifo_cogs": 0.011,
+   "wac_cogs": 0.011,
+   "ending_qty": 1e-09,
+   "ending_value_fifo": 0.011
+  },
+  "exp_path": "v2/expected/194_inventory_sku.csv"
+ },
+ {
+  "id": 195,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "logs/access.log"
+  ],
+  "question": "接口可用性摘要（只看能解析的非爬虫请求）：availability（非 5xx 请求占比，保留4位小数）、p95_checkout_ms（路径 /api/checkout 的请求耗时 P95，毫秒，保留2位小数）、worst_hour_utc（5xx 请求最多的 UTC 小时，格式 YYYY-MM-DD HH）。以 JSON 对象给出，字段名与题目一致。",
+  "answer_type": "json",
+  "expected": {
+   "availability": 0.9945,
+   "p95_checkout_ms": 1316.5,
+   "worst_hour_utc": "2024-10-15 06"
+  },
+  "tols": {
+   "availability": 4,
+   "p95_checkout_ms": 2
+  }
+ },
+ {
+  "id": 196,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "logs/access.log"
+  ],
+  "question": "生成 endpoint_stats.csv（只看能解析的非爬虫请求）：先把路径归一为路由——去掉 ? 及之后的查询串，并把完全由数字组成的路径段替换为 {id}（如 /api/orders/123 → /api/orders/{id}）。每个路由一行，列依次为 route,requests,error_rate,p50_ms,p95_ms：请求数、5xx 占比（保留4位小数）、请求耗时的中位数与 P95（毫秒，保留2位小数）。按 route 升序。",
+  "answer_type": "csv",
+  "expected": "endpoint_stats.csv",
+  "key_cols": [
+   "route"
+  ],
+  "num_tol": {
+   "requests": 1e-09,
+   "error_rate": 0.00010000100000000001,
+   "p50_ms": 0.011,
+   "p95_ms": 0.011
+  },
+  "exp_path": "v2/expected/196_endpoint_stats.csv"
+ },
+ {
+  "id": 197,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "finance/gl_2024.txt",
+   "finance/chart_of_accounts.csv"
+  ],
+  "question": "总账摘要（剔除借贷不平衡的凭证和记账日期无效的行后）：revenue（收入，revenue 类科目贷方 − 借方）、expense（费用，expense 类科目借方 − 贷方）、net_income（revenue − expense），均保留2位小数；unbalanced（借贷不平衡的凭证号，按升序的数组）。以 JSON 对象给出，字段名与题目一致。",
+  "answer_type": "json",
+  "expected": {
+   "revenue": 5524823.64,
+   "expense": 10205058.28,
+   "net_income": -4680234.64,
+   "unbalanced": [
+    "JE000069",
+    "JE000964",
+    "JE001033",
+    "JE001935",
+    "JE002427",
+    "JE002540"
+   ]
+  },
+  "tols": {
+   "revenue": 2,
+   "expense": 2,
+   "net_income": 2
+  }
+ },
+ {
+  "id": 198,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "finance/gl_2024.txt",
+   "finance/chart_of_accounts.csv"
+  ],
+  "question": "生成 gl_monthly.csv（剔除借贷不平衡的凭证和记账日期无效的行后）：2024 年每月一行（按记账日期），列依次为 month,revenue,expense,net_income（month 形如 2024-01，金额保留2位小数）。按 month 升序。",
+  "answer_type": "csv",
+  "expected": "gl_monthly.csv",
+  "key_cols": [
+   "month"
+  ],
+  "num_tol": {
+   "revenue": 0.011,
+   "expense": 0.011,
+   "net_income": 0.011
+  },
+  "exp_path": "v2/expected/198_gl_monthly.csv"
+ },
+ {
+  "id": 199,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "sales/api/orders_2024.jsonl",
+   "catalog/product_cdc.jsonl",
+   "stores.csv"
+  ],
+  "question": "商品数据摘要：active_skus_2024_end（截至 2024-12-31 23:59:59 UTC 存在的 SKU 数）、price_changes（价格发生变化的更新事件数）、above_list_lines（2024 年新系统中国门店 S01–S04 最终 completed 订单中，成交单价高于下单时刻标价的明细行数）。以 JSON 对象给出，字段名与题目一致。",
+  "answer_type": "json",
+  "expected": {
+   "active_skus_2024_end": 283,
+   "price_changes": 1210,
+   "above_list_lines": 651
+  }
+ },
+ {
+  "id": 200,
+  "level": 10,
+  "category": "综合分析",
+  "files": [
+   "crm/members_shop.csv",
+   "crm/contacts_crm.csv",
+   "stores.csv",
+   "fx_daily.csv",
+   "sales/legacy",
+   "sales/api/orders_2024.jsonl"
+  ],
+  "question": "合并规则：members_shop 与 contacts_crm 中的任意两条记录，若统一写法后的手机号相同，或统一写法后的邮箱相同，即视为同一个人；该关系可传递（A 与 B 同人、B 与 C 同人，则 A、B、C 同人）。每个合并后的人称为一个“簇”，簇的代表 ID 为簇内字典序最小的 member_id（簇内没有 member_id 时为最小的 crm_id）。会员摘要：clusters（簇数）、multi_member_clusters（包含 2 个及以上 member_id 的簇数）、top_cluster_key（2023–2024 两年订单金额最高的簇的代表 ID）、top_cluster_net_cny（该簇的金额，保留2位小数）。（订单只算 completed，下单时间无效的订单不计；金额为订单净额换算成的人民币）以 JSON 对象给出，字段名与题目一致。",
+  "answer_type": "json",
+  "expected": {
+   "clusters": 4930,
+   "multi_member_clusters": 169,
+   "top_cluster_key": "M000035",
+   "top_cluster_net_cny": 22006.4
+  },
+  "tols": {
+   "top_cluster_net_cny": 2
+  }
+ }
+]
