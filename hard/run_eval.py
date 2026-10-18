@@ -87,6 +87,19 @@ def parse_events(path):
     return m
 
 
+def sandbox_prefix(wd):
+    """bubblewrap：根文件系统只读；家目录换成空 tmpfs，只读挂回 pi 程序与 .venv；仅工作目录可写；/tmp 每题独立。
+    pi 启动时要在 ~/.pi 里建锁文件，所以 ~/.pi 用临时覆盖层：沙箱内可写，写入随沙箱丢弃，不改动宿主机配置。"""
+    home = Path.home()
+    cmd = ["bwrap", "--die-with-parent", "--unshare-pid", "--unshare-ipc", "--unshare-uts",
+           "--ro-bind", "/", "/", "--dev", "/dev", "--proc", "/proc",
+           "--tmpfs", "/tmp", "--tmpfs", str(home),
+           "--overlay-src", str(home / ".pi"), "--tmp-overlay", str(home / ".pi")]
+    for p in [Path(shutil.which("pi")).parent.parent, VENV.resolve()]:
+        cmd += ["--ro-bind", str(p), str(p)]
+    return cmd + ["--bind", str(wd), str(wd), "--chdir", str(wd), "--setenv", "TMPDIR", "/tmp", "--"]
+
+
 def run_once(name, case, args, wd):
     if wd.exists():
         shutil.rmtree(wd)
@@ -99,6 +112,8 @@ def run_once(name, case, args, wd):
            "--no-mcp", "--offline", "--mode", "json"]
     if args.thinking:
         cmd += ["--thinking", args.thinking]
+    if args.sandbox == "bwrap":
+        cmd = sandbox_prefix(wd.resolve()) + cmd
     env = {**os.environ, "PATH": f"{VENV / 'bin'}:{os.environ['PATH']}", "VIRTUAL_ENV": str(VENV)}
     t0 = time.time()
     timed_out = False
@@ -135,7 +150,7 @@ def run_case(name, case, args, out_path):
     rec = {"id": case["id"], "qhash": qhash(case), "level": case["level"], "category": case["category"],
            "model": name, "answer_type": case["answer_type"], "expected": short(case["expected"]),
            "parsed": parsed, "correct": correct, "reason": reason, "wall": round(wall, 1),
-           "timed_out": timed_out, "error": f"rc={rc} {stderr}" if infra else None, **m}
+           "timed_out": timed_out, "error": f"rc={rc} {stderr}" if infra else None, "sandbox": args.sandbox, **m}
     with lock, out_path.open("a", encoding="utf-8") as f:
         f.write(json.dumps(rec, ensure_ascii=False) + "\n")
     return rec
@@ -154,7 +169,11 @@ def main():
     ap.add_argument("--tag", default="tools")
     ap.add_argument("--cases", default=str(ROOT / "test_cases.json"))
     ap.add_argument("--readme", default=str(DATA / "README.md"))
+    ap.add_argument("--sandbox", choices=["bwrap", "none"], default="bwrap",
+                    help="bwrap：每题在 bubblewrap 沙箱中运行（默认）；none：不隔离")
     args = ap.parse_args()
+    if args.sandbox == "bwrap" and not shutil.which("bwrap"):
+        raise SystemExit("未找到 bwrap，请先安装 bubblewrap，或使用 --sandbox none")
 
     if "-" in args.levels:
         a, b = map(int, args.levels.split("-"))
