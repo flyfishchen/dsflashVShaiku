@@ -189,9 +189,9 @@ pre.cmd { margin: 14px 0 0; background: var(--surface); border: 1px solid var(--
 <header class="top">
   <div class="eyebrow">模型评测报告 · 2026-10-18</div>
   <h1>Haiku 5.5 与 DeepSeek 数据处理评测</h1>
-  <p class="lede">用 pi 在四种出题方式下对比 <span class="who"><i class="key h"></i>claude-haiku-5-5</span> 与 <span class="who"><i class="key d"></i>deepseek-flash（DeepSeek v4.1）</span> 的数据处理与分析能力。题目分 10 个难度等级、每级 20 题，累计约 2,500 次模型运行。</p>
+  <p class="lede">用 pi 在四种出题方式下对比 <span class="who"><i class="key h"></i>Claude Haiku 5.5</span> 与 <span class="who"><i class="key d"></i>DeepSeek V4.1-Flash-1017</span>（下文分别简称 Haiku、DeepSeek）的数据处理与分析能力。题目分 10 个难度等级、每级 20 题，累计约 2,500 次模型运行。</p>
   <div class="meta">
-    <span><b>评测框架</b> pi 1.3.0，provider newapi</span>
+    <span><b>评测框架</b> pi 1.3.0</span>
     <span><b>思考强度</b> 两个模型都用默认值</span>
     <span><b>判分</b> 与标准答案自动比对</span>
   </div>
@@ -465,7 +465,7 @@ pre.cmd { margin: 14px 0 0; background: var(--surface); border: 1px solid var(--
       </tbody>
     </table>
   </div>
-  <p class="caption">有提示列来自第 2 轮单次运行（当时未统计中位数、P90 和回合数），无提示列为第 4 轮 3 次重复的均值。费用为 pi 按 newapi 渠道价格报告的金额。两轮均无超时，也没有因接口错误导致的失败。</p>
+  <p class="caption">有提示列来自第 2 轮单次运行（当时未统计中位数、P90 和回合数），无提示列为第 4 轮 3 次重复的均值。费用为 pi 按调用渠道价格报告的金额。两轮均无超时，也没有因接口错误导致的失败。</p>
   <div class="prose">
     <p>DeepSeek 的耗时分布更分散：简单题通常很快，难题则需要多轮探查，所以中位数更低、P90 更高。批量跑大量简单查询时，DeepSeek 的吞吐更有优势；如果关注最坏情况下的响应时间，Haiku 更可预期。</p>
   </div>
@@ -521,7 +521,7 @@ pre.cmd { margin: 14px 0 0; background: var(--surface); border: 1px solid var(--
 <section id="limits">
   <div class="sec-head"><span class="sec-no">08</span><h2>局限</h2></div>
   <ul class="findings">
-    <li><span><b>只覆盖了一种配置。</b>两个模型都用默认思考强度、同一个 newapi 渠道；没有测试关闭或提高思考强度的效果。</span></li>
+    <li><span><b>只覆盖了一种配置。</b>两个模型都用默认思考强度、同一个调用渠道；没有测试关闭或提高思考强度的效果。</span></li>
     <li><span><b>只有一个数据领域，题面全是中文。</b>结论来自电商场景下有唯一标准答案的计算题，不代表开放式分析、写报告或可视化能力。</span></li>
     <li><span><b>结论依赖一个判分口径。</b>第 4 轮的差距主要来自 A/B 题的“整体剔除”口径。这个口径由 README 的两条规则推出，也符合实验分析惯例，但 README 没有逐字写明；如果同时接受“不处理”，两者持平（第 05 节）。</span></li>
     <li><span><b>差距小，样本有限。</b>3 次重复足以说明 Haiku 更稳，但 1–2 个百分点的差距在其他题库上可能不同。A/B 题在 200 题中只占 7 道，这一类权重的变化会直接改变总分差。</span></li>
