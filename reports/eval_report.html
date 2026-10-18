@@ -189,7 +189,7 @@ pre.cmd { margin: 14px 0 0; background: var(--surface); border: 1px solid var(--
 <header class="top">
   <div class="eyebrow">模型评测报告 · 2026-10-18</div>
   <h1>Haiku 5.5 与 DeepSeek 数据处理评测</h1>
-  <p class="lede">用 pi 在四种出题方式下对比 <span class="who"><i class="key h"></i>Claude Haiku 5.5</span> 与 <span class="who"><i class="key d"></i>DeepSeek V4.1-Flash-1017</span>（下文分别简称 Haiku、DeepSeek）的数据处理与分析能力。共两套题库：v1 用于逐步提高出题难度，v2 是更接近真实工作的高难度题库。每套题库分 10 个难度等级、每级 20 题，累计超过 4,000 次模型运行。</p>
+  <p class="lede">用 pi 对比 <span class="who"><i class="key h"></i>Claude Haiku 5.5</span> 与 <span class="who"><i class="key d"></i>DeepSeek V4.1-Flash-1017</span>（下文分别简称 Haiku、DeepSeek）的数据处理与分析能力。评测共五轮，用到两个数据集：电商数据集（11 个文件，约 5MB）和跨境零售数据集（34 个文件，约 81MB）。每个数据集配 200 道题，分 10 个难度等级。累计超过 4,000 次模型运行。</p>
   <div class="meta">
     <span><b>评测框架</b> pi 1.3.0</span>
     <span><b>思考强度</b> 两个模型都用默认值</span>
@@ -197,17 +197,17 @@ pre.cmd { margin: 14px 0 0; background: var(--surface); border: 1px solid var(--
   </div>
   <div class="verdict">
     <div class="fig">
-      <span class="label">v1 无提示题库正确率（3 轮均值）</span>
+      <span class="label">电商数据集正确率（无提示，3 轮均值）</span>
       <span class="value"><span class="who"><i class="key h"></i>99.5%</span> / <span class="who"><i class="key d"></i>97.8%</span></span>
       <span class="sub">Haiku 领先 1.67 pp，符号检验 p = 0.039</span>
     </div>
     <div class="fig">
-      <span class="label">v2 高难度题库正确率（3 轮均值）</span>
+      <span class="label">跨境零售数据集正确率（3 轮均值）</span>
       <span class="value"><span class="who"><i class="key h"></i>98.8%</span> / <span class="who"><i class="key d"></i>98.8%</span></span>
       <span class="sub">打平：差 0.00 pp，95% CI [−1.33, +1.33]</span>
     </div>
     <div class="fig">
-      <span class="label">v2 平均每题耗时</span>
+      <span class="label">跨境零售数据集平均每题耗时</span>
       <span class="value"><span class="who"><i class="key h"></i>46.0s</span> / <span class="who"><i class="key d"></i>54.5s</span></span>
       <span class="sub">Haiku 快 16%，工具调用少 27%</span>
     </div>
@@ -218,11 +218,11 @@ pre.cmd { margin: 14px 0 0; background: var(--surface); border: 1px solid var(--
 <section id="summary">
   <div class="sec-head"><span class="sec-no">00</span><h2>结论</h2></div>
   <ul class="findings">
-    <li><span><b>正确率：两套题库得出两种结论，但都很接近。</b>v1 无提示题库上，Haiku 3 轮均值 199.0/200，DeepSeek 195.7/200，Haiku 小幅领先且有统计意义（+1.67 pp，p = 0.039）。v2 高难度题库上，两者 3 轮均值都是 197.7/200，正确率差为 0，95% 置信区间 [−1.33, +1.33]。</span></li>
-    <li><span><b>v1 的差距来自“规范没写到时怎么判断”，而不是计算能力。</b>DeepSeek 在 v1 的 13 次失败中有 11 次出在 A/B 实验：它多数时候发现了同时分在两组的用户，却以“规范没逐字写明”为由选择不处理（第 05 节）。v2 把实验题的统计口径都写全后，这一差距没有再出现。</span></li>
-    <li><span><b>单纯提高难度拉不开差距。</b>v1 写明口径时两者都是 200/200。v2 把题目换成对账、实体合并、变更日志回放、MRR 瀑布、多触点归因、根因分解等更难的任务，两者仍都在 98.8%。区分能力的，是需要自己判断的模糊地带。</span></li>
-    <li><span><b>两个模型的失误风格不同。</b>v2 中，Haiku 的 7 次失误有 5 次出在最简单的 L1–L2，主要是把 README 的通用规范套用到了不该用的计数题上，而且它常在说明里写出了另一种口径下的正确数。DeepSeek 的 7 次失误都在 L4 及以后，主要是读错定义（3 次）和把答案写进了子目录（2 次）。</span></li>
-    <li><span><b>效率随任务复杂度分化。</b>简单、口径明确的任务 DeepSeek 更快更便宜：v1 有提示时快 36%、便宜 29%。多步复杂任务 Haiku 更快更省：v2 平均每题 46.0s 对 54.5s，工具调用 6.6 次对 9.0 次，费用低约 7%。DeepSeek 的中位耗时略低，但慢题更多，v2 的 P90 耗时为 127s 对 86s。</span></li>
+    <li><span><b>正确率很接近。</b>在电商数据集上去掉脏数据提示后，Haiku 3 轮均值 199.0/200，DeepSeek 195.7/200，Haiku 小幅领先且有统计意义（+1.67 pp，p = 0.039）。在更难的跨境零售数据集上，两者 3 轮均值都是 197.7/200，正确率差为 0，95% 置信区间 [−1.33, +1.33]。</span></li>
+    <li><span><b>电商数据集上的差距来自“规范没写到时怎么判断”，而不是计算能力。</b>DeepSeek 在那 3 轮的 13 次失败中，有 11 次出在 A/B 实验：它多数时候发现了同时分在两组的用户，却以“规范没逐字写明”为由选择不处理（第 05 节）。跨境零售数据集的实验题把统计口径写全了，这一差距没有再出现。</span></li>
+    <li><span><b>单纯提高难度拉不开差距。</b>在电商数据集上写明处理口径时，两者都是 200/200。跨境零售数据集换成对账、实体合并、变更日志回放、MRR 瀑布、多触点归因、根因分解等更难的任务，两者仍都在 98.8%。区分能力的，是需要自己判断的模糊地带。</span></li>
+    <li><span><b>两个模型的失误风格不同。</b>在跨境零售数据集上，Haiku 的 7 次失误有 5 次出在最简单的 L1–L2，主要是把 README 的通用规范套用到了不该用的计数题上，而且它常在说明里写出了另一种口径下的正确数。DeepSeek 的 7 次失误都在 L4 及以后，主要是读错定义（3 次）和把答案写进了子目录（2 次）。</span></li>
+    <li><span><b>效率随任务复杂度分化。</b>简单、口径明确的任务 DeepSeek 更快更便宜：电商数据集有提示时快 36%、便宜 29%。多步复杂任务 Haiku 更快更省：跨境零售数据集平均每题 46.0s 对 54.5s，工具调用 6.6 次对 9.0 次，费用低约 7%。DeepSeek 的中位耗时略低，但慢题更多，P90 耗时为 127s 对 86s。</span></li>
     <li><span><b>选型建议。</b>口径清楚、以简单查询为主、对延迟和成本敏感的批量任务，选 DeepSeek。多步骤的复杂分析，或者规范不完整、需要模型自己补全口径的脏数据，选 Haiku。无论用哪个，都应该把关键的处理规则写进提示词。</span></li>
   </ul>
 </section>
@@ -231,44 +231,45 @@ pre.cmd { margin: 14px 0 0; background: var(--surface); border: 1px solid var(--
 <section id="design">
   <div class="sec-head"><span class="sec-no">01</span><h2>评测设计</h2></div>
   <div class="prose">
-    <p>评测分五轮推进。每一轮都是因为上一轮两个模型接近满分、区分不出来，才提高难度或改变出题方式。前四轮使用 v1 题库，第 5 轮换用更难的 v2 题库（第 07 节）。所有轮次两个模型使用相同的提示词和环境，开启工具时共用同一个 Python 环境（pandas 3.0、numpy、scipy）。</p>
+    <p>评测分五轮推进。每一轮都是因为上一轮两个模型接近满分、区分不出来，才改变出题方式或换用更难的数据集。各轮之间的区别只在于数据集和是否提示脏数据，其余条件都相同：两个模型使用相同的提示词，开启工具时共用同一个 Python 环境（pandas 3.0、numpy、scipy）。</p>
   </div>
   <div class="tbl-wrap">
     <table>
-      <thead><tr><th>轮次</th><th>条件</th><th>数据</th><th class="r">Haiku 5.5</th><th class="r">DeepSeek</th><th class="r">平均耗时 H / D</th></tr></thead>
+      <thead><tr><th>轮次</th><th>数据集</th><th>条件</th><th class="r">Haiku 5.5</th><th class="r">DeepSeek</th><th class="r">平均耗时 H / D</th></tr></thead>
       <tbody>
-        <tr><td>1</td><td>关闭工具，只靠推理计算</td><td>数据直接写在题目里，10–25 行</td><td class="r num">199/200</td><td class="r num">200/200</td><td class="r num">3.7s / 1.9s</td></tr>
-        <tr><td>2</td><td>开启工具，README 写明所有脏数据及处理口径</td><td>真实 CSV，11 个文件，约 5MB</td><td class="r num">200/200</td><td class="r num">200/200</td><td class="r num">15.0s / 9.6s</td></tr>
-        <tr><td>3</td><td>开启工具，README 不提示脏数据（单轮）</td><td>同第 2 轮</td><td class="r num">198/200</td><td class="r num">194/200</td><td class="r num">18.6s / 20.7s</td></tr>
-        <tr><td>4</td><td>同第 3 轮，独立重复 3 轮</td><td>同第 2 轮</td><td class="r num">199.0 ± 0.0</td><td class="r num">195.7 ± 1.2</td><td class="r num">19.7s / 20.8s</td></tr>
-        <tr><td>5</td><td>v2 题库：开启工具，README 不提示具体问题，沙箱隔离，独立重复 3 轮</td><td>真实业务数据，34 个文件，约 81MB</td><td class="r num">197.7 ± 1.5</td><td class="r num">197.7 ± 0.6</td><td class="r num">46.0s / 54.5s</td></tr>
+        <tr><td>1</td><td>题内小数据（10–25 行）</td><td>关闭工具，只靠推理计算</td><td class="r num">199/200</td><td class="r num">200/200</td><td class="r num">3.7s / 1.9s</td></tr>
+        <tr><td>2</td><td>电商数据集</td><td>开启工具，README 写明所有脏数据及处理口径</td><td class="r num">200/200</td><td class="r num">200/200</td><td class="r num">15.0s / 9.6s</td></tr>
+        <tr><td>3</td><td>电商数据集</td><td>开启工具，README 不提示脏数据（单轮）</td><td class="r num">198/200</td><td class="r num">194/200</td><td class="r num">18.6s / 20.7s</td></tr>
+        <tr><td>4</td><td>电商数据集</td><td>同第 3 轮，独立重复 3 轮</td><td class="r num">199.0 ± 0.0</td><td class="r num">195.7 ± 1.2</td><td class="r num">19.7s / 20.8s</td></tr>
+        <tr><td>5</td><td>跨境零售数据集</td><td>开启工具，README 不提示具体问题，沙箱隔离，独立重复 3 轮</td><td class="r num">197.7 ± 1.5</td><td class="r num">197.7 ± 0.6</td><td class="r num">46.0s / 54.5s</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="caption">第 1、3、5 轮的分数是修正题目缺陷后的结果，修正内容见第 08 节。第 3 轮中途修过题，因此只作参考，v1 的结论以第 4 轮为准。</p>
+  <p class="caption">第 1、3、5 轮的分数是修正题目缺陷后的结果，修正内容见第 07 节。第 3 轮中途修过题，因此只作参考，电商数据集的结论以第 4 轮为准。</p>
 
   <h3>十个难度等级</h3>
+  <div class="prose"><p>两个数据集都按 10 个难度等级出题，每级 20 题。跨境零售数据集各级的内容更难、更接近真实的数据工程与分析工作。</p></div>
   <div class="tbl-wrap">
     <table>
-      <thead><tr><th>等级</th><th>考查内容（第 2–4 轮）</th><th>典型题目</th></tr></thead>
+      <thead><tr><th>等级</th><th>电商数据集</th><th>跨境零售数据集</th></tr></thead>
       <tbody>
-        <tr><td>L1</td><td>基础读取</td><td>文件行数、不同取值个数、列求和</td></tr>
-        <tr><td>L2</td><td>过滤与类型解析</td><td>解析 <code>¥1,299.00</code> 后筛选、按年龄筛客户</td></tr>
-        <tr><td>L3</td><td>分组聚合</td><td>各渠道订单数、各等级平均年龄（输出对象）</td></tr>
-        <tr><td>L4</td><td>文本与正则</td><td>邮箱校验、从工单文本提取订单号与金额</td></tr>
-        <tr><td>L5</td><td>日期与时区</td><td>UTC 与北京时间混合、ISO 周、汇率补齐</td></tr>
-        <tr><td>L6</td><td>统计推断</td><td>z 检验、Welch t 检验、卡方、方差分析</td></tr>
-        <tr><td>L7</td><td>多表联结</td><td>按当日汇率换算 GMV、毛利、孤儿记录</td></tr>
-        <tr><td>L8</td><td>数据质量与清洗</td><td>输出清洗后的客户表、订单汇总表（逐格比对）</td></tr>
-        <tr><td>L9</td><td>复杂变换</td><td>会话切分、透视表、滚动窗口、组织树递归</td></tr>
-        <tr><td>L10</td><td>高级分析</td><td>Cohort 留存、RFM、关联规则、异常检测、样本量</td></tr>
+        <tr><td>L1</td><td>基础读取：文件行数、不同取值个数、列求和</td><td>多格式读取：按月分区且中途改字段名的 CSV、嵌套 JSON、定长文本、gzip、访问日志</td></tr>
+        <tr><td>L2</td><td>过滤与类型解析：解析 <code>¥1,299.00</code> 后筛选、按年龄筛客户</td><td>清洗与异常识别：跨文件重复、夏令时边界、以华氏度上报的设备、借贷不平衡的凭证</td></tr>
+        <tr><td>L3</td><td>分组聚合：各渠道订单数、各等级平均年龄</td><td>对账：支付流水与订单逐笔核对，输出对账表</td></tr>
+        <tr><td>L4</td><td>文本与正则：邮箱校验、从工单文本提取订单号与金额</td><td>实体合并：两套会员系统按手机号或邮箱传递合并，按人汇总消费</td></tr>
+        <tr><td>L5</td><td>日期与时区：UTC 与北京时间混合、ISO 周、汇率补齐</td><td>时间与时区：跨时区业务日期、设备断线、按小时重采样、日志会话切分</td></tr>
+        <tr><td>L6</td><td>统计推断：z 检验、Welch t 检验、卡方、方差分析</td><td>增量与历史数据：回放变更日志、价格拉链表、下单时刻标价的时点关联</td></tr>
+        <tr><td>L7</td><td>多表联结：按当日汇率换算 GMV、毛利、孤儿记录</td><td>业务指标：MRR 瀑布、NRR/GRR、Quick Ratio、先进先出与移动加权平均成本</td></tr>
+        <tr><td>L8</td><td>数据质量与清洗：输出清洗后的客户表、订单汇总表</td><td>统计推断进阶：辛普森悖论、Mantel-Haenszel、CUPED、双重差分、BH 校正</td></tr>
+        <tr><td>L9</td><td>复杂变换：会话切分、透视表、滚动窗口、组织树递归</td><td>归因与分解：5 种多触点归因、GMV 下滑根因定位、价量分解</td></tr>
+        <tr><td>L10</td><td>高级分析：Cohort 留存、RFM、关联规则、异常检测</td><td>综合分析：一次给出多个字段的摘要，以及多张交付表</td></tr>
       </tbody>
     </table>
   </div>
 
-  <h3>数据集与陷阱</h3>
+  <h3>电商数据集</h3>
   <div class="prose">
-    <p>第 2–4 轮使用同一套电商数据：订单 2.5 万条、订单明细 4.9 万条、行为事件 5.4 万条，另有客户、商品、汇率、每日指标、旧系统导出、A/B 实验、员工、客服工单。生成时先得到干净真值，再按规则“弄脏”写入文件。标准答案只从真值计算，不依赖任何清洗代码。为防止题面规则与真值不一致，另写了一个只读脏文件的独立清洗器做核对，16 项核心字段与真值完全一致。</p>
+    <p>订单 2.5 万条、订单明细 4.9 万条、行为事件 5.4 万条，另有客户、商品、汇率、每日指标、旧系统导出、A/B 实验、员工、客服工单。数据中刻意放入以下问题：</p>
   </div>
   <div class="tbl-wrap">
     <table>
@@ -292,10 +293,23 @@ pre.cmd { margin: 14px 0 0; background: var(--surface); border: 1px solid var(--
     </table>
   </div>
 
-  <h3>判分方式</h3>
+  <h3>跨境零售数据集</h3>
   <div class="prose">
-    <p>每道题在独立的工作目录中运行，模型自己写 Python 代码，最后把答案写入 <code>answer.json</code>，或按要求输出 CSV。数值题按题目要求的小数位允许 1 个末位单位的舍入差；整数题和字符串题要求完全一致；CSV 题先核对列名和行数，再逐格比对。判分器做过反向测试，CSV 中篡改 0.05 即被判错。</p>
-    <p>第 3、4 轮的 README 是一份普通的数据字典：只写字段含义、字段约束（如“主键”“正整数”“非负”“每个用户只属于一个组”）、业务口径（时区、GMV 公式、汇率规则）和 5 条通用分析规范。它不提示哪张表、哪个字段有什么问题。保留通用规范是有意的取舍：如果完全不给处理口径，同一个问题会有多种合理做法，评测就成了猜出题人的口径。</p>
+    <p>一家跨境零售企业的数据仓库导出，涵盖中美 6 家门店两年的业务。数据中埋入的问题如下：</p>
+    <ul class="findings">
+      <li><span><b>订单：</b>旧系统按月分区，年中改过字段名，9 月的文件混入了 8 月最后一天的订单；新系统是嵌套 JSON，同一订单有多次导出记录，以最新一条为准；美国门店有夏令时开始时不存在的本地时间，也有夏令时结束时重复的本地时间。</span></li>
+      <li><span><b>支付与会员：</b>支付网关流水与退款中有漏收、重复扣款、少付、拒付、超额退款和孤儿流水；两套会员系统的手机号和邮箱写法各不相同，需要合并成同一个人。</span></li>
+      <li><span><b>商品与经营：</b>商品变更日志有乱序和重复事件；另有库存进销流水和 SaaS 订阅事件。</span></li>
+      <li><span><b>传感器与日志：</b>103 万行温度读数中有 6 台设备实际用华氏度上报，还有哨兵值和断线；30 万行 Nginx 日志来自两个时区，有截断行和爬虫流量。</span></li>
+      <li><span><b>其他：</b>营销触点与转化、三组实验数据、定长格式的总账（含千分位、借贷不平衡的凭证和非法日期）。</span></li>
+    </ul>
+  </div>
+
+  <h3>标准答案与判分</h3>
+  <div class="prose">
+    <p>两个数据集都是先生成干净真值，再按规则“弄脏”写入文件。标准答案只从真值计算，不依赖任何清洗代码。为防止题面规则与真值不一致，每个数据集都另写了一个只读脏文件的独立清洗器做核对，各 16 项核心字段与真值完全一致。</p>
+    <p>每道题在独立的工作目录中运行，模型自己写 Python 代码，最后把答案写入 <code>answer.json</code>，或按要求输出 CSV。数值题按题目要求的小数位允许 1 个末位单位的舍入差；整数题和字符串题要求完全一致；多字段 JSON 逐字段比对；CSV 题先核对列名和行数，再逐格比对。判分器做过反向测试，CSV 中篡改 0.05 即被判错。</p>
+    <p>不提示脏数据的轮次中，README 是一份普通的数据字典：只写字段含义、字段约束（如“主键”“正整数”“非负”“每个用户只属于一个组”）、业务口径和 5 条通用分析规范，不提示哪张表、哪个字段有什么问题。保留通用规范是有意的取舍：如果完全不给处理口径，同一个问题会有多种合理做法，评测就成了猜出题人的口径。跨境零售数据集的 README 还写清了夏令时、订单多次导出、文件格式这类必须约定的规则，统计题的公式也全部给出。第 5 轮的所有任务都在 bubblewrap 沙箱中运行。</p>
   </div>
 </section>
 
@@ -303,29 +317,30 @@ pre.cmd { margin: 14px 0 0; background: var(--surface); border: 1px solid var(--
 <section id="overview">
   <div class="sec-head"><span class="sec-no">02</span><h2>结果总览</h2></div>
   <div class="chart-card">
-    <div class="chart-title">四种出题方式下的正确率</div>
-    <div class="chart-sub">纵轴从 97% 开始；竖线表示 3 轮重复的最小值到最大值；v2 两个模型的均值相同，末端只标一个数</div>
+    <div class="chart-title">各轮正确率</div>
+    <div class="chart-sub">纵轴从 97% 开始；竖线表示 3 轮重复的最小值到最大值；跨境零售数据集上两个模型的均值相同，末端只标一个数</div>
     <div class="legend"><span><i class="h"></i>Haiku 5.5</span><span><i class="d"></i>DeepSeek</span></div>
     <div class="chart" id="chart-acc"></div>
   </div>
   <div class="prose">
-    <p>前两种条件下，两个模型都处在天花板附近，差异只有 0 到 1 题，在统计上没有意义。去掉提示后，Haiku 的正确率几乎不变，DeepSeek 下降了约 2 个百分点。逐题配对比较，Haiku 通过率更高的题有 8 道，DeepSeek 更高的只有 1 道（#158）。换用更难的 v2 题库后，两者重新回到同一水平，3 轮均值都是 98.8%。</p>
+    <p>前两轮两个模型都处在天花板附近，差异只有 0 到 1 题，在统计上没有意义。在电商数据集上去掉提示后，Haiku 的正确率几乎不变，DeepSeek 下降了约 2 个百分点；逐题配对比较，Haiku 通过率更高的题有 8 道，DeepSeek 更高的只有 1 道。换用更难的跨境零售数据集后，两者回到同一水平，3 轮均值都是 98.8%；逐题配对比较，Haiku 更高 6 题、DeepSeek 更高 7 题，符号检验 p = 1.0。</p>
   </div>
 </section>
 
 <!-- ================= 分级结果 ================= -->
 <section id="levels">
-  <div class="sec-head"><span class="sec-no">03</span><h2>v1 无提示条件下的分级结果</h2></div>
-  <div class="prose"><p>下表是第 4 轮 3 次重复的均值。耗时为每题平均墙钟时间，费用按 pi 报告的 token 计费换算为每千题美元数。</p></div>
+  <div class="sec-head"><span class="sec-no">03</span><h2>分级结果</h2></div>
+  <div class="prose"><p>下表均为 3 轮重复的均值。耗时为每题平均墙钟时间，费用按 pi 报告的 token 计费换算为每千题美元数。</p></div>
+
+  <h3>电商数据集（第 4 轮，不提示脏数据）</h3>
   <div class="tbl-wrap">
     <table>
-      <thead><tr><th>等级</th><th class="r">Haiku 正确</th><th class="r">DeepSeek 正确</th><th class="r">Haiku 耗时</th><th class="r">DeepSeek 耗时</th><th class="r">Haiku $/千题</th><th class="r">DeepSeek $/千题</th></tr></thead>
+      <thead><tr><th>等级</th><th class="r">Haiku 正确（/20）</th><th class="r">DeepSeek 正确（/20）</th><th class="r">Haiku 耗时</th><th class="r">DeepSeek 耗时</th><th class="r">Haiku $/千题</th><th class="r">DeepSeek $/千题</th></tr></thead>
       <tbody id="level-rows"></tbody>
     </table>
   </div>
-
   <div class="chart-card">
-    <div class="chart-title">各等级每题平均耗时（秒）</div>
+    <div class="chart-title">电商数据集各等级每题平均耗时（秒）</div>
     <div class="chart-sub">左：第 2 轮，README 写明口径；右：第 4 轮，不提示脏数据（3 轮均值）。两图纵轴相同。</div>
     <div class="legend"><span><i class="h"></i>Haiku 5.5</span><span><i class="d"></i>DeepSeek</span></div>
     <div class="multiples">
@@ -334,45 +349,66 @@ pre.cmd { margin: 14px 0 0; background: var(--surface); border: 1px solid var(--
     </div>
   </div>
   <div class="prose">
-    <p>有提示时，DeepSeek 在每个等级都比 Haiku 快约 1.3 到 1.9 倍。去掉提示后，Haiku 各级耗时平均增加约 30%，DeepSeek 增加约 120%，两条曲线在 L5 附近交叉。从 L7 开始，DeepSeek 反而比 Haiku 慢 30% 左右。原因是 DeepSeek 需要更多轮探查才能找出数据问题：平均工具调用 5.7 次，Haiku 为 4.6 次；输入 token 也多出约 25%。</p>
+    <p>有提示时，DeepSeek 在每个等级都比 Haiku 快约 1.3 到 1.9 倍。去掉提示后，Haiku 各级耗时平均增加约 30%，DeepSeek 增加约 120%，两条曲线在 L5 附近交叉；从 L7 开始，DeepSeek 反而比 Haiku 慢 30% 左右。原因是 DeepSeek 需要更多轮探查才能找出数据问题：平均工具调用 5.7 次，Haiku 为 4.6 次；输入 token 也多出约 25%。</p>
+  </div>
+
+  <h3>跨境零售数据集（第 5 轮）</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>等级</th><th class="r">Haiku 正确（/20）</th><th class="r">DeepSeek 正确（/20）</th><th class="r">Haiku 耗时</th><th class="r">DeepSeek 耗时</th><th class="r">Haiku $/千题</th><th class="r">DeepSeek $/千题</th></tr></thead>
+      <tbody id="retail-level-rows"></tbody>
+    </table>
+  </div>
+  <p class="caption">Haiku 3 轮为 199、198、196/200，DeepSeek 为 198、197、198/200。</p>
+  <div class="chart-card">
+    <div class="chart-title">跨境零售数据集各等级每题平均耗时（秒）</div>
+    <div class="chart-sub">3 轮均值，纵轴从 0 开始</div>
+    <div class="legend"><span><i class="h"></i>Haiku 5.5</span><span><i class="d"></i>DeepSeek</span></div>
+    <div class="chart" id="chart-retail-time"></div>
+  </div>
+  <div class="prose">
+    <p>L3–L7、L9、L10 都是 Haiku 更快，L10 平均 71.9s 对 98.5s。DeepSeek 只在 L1 和 L8 这类直接计算的题上更快。</p>
   </div>
 </section>
 
-<!-- ================= 错误分析 ================= -->
+<!-- ================= 失误分析 ================= -->
 <section id="errors">
-  <div class="sec-head"><span class="sec-no">04</span><h2>v1 错误分析</h2></div>
-  <div class="prose"><p>第 4 轮 3 次重复中，至少有一个模型答错过的题共 10 道，如下表。<span class="chip ok" aria-label="正确">✓</span> 表示该轮正确，<span class="chip bad" aria-label="错误">✗</span> 表示错误。</p></div>
+  <div class="sec-head"><span class="sec-no">04</span><h2>失误分析</h2></div>
+  <div class="prose"><p>下面两张表列出 3 轮重复中至少有一个模型答错过的题。<span class="chip ok" aria-label="正确">✓</span> 表示该轮正确，<span class="chip bad" aria-label="错误">✗</span> 表示错误。已修正的题目缺陷不计入（第 07 节）。</p></div>
+
+  <h3>电商数据集</h3>
   <div class="tbl-wrap">
     <table>
       <thead><tr><th>题号</th><th>等级</th><th>题目</th><th>Haiku 第 1–3 轮</th><th>DeepSeek 第 1–3 轮</th><th>原因</th></tr></thead>
       <tbody id="fail-rows"></tbody>
     </table>
   </div>
-
-  <h3>DeepSeek：A/B 实验中的重复分组</h3>
   <div class="prose">
-    <p>表中标为“未剔除重复分组用户”的 11 次失败，原因单独在第 05 节分析。</p>
+    <p><b>DeepSeek</b>：表中标为“未剔除重复分组用户”的 11 次失败，原因单独在第 05 节分析。另有两次偶发错误：#80（工单金额求和）有一轮正则只匹配到一部分金额写法，得到 149,911.06（标准答案 912,047.35）；#168（各城市 GMV 最高的客户）有一轮某个城市的 GMV 少了 15.00 元，相当于漏掉一笔运费。在第 3 轮的单次运行中，它还出现过只在思考里推进、没有调用工具或写答案就结束回合的情况。</p>
+    <p><b>Haiku</b>：#158（时间不在 2024 年的事件数）有 2 轮把 6 条 9 位数的时间戳（如 <code>336708780</code>）判定为“不是毫秒时间戳”而排除，得到 14（标准答案 20）。严格说这些是合法的毫秒时间戳，对应 1970 年 1 月，所以判错；但它的理由并非没有道理，属于有争议的失分。#108 有一轮算出了正确的 0.1229，却没有写 <code>answer.json</code>。</p>
   </div>
 
-  <h3>DeepSeek：其他偶发错误</h3>
-  <div class="prose">
-    <p><b>#80（工单金额求和）</b>：第 2 轮正则只匹配到一部分金额写法，得到 149,911.06（标准答案 912,047.35）。在第 3 轮的单次运行中，它还出现过只在思考里推进、没有调用工具或写答案就结束回合的情况。<b>#168（各城市 GMV 最高的客户）</b>：第 2 轮有一个城市的 GMV 少了 15.00 元，相当于漏掉一笔运费。</p>
+  <h3>跨境零售数据集</h3>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>题号</th><th>等级</th><th>Haiku 第 1–3 轮</th><th>DeepSeek 第 1–3 轮</th><th>原因</th><th>类型</th></tr></thead>
+      <tbody id="retail-fail-rows"></tbody>
+    </table>
   </div>
-
-  <h3>Haiku：两类失误</h3>
-  <div class="prose">
-    <p><b>#158（时间不在 2024 年的事件数）</b>：有 2 轮把 6 条 9 位数的时间戳（如 <code>336708780</code>）判定为“不是毫秒时间戳”而排除，得到 14（标准答案 20）。严格说这些是合法的毫秒时间戳，对应 1970 年 1 月，所以判错；但它的理由并非没有道理，属于有争议的失分。<b>#108</b>：第 2 轮算出了正确的 0.1229，却没有写 <code>answer.json</code>，还把脚本写到了 <code>/tmp</code>。</p>
-  </div>
+  <ul class="findings">
+    <li><span><b>Haiku 想得太多。</b>7 次失误中有 4 次是把 README 的通用规范用在了不该用的地方：题目要“全部订单”，它按“有效订单”只数了 completed；题目问“出现在多个文件中的订单”，它先去重，结果自然是 0；题目问“超出合理范围的读数”，它先把 999.9 当作缺失值，于是答 0。这几次它通常在说明里写出了另一种口径下的正确数，只是最后选错了。</span></li>
+    <li><span><b>DeepSeek 读得不够细。</b>它 3 次把“入库之后、出库之前库存为 0”理解成“日终库存为 0”；2 次先 <code>cd</code> 进子目录，再用相对路径写答案，答案本身正确，却没有写到要求的当前目录。</span></li>
+    <li><span><b>电商数据集上的 A/B 差距没有重现。</b>跨境零售数据集的实验题把统计口径写全了，不需要模型自己决定“发现数据冲突后怎么处理”。这也印证了第 05 节的判断：那部分差距来自规范未覆盖时的判断风格，而不是统计能力。</span></li>
+  </ul>
 </section>
 
 <!-- ================= A/B 根因 ================= -->
 <section id="ab-root">
-  <div class="sec-head"><span class="sec-no">05</span><h2>DeepSeek 在 v1 A/B 题上失误的原因</h2></div>
+  <div class="sec-head"><span class="sec-no">05</span><h2>DeepSeek 在 A/B 题上失误的原因</h2></div>
   <div class="prose">
-    <p>A/B 实验文件里有 30 个用户同时出现在 A、B 两组。数据字典写着“每个用户只属于一个组”，通用规范写着“违反字段定义的值视为无效，只把该字段当作缺失”。按这两条，这些用户的组别无效，应从分组分析中整体剔除，这也是 A/B 实验分析的常规做法。</p>
+    <p>电商数据集的 A/B 实验文件里有 30 个用户同时出现在 A、B 两组。数据字典写着“每个用户只属于一个组”，通用规范写着“违反字段定义的值视为无效，只把该字段当作缺失”。按这两条，这些用户的组别无效，应从分组分析中整体剔除，这也是 A/B 实验分析的常规做法。</p>
     <p>结论先说：DeepSeek 在这里的问题不是不会算，也基本不是没发现。它多数时候发现了冲突，却选择“不处理”，而且这个选择在多次运行之间来回摇摆。下面是逐次分析事件日志得到的证据。</p>
   </div>
-
   <h3>证据一：错误答案与“不处理”口径逐位一致</h3>
   <div class="prose"><p>12 道 A/B 相关题中，有 7 道的答案会随处理方式改变（其余题不受影响，或差异小于判分容差）。对这 7 道题按三种口径分别计算，DeepSeek 的 11 次错误答案全部与“不处理”一致，没有一次是“保留首条”。</p></div>
   <div class="tbl-wrap">
@@ -447,110 +483,44 @@ pre.cmd { margin: 14px 0 0; background: var(--surface); border: 1px solid var(--
   <div class="callout">
     <p style="margin:0"><b>使用建议：</b>用 DeepSeek 做数据分析时，把关键的处理规则逐条写进提示词，第 2 轮的结果说明写明后它能稳定执行。也可以明确要求它“遇到数据冲突时按领域惯例处理，并同时给出不处理时的对照结果”。</p>
   </div>
+  <div class="prose"><p>在跨境零售数据集上，实验题把统计口径写全了，这类失误没有再出现。</p></div>
+
 </section>
 
 <!-- ================= 效率与成本 ================= -->
 <section id="cost">
-  <div class="sec-head"><span class="sec-no">06</span><h2>v1 效率与成本</h2></div>
+  <div class="sec-head"><span class="sec-no">06</span><h2>效率与成本</h2></div>
   <div class="tbl-wrap">
     <table>
-      <thead><tr><th>每题指标</th><th class="r">Haiku 有提示</th><th class="r">DeepSeek 有提示</th><th class="r">Haiku 无提示</th><th class="r">DeepSeek 无提示</th></tr></thead>
+      <thead>
+        <tr><th rowspan="2">每题指标</th><th colspan="2" class="r">电商数据集 · 有提示</th><th colspan="2" class="r">电商数据集 · 无提示</th><th colspan="2" class="r">跨境零售数据集</th></tr>
+        <tr><th class="r">Haiku</th><th class="r">DeepSeek</th><th class="r">Haiku</th><th class="r">DeepSeek</th><th class="r">Haiku</th><th class="r">DeepSeek</th></tr>
+      </thead>
       <tbody>
-        <tr><td>平均耗时</td><td class="r">15.0s</td><td class="r">9.6s</td><td class="r">19.7s</td><td class="r">20.8s</td></tr>
-        <tr><td>中位耗时</td><td class="r dim">—</td><td class="r dim">—</td><td class="r">16.8s</td><td class="r">12.2s</td></tr>
-        <tr><td>P90 耗时</td><td class="r dim">—</td><td class="r dim">—</td><td class="r">33.2s</td><td class="r">45.9s</td></tr>
-        <tr><td>工具调用次数</td><td class="r">4.1</td><td class="r">4.2</td><td class="r">4.6</td><td class="r">5.7</td></tr>
-        <tr><td>模型回合数</td><td class="r dim">—</td><td class="r dim">—</td><td class="r">5.0</td><td class="r">6.2</td></tr>
-        <tr><td>输入 token</td><td class="r">24.4K</td><td class="r">20.0K</td><td class="r">29.6K</td><td class="r">36.9K</td></tr>
-        <tr><td>输出 token</td><td class="r">1.94K</td><td class="r">1.14K</td><td class="r">2.57K</td><td class="r">2.53K</td></tr>
-        <tr><td>费用（每千题）</td><td class="r">$1.87</td><td class="r">$1.33</td><td class="r">$2.32</td><td class="r">$2.43</td></tr>
+        <tr><td>平均耗时</td><td class="r">15.0s</td><td class="r">9.6s</td><td class="r">19.7s</td><td class="r">20.8s</td><td class="r">46.0s</td><td class="r">54.5s</td></tr>
+        <tr><td>中位耗时</td><td class="r dim">—</td><td class="r dim">—</td><td class="r">16.8s</td><td class="r">12.2s</td><td class="r">33.2s</td><td class="r">31.4s</td></tr>
+        <tr><td>P90 耗时</td><td class="r dim">—</td><td class="r dim">—</td><td class="r">33.2s</td><td class="r">45.9s</td><td class="r">86.3s</td><td class="r">126.6s</td></tr>
+        <tr><td>工具调用次数</td><td class="r">4.1</td><td class="r">4.2</td><td class="r">4.6</td><td class="r">5.7</td><td class="r">6.6</td><td class="r">9.0</td></tr>
+        <tr><td>模型回合数</td><td class="r dim">—</td><td class="r dim">—</td><td class="r">5.0</td><td class="r">6.2</td><td class="r">7.1</td><td class="r">9.1</td></tr>
+        <tr><td>输入 token</td><td class="r">24.4K</td><td class="r">20.0K</td><td class="r">29.6K</td><td class="r">36.9K</td><td class="r">73.3K</td><td class="r">111.4K</td></tr>
+        <tr><td>输出 token</td><td class="r">1.94K</td><td class="r">1.14K</td><td class="r">2.57K</td><td class="r">2.53K</td><td class="r">5.96K</td><td class="r">6.21K</td></tr>
+        <tr><td>费用（每千题）</td><td class="r">$1.87</td><td class="r">$1.33</td><td class="r">$2.32</td><td class="r">$2.43</td><td class="r">$5.06</td><td class="r">$5.47</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="caption">有提示列来自第 2 轮单次运行（当时未统计中位数、P90 和回合数），无提示列为第 4 轮 3 次重复的均值。费用为 pi 按调用渠道价格报告的金额。两轮均无超时，也没有因接口错误导致的失败。</p>
+  <p class="caption">“有提示”来自第 2 轮单次运行（当时未统计中位数、P90 和回合数），“无提示”为第 4 轮 3 次重复的均值，跨境零售数据集为第 5 轮 3 次重复的均值。费用为 pi 按调用渠道价格报告的金额。</p>
   <div class="prose">
-    <p>DeepSeek 的耗时分布更分散：简单题通常很快，难题则需要多轮探查，所以中位数更低、P90 更高。批量跑大量简单查询时，DeepSeek 的吞吐更有优势；如果关注最坏情况下的响应时间，Haiku 更可预期。</p>
+    <p>任务越简单、口径越明确，DeepSeek 的速度和成本优势越明显：电商数据集有提示时，它比 Haiku 快 36%、便宜 29%。任务需要多步探查时，DeepSeek 的工具调用和输入 token 增长更快：跨境零售数据集上它平均多调用 2.4 次工具、输入 token 多 52%，所以虽然单价更低，每千题费用反而高约 8%。</p>
+    <p>DeepSeek 的耗时分布也更分散：简单题通常很快，难题则需要多轮探查，所以中位数更低、P90 更高。批量跑大量简单查询时，DeepSeek 的吞吐更有优势；如果关注最坏情况下的响应时间，Haiku 更可预期。</p>
   </div>
-</section>
-
-<!-- ================= v2 高难度题库 ================= -->
-<section id="v2">
-  <div class="sec-head"><span class="sec-no">07</span><h2>v2：更难、更接近真实工作的题库</h2></div>
-  <div class="prose">
-    <p>v1 去掉提示后，差距集中在 A/B 实验这一类，整体仍接近满分。v2 换了一套全新的数据和题目，题型聚焦数据工程与分析中真正费力的环节。v2 沿用 v1 无提示版的做法：README 是数据字典，只写字段约束、业务规则和通用规范，不提示具体问题。不同的是，v2 把夏令时、订单多次导出、文件格式这类必须约定的规则写清楚，统计题的公式也全部给出。所有任务都在 bubblewrap 沙箱中运行，两个模型各跑 3 轮。</p>
-  </div>
-
-  <h3>数据与题型</h3>
-  <div class="prose"><p>数据共 34 个文件、约 81MB，包括中美 6 家门店两年的订单、支付与退款、两套会员系统、商品变更日志、库存进销、SaaS 订阅事件、103 万行传感器读数、营销触点、三组实验数据、30 万行 Nginx 日志和定长格式的总账。</p></div>
-  <div class="tbl-wrap">
-    <table>
-      <thead><tr><th>等级</th><th>考查内容</th><th>典型题目</th></tr></thead>
-      <tbody>
-        <tr><td>L1</td><td>多格式读取与解析</td><td>按月分区且中途改字段名的 CSV、嵌套 JSON、定长文本、gzip、访问日志</td></tr>
-        <tr><td>L2</td><td>清洗与异常识别</td><td>跨文件重复、夏令时不存在或重复的本地时间、以华氏度上报的设备、借贷不平衡的凭证</td></tr>
-        <tr><td>L3</td><td>对账</td><td>支付流水与订单逐笔核对：漏收、重复扣款、少付、拒付、超额退款；输出对账表</td></tr>
-        <tr><td>L4</td><td>实体合并</td><td>两套会员系统按手机号或邮箱传递合并，计算按人汇总的消费</td></tr>
-        <tr><td>L5</td><td>时间与时区</td><td>跨时区业务日期、设备断线、按小时重采样、付费期区间、日志会话切分</td></tr>
-        <tr><td>L6</td><td>增量与历史数据</td><td>回放变更日志、价格拉链表、下单时刻标价的时点关联、按业务日期或 UTC 日期取汇率</td></tr>
-        <tr><td>L7</td><td>业务指标</td><td>MRR 瀑布、NRR/GRR、Quick Ratio、先进先出与移动加权平均成本</td></tr>
-        <tr><td>L8</td><td>统计推断进阶</td><td>辛普森悖论、Mantel-Haenszel、CUPED、双重差分、BH 多重检验校正</td></tr>
-        <tr><td>L9</td><td>归因与分解</td><td>5 种多触点归因模型、GMV 下滑的“门店 × 渠道”根因定位、价量分解</td></tr>
-        <tr><td>L10</td><td>综合分析</td><td>一次给出多个字段的经营、对账、实验、库存摘要，以及多张交付表</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3>结果</h3>
-  <div class="tbl-wrap">
-    <table>
-      <thead><tr><th>等级</th><th class="r">Haiku 正确（/20）</th><th class="r">DeepSeek 正确（/20）</th><th class="r">Haiku 耗时</th><th class="r">DeepSeek 耗时</th><th class="r">Haiku $/千题</th><th class="r">DeepSeek $/千题</th></tr></thead>
-      <tbody id="v2-level-rows"></tbody>
-    </table>
-  </div>
-  <p class="caption">3 轮均值。Haiku 3 轮为 199、198、196/200，DeepSeek 为 198、197、198/200。按题配对比较：Haiku 通过率更高 6 题、DeepSeek 更高 7 题，符号检验 p = 1.0。</p>
-
-  <div class="chart-card">
-    <div class="chart-title">v2 各等级每题平均耗时（秒）</div>
-    <div class="chart-sub">3 轮均值。纵轴从 0 开始。</div>
-    <div class="legend"><span><i class="h"></i>Haiku 5.5</span><span><i class="d"></i>DeepSeek</span></div>
-    <div class="chart" id="chart-v2-time"></div>
-  </div>
-
-  <div class="tbl-wrap">
-    <table>
-      <thead><tr><th>每题指标（v2，3 轮）</th><th class="r">Haiku</th><th class="r">DeepSeek</th></tr></thead>
-      <tbody>
-        <tr><td>平均耗时 / 中位耗时 / P90 耗时</td><td class="r">46.0s / 33.2s / 86.3s</td><td class="r">54.5s / 31.4s / 126.6s</td></tr>
-        <tr><td>工具调用次数（平均）</td><td class="r">6.6</td><td class="r">9.0</td></tr>
-        <tr><td>模型回合数（平均）</td><td class="r">7.1</td><td class="r">9.1</td></tr>
-        <tr><td>输入 / 输出 token（平均）</td><td class="r">73.3K / 5.96K</td><td class="r">111.4K / 6.21K</td></tr>
-        <tr><td>费用（每千题）</td><td class="r">$5.06</td><td class="r">$5.47</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3>失误分析</h3>
-  <div class="prose"><p>修正题目缺陷后（第 08 节），每个模型 3 轮共剩 7 次失误，分布在不同的题目上，没有哪道题被某个模型 3 轮全错。</p></div>
-  <div class="tbl-wrap">
-    <table>
-      <thead><tr><th>题号</th><th>等级</th><th>Haiku 第 1–3 轮</th><th>DeepSeek 第 1–3 轮</th><th>原因</th><th>类型</th></tr></thead>
-      <tbody id="v2-fail-rows"></tbody>
-    </table>
-  </div>
-  <ul class="findings">
-    <li><span><b>Haiku 想得太多。</b>7 次失误中有 4 次是把 README 的通用规范用在了不该用的地方：题目要“全部订单”，它按“有效订单”只数了 completed；题目问“出现在多个文件中的订单”，它先去重，结果自然是 0；题目问“超出合理范围的读数”，它先把 999.9 当作缺失值，于是答 0。这几次它通常在说明里写出了另一种口径下的正确数，只是最后选错了。</span></li>
-    <li><span><b>DeepSeek 读得不够细。</b>它 3 次把“入库之后、出库之前库存为 0”理解成“日终库存为 0”；2 次先 <code>cd</code> 进子目录，再用相对路径写答案，答案本身正确，却没有写到要求的当前目录。</span></li>
-    <li><span><b>v1 的 A/B 差距没有重现。</b>v2 的实验题把统计口径写全了，不需要模型自己决定“发现数据冲突后怎么处理”。这一点也印证了第 05 节的判断：v1 的差距来自规范未覆盖时的判断风格，而不是统计能力。</span></li>
-    <li><span><b>复杂任务上 Haiku 更高效。</b>L3–L7、L9、L10 都是 Haiku 更快，L10 平均 71.9s 对 98.5s。DeepSeek 只在 L1 和 L8 这类直接计算的题上更快。DeepSeek 平均多调用 2.4 次工具，输入 token 多 52%，所以虽然它的单价更低，每千题费用反而高约 8%。</span></li>
-  </ul>
 </section>
 
 <!-- ================= 行为观察 ================= -->
 <section id="behavior">
-  <div class="sec-head"><span class="sec-no">08</span><h2>行为观察与评测本身的修正</h2></div>
+  <div class="sec-head"><span class="sec-no">07</span><h2>行为观察与评测本身的修正</h2></div>
   <h3>遇到歧义时会多算几种口径</h3>
   <div class="prose">
-    <p>第 2 轮 README 有一处没写清：revenue 为负的那一行，dau 是否仍然有效。两个模型都察觉到了歧义，从事件日志看，它们都把“整行剔除”和“只剔除 revenue”各算了一遍，最后都选了整行剔除。这类主动核对是两个模型的共同优点，但也说明口径不清时，“答错”可能只是选了另一种合理解释。</p>
+    <p>第 2 轮（电商数据集）的 README 有一处没写清：revenue 为负的那一行，dau 是否仍然有效。两个模型都察觉到了歧义，从事件日志看，它们都把“整行剔除”和“只剔除 revenue”各算了一遍，最后都选了整行剔除。这类主动核对是两个模型的共同优点，但也说明口径不清时，“答错”可能只是选了另一种合理解释。</p>
   </div>
 
   <h3>写出到工作目录之外</h3>
@@ -561,27 +531,27 @@ pre.cmd { margin: 14px 0 0; background: var(--surface); border: 1px solid var(--
     <table>
       <thead><tr><th>运行</th><th class="r">Haiku 越界题数</th><th class="r">DeepSeek 越界题数</th></tr></thead>
       <tbody>
-        <tr><td>第 2 轮（有提示）</td><td class="r">40 / 200（20.0%）</td><td class="r">9 / 200（4.5%）</td></tr>
-        <tr><td>第 4 轮 · 第 1 次</td><td class="r">36 / 200（18.0%）</td><td class="r">6 / 200（3.0%）</td></tr>
-        <tr><td>第 4 轮 · 第 2 次</td><td class="r">27 / 200（13.5%）</td><td class="r">8 / 200（4.0%）</td></tr>
-        <tr><td>第 4 轮 · 第 3 次</td><td class="r">33 / 200（16.5%）</td><td class="r">10 / 200（5.0%）</td></tr>
-        <tr><td>v2 · 3 轮合计（在沙箱中）</td><td class="r">279 / 600（46.5%）</td><td class="r">61 / 600（10.2%）</td></tr>
+        <tr><td>第 2 轮（电商，有提示）</td><td class="r">40 / 200（20.0%）</td><td class="r">9 / 200（4.5%）</td></tr>
+        <tr><td>第 4 轮（电商）· 第 1 次</td><td class="r">36 / 200（18.0%）</td><td class="r">6 / 200（3.0%）</td></tr>
+        <tr><td>第 4 轮（电商）· 第 2 次</td><td class="r">27 / 200（13.5%）</td><td class="r">8 / 200（4.0%）</td></tr>
+        <tr><td>第 4 轮（电商）· 第 3 次</td><td class="r">33 / 200（16.5%）</td><td class="r">10 / 200（5.0%）</td></tr>
+        <tr><td>第 5 轮（跨境零售）· 3 次合计，在沙箱中</td><td class="r">279 / 600（46.5%）</td><td class="r">61 / 600（10.2%）</td></tr>
       </tbody>
     </table>
   </div>
   <div class="prose">
-    <p>3 次重复是并行运行的，多个任务会同时读写同一个 <code>/tmp/calc.py</code>，存在互相覆盖的风险。核查结果：Haiku 用到该文件的 60 个任务全部正确，没有任何一道失败题与文件覆盖有关，上面的结论不受影响。模型留在 <code>/tmp</code> 的 45 个文件已按事件日志逐一确认后删除。此后运行器改为默认在 bubblewrap 沙箱中执行：每题有独立的 <code>/tmp</code>，只有题目目录可写，家目录中的其他内容不可见。</p>
-    <p>v2 的任务更重，Haiku 写 <code>/tmp</code> 的比例升到 46.5%。这些写入都只落在各自沙箱的临时层，任务之间不会互相覆盖，宿主机上也没有残留。如果没有沙箱，3 轮并行时文件互相覆盖的风险会高得多。</p>
+    <p>第 4 轮的 3 次重复是并行运行的，多个任务会同时读写同一个 <code>/tmp/calc.py</code>，存在互相覆盖的风险。核查结果：Haiku 用到该文件的 60 个任务全部正确，没有任何一道失败题与文件覆盖有关，上面的结论不受影响。模型留在 <code>/tmp</code> 的 45 个文件已按事件日志逐一确认后删除。此后运行器改为默认在 bubblewrap 沙箱中执行：每题有独立的 <code>/tmp</code>，只有题目目录可写，家目录中的其他内容不可见。</p>
+    <p>第 5 轮的任务更重，Haiku 写 <code>/tmp</code> 的比例升到 46.5%。这些写入都只落在各自沙箱的临时层，任务之间不会互相覆盖，宿主机上也没有残留。如果没有沙箱，3 轮并行时文件互相覆盖的风险会高得多。</p>
   </div>
 
-  <h3>v2 运行中的基础设施事故</h3>
+  <h3>第 5 轮运行中的基础设施事故</h3>
   <div class="prose">
-    <p>v2 第一次运行时，评测账号的调用额度中途耗尽，之后每次调用都返回 403（insufficient_user_quota）。当时 Haiku 的任务全部排在 DeepSeek 之后，所以 600 次一题都没跑到；运行器又把这类接口错误记成了“模型没写答案、答错”，既没重试也没停下来。处理过程如下：</p>
+    <p>第 5 轮第一次运行时，评测账号的调用额度中途耗尽，之后每次调用都返回 403（insufficient_user_quota）。当时 Haiku 的任务全部排在 DeepSeek 之后，所以 600 次一题都没跑到；运行器又把这类接口错误记成了“模型没写答案、答错”，既没重试也没停下来。处理过程如下：</p>
     <ul class="findings">
       <li><span><b>修复判定。</b>运行器改为：只要事件日志里出现过接口报错，就记为基础设施失败并自动重试，不算模型答错。</span></li>
       <li><span><b>修复已有记录。</b>按事件日志重新判定旧记录，只保留未受影响的记录。中途碰到报错、但已经写过答案的 7 条记录也一并重跑。</span></li>
       <li><span><b>防止再次发生。</b>两个模型的任务改为交替排队；连续 8 个任务因额度不足失败时自动停止派发。</span></li>
-      <li><span><b>补跑结果。</b>额度恢复后补跑了 959 个任务，没有再出现接口失败。报告中的 v2 数据全部来自有效运行。</span></li>
+      <li><span><b>补跑结果。</b>额度恢复后补跑了 959 个任务，没有再出现接口失败。报告中第 5 轮的数据全部来自有效运行。</span></li>
     </ul>
   </div>
 
@@ -589,7 +559,7 @@ pre.cmd { margin: 14px 0 0; background: var(--surface); border: 1px solid var(--
   <div class="prose"><p>每次出现失败，都先判断是模型的错还是题目的错。下面这些属于题目的错。每项修正都对两个模型同时生效，受影响的题两个模型都重跑了。</p></div>
   <div class="tbl-wrap">
     <table>
-      <thead><tr><th>问题</th><th>怎么发现的</th><th>修正</th></tr></thead>
+      <thead><tr><th>电商数据集的问题</th><th>怎么发现的</th><th>修正</th></tr></thead>
       <tbody>
         <tr><td>Python 内置 <code>round</code> 是银行家舍入，期望答案 5.25 被算成 5.2</td><td>两个模型都答 5.3</td><td>标准答案改用四舍五入</td></tr>
         <tr><td>题目要求输出部门名称，期望答案却是部门 ID</td><td>两个模型都答“研发”</td><td>修正期望答案</td></tr>
@@ -602,10 +572,10 @@ pre.cmd { margin: 14px 0 0; background: var(--surface); border: 1px solid var(--
       </tbody>
     </table>
   </div>
-  <p class="caption">以上为 v1 的缺陷。v2 的缺陷见下表。</p>
+  <p class="caption">以上为电商数据集的缺陷，跨境零售数据集的缺陷见下表。</p>
   <div class="tbl-wrap">
     <table>
-      <thead><tr><th>v2 的问题</th><th>怎么发现的</th><th>修正</th></tr></thead>
+      <thead><tr><th>跨境零售数据集的问题</th><th>怎么发现的</th><th>修正</th></tr></thead>
       <tbody>
         <tr><td>“2023 年旧系统订单”既可理解为“旧系统”，也可理解为日期筛选，而下单时间无效的订单没有日期</td><td>冒烟测试中 Haiku 剔除了这 5 笔订单</td><td>改为“旧系统文件中的全部订单（不按日期筛选）”</td></tr>
         <tr><td>#56 写着“规则同对账表”，#114 写着“上一题”，#192 写着“定义同前”，但每道题都在独立环境中运行，模型看不到别的题</td><td>Haiku 在说明里指出“工作区里没有 matched 的定义”</td><td>把定义写进题面；两个模型 3 轮都重跑</td></tr>
@@ -617,39 +587,40 @@ pre.cmd { margin: 14px 0 0; background: var(--surface); border: 1px solid var(--
       </tbody>
     </table>
   </div>
-  <p class="caption">上述 v2 修正对应的重跑任务（共 162 个）全部答对，说明这些失分完全来自题目，而不是模型。</p>
+  <p class="caption">跨境零售数据集上这些修正对应的重跑任务（共 162 个）全部答对，说明这些失分完全来自题目，而不是模型。</p>
 </section>
 
 <!-- ================= 局限 ================= -->
 <section id="limits">
-  <div class="sec-head"><span class="sec-no">09</span><h2>局限</h2></div>
+  <div class="sec-head"><span class="sec-no">08</span><h2>局限</h2></div>
   <ul class="findings">
     <li><span><b>只覆盖了一种配置。</b>两个模型都用默认思考强度、同一个调用渠道；没有测试关闭或提高思考强度的效果。</span></li>
-    <li><span><b>只有一个数据领域，题面全是中文。</b>结论来自电商场景下有唯一标准答案的计算题，不代表开放式分析、写报告或可视化能力。</span></li>
-    <li><span><b>v1 的结论依赖一个判分口径。</b>v1 第 4 轮的差距主要来自 A/B 题的“整体剔除”口径。这个口径由 README 的两条规则推出，也符合实验分析惯例，但 README 没有逐字写明；如果同时接受“不处理”，两者持平（第 05 节）。</span></li>
-    <li><span><b>差距小，样本有限。</b>两套题库的正确率差都在 2 个百分点以内。v1 的差距由 7 道 A/B 题决定，v2 打平；换一套题目权重，总分差可能变化。</span></li>
-    <li><span><b>题目有唯一标准答案。</b>为了自动判分，每道题都有明确的定义和唯一答案。这测的是“在给定口径下把数据处理对”的能力，不涵盖开放式探索、提出好问题、写分析报告。</span></li>
-    <li><span><b>v1 运行时没有系统层面的沙箱。</b>v1 四轮中，越界写文件只靠提示词约束（第 08 节）；v2 全部在 bubblewrap 沙箱中运行。沙箱里网络仍是开放的，pi 的模型配置（含 API key）在沙箱内可读。</span></li>
+    <li><span><b>题面全是中文，题目有唯一标准答案。</b>为了自动判分，每道题都有明确的定义和唯一答案。这测的是“在给定口径下把数据处理对”的能力，不涵盖开放式探索、提出好问题、写分析报告或可视化。</span></li>
+    <li><span><b>电商数据集的结论依赖一个判分口径。</b>第 4 轮的差距主要来自 A/B 题的“整体剔除”口径。这个口径由 README 的两条规则推出，也符合实验分析惯例，但 README 没有逐字写明；如果同时接受“不处理”，两者持平（第 05 节）。</span></li>
+    <li><span><b>差距小，样本有限。</b>两个数据集上的正确率差都在 2 个百分点以内。电商数据集的差距由 7 道 A/B 题决定，跨境零售数据集打平；换一套题目权重，总分差可能变化。</span></li>
+    <li><span><b>前四轮没有系统层面的沙箱。</b>第 1–4 轮中，越界写文件只靠提示词约束（第 07 节）；第 5 轮全部在 bubblewrap 沙箱中运行。沙箱里网络仍是开放的，pi 的模型配置（含 API key）在沙箱内可读。</span></li>
     <li><span><b>出题方与被测模型同属一家。</b>题目和判分由 Claude（Opus 5.5）设计。为减少偏向：标准答案从生成数据时的真值计算；两个模型使用完全相同的提示词；每道失败题都核对过事件日志，题目缺陷修正后两个模型一起重跑。即便如此，题目风格可能更接近 Claude 系模型的习惯，这一点无法完全排除。</span></li>
   </ul>
 </section>
 
 <!-- ================= 复现 ================= -->
 <section id="repro">
-  <div class="sec-head"><span class="sec-no">10</span><h2>复现</h2></div>
-  <div class="prose"><p>所有脚本和结果都在 GitHub 仓库 <code>flyfishchen/dsflashVShaiku</code> 中。第 1 轮在根目录，第 2–4 轮在 <code>hard/</code> 下，第 5 轮（v2）在 <code>hard/v2/</code> 下。v2 的数据、真值和标准答案没有提交，用固定随机种子的生成器即可逐字节重新生成。</p></div>
+  <div class="sec-head"><span class="sec-no">09</span><h2>复现</h2></div>
+  <div class="prose"><p>所有脚本和结果都在 GitHub 仓库 <code>flyfishchen/dsflashVShaiku</code> 中：第 1 轮在根目录；电商数据集（第 2–4 轮）在 <code>hard/</code> 下；跨境零售数据集（第 5 轮）在 <code>hard/v2/</code> 下。跨境零售数据集的数据、真值和标准答案没有提交，用固定随机种子的生成器即可逐字节重新生成。</p></div>
 <pre class="cmd">git clone https://github.com/flyfishchen/dsflashVShaiku.git
 cd dsflashVShaiku
 uv venv .venv &amp;&amp; uv pip install --python .venv/bin/python pandas numpy scipy
 cd hard
 PY=../.venv/bin/python
+
+# 电商数据集（第 2–4 轮）
 $PY gen_data.py                  # 生成脏数据与真值
 $PY gen_cases.py                 # 从真值计算 200 道题的标准答案
-$PY make_nohint.py               # 生成无提示版题目
+$PY make_nohint.py               # 生成不提示脏数据的题目版本
 $PY run_eval.py --tag nohint_r1 --cases test_cases_nohint.json --readme README_nohint.md
 $PY compare_runs.py nohint_r1 nohint_r2 nohint_r3   # 多轮汇总与显著性检验
 
-# v2（需要支持 --tmp-overlay 的 bubblewrap，已在 0.11.1 上验证）
+# 跨境零售数据集（第 5 轮；需要支持 --tmp-overlay 的 bubblewrap，已在 0.11.1 上验证）
 (cd v2 &amp;&amp; ../$PY gen_data.py &amp;&amp; ../$PY gen_cases.py)
 $PY run_eval.py --tag v2_r1 --cases v2/test_cases.json --readme v2/README_data.md --data v2/data --timeout 1200
 $PY compare_runs.py v2_r1 v2_r2 v2_r3 --cases v2/test_cases.json --out results/v2_repeat_summary.json</pre>
@@ -657,13 +628,11 @@ $PY compare_runs.py v2_r1 v2_r2 v2_r3 --cases v2/test_cases.json --out results/v
     <table>
       <thead><tr><th>文件</th><th>内容</th></tr></thead>
       <tbody>
-        <tr><td><code>hard/data/</code></td><td>脏数据与有提示版 README</td></tr>
-        <tr><td><code>hard/README_nohint.md</code></td><td>无提示版数据字典</td></tr>
-        <tr><td><code>hard/test_cases.json</code>、<code>test_cases_nohint.json</code></td><td>两版题目（标准答案相同）</td></tr>
-        <tr><td><code>hard/results/repeat_summary.json</code></td><td>第 4 轮汇总、逐题通过率、配对检验</td></tr>
-        <tr><td><code>hard/v2/</code></td><td>v2 数据生成器、题目生成器、数据字典 <code>README_data.md</code>、题目 <code>test_cases.json</code></td></tr>
-        <tr><td><code>hard/results/v2_repeat_summary.json</code></td><td>v2 三轮汇总、逐题通过率、配对检验</td></tr>
-        <tr><td><code>hard/work/&lt;轮次&gt;/&lt;模型&gt;/&lt;题号&gt;/</code></td><td>每次运行的事件日志、模型写的代码与产出文件</td></tr>
+        <tr><td><code>hard/data/</code>、<code>hard/README_nohint.md</code></td><td>电商数据集的脏数据，以及有提示、无提示两版 README</td></tr>
+        <tr><td><code>hard/test_cases.json</code>、<code>test_cases_nohint.json</code></td><td>电商数据集的两版题目（标准答案相同）</td></tr>
+        <tr><td><code>hard/v2/</code></td><td>跨境零售数据集的数据生成器、题目生成器、数据字典 <code>README_data.md</code>、题目 <code>test_cases.json</code></td></tr>
+        <tr><td><code>hard/results/repeat_summary.json</code>、<code>v2_repeat_summary.json</code></td><td>两个数据集的 3 轮汇总、逐题通过率、配对检验</td></tr>
+        <tr><td><code>hard/work/&lt;轮次&gt;/&lt;模型&gt;/&lt;题号&gt;/</code></td><td>每次运行的事件日志、模型写的代码与产出文件（未提交）</td></tr>
       </tbody>
     </table>
   </div>
@@ -673,6 +642,7 @@ $PY compare_runs.py v2_r1 v2_r2 v2_r3 --cases v2/test_cases.json --out results/v
   报告日期 2026-10-18。被测模型：DeepSeek V4.1-Flash-1017 对比 Claude Haiku 5.5。
 </footer>
 </div>
+
 
 <script>
 const LEVELS = [
@@ -784,8 +754,8 @@ function lineChart(host, cfg) {
 }
 
 lineChart(document.getElementById("chart-acc"), {
-  aria: "三种出题方式下两个模型的正确率折线图",
-  cats: ["v1 关闭工具\n题内小数据", "v1 开启工具\n有提示", "v1 无提示\n（3 轮）", "v2 高难度\n（3 轮）"],
+  aria: "各轮两个模型的正确率折线图",
+  cats: ["题内小数据\n关闭工具", "电商数据集\n有提示", "电商数据集\n无提示（3 轮）", "跨境零售数据集\n无提示（3 轮）"],
   y0: 97, y1: 100.5, ticks: [97, 98, 99, 100], tickFmt: t => t + "%",
   valFmt: v => v.toFixed(v % 1 ? (Math.round(v * 100) % 10 ? 2 : 1) : 0) + "%",
   endLabels: true, h: 300, mb: 52,
@@ -794,7 +764,7 @@ lineChart(document.getElementById("chart-acc"), {
     { name: "DeepSeek", cls: "d", off: 5, noEnd: true, values: [100, 100, 97.83, 98.83], range: [null, null, [97.5, 98.5], [98.5, 99.0]] },
   ],
 });
-const V2 = [
+const RETAIL = [
   // 等级, 名称, Haiku 正确, DeepSeek 正确, Haiku 耗时, DeepSeek 耗时, Haiku $/千题, DeepSeek $/千题
   [1, "多格式读取与解析", 19.3, 20.0, 25.7, 17.7, 3.16, 2.18],
   [2, "清洗与异常识别", 19.0, 20.0, 32.6, 32.3, 3.92, 2.89],
@@ -807,7 +777,7 @@ const V2 = [
   [9, "归因与分解", 20.0, 19.7, 49.6, 65.3, 5.06, 5.96],
   [10, "综合分析", 20.0, 19.3, 71.9, 98.5, 8.15, 10.68],
 ];
-const V2FAILS = [
+const RETAIL_FAILS = [
   [2, 1, [1, 0, 1], [1, 1, 1], "题目要全部订单，按“有效订单”只数了 completed（42,672 对 46,409）", "过度套用规范"],
   [7, 1, [1, 1, 0], [1, 1, 1], "题目要全部订单的明细，只数了 completed 订单", "过度套用规范"],
   [21, 2, [1, 0, 1], [1, 1, 1], "先去重再判断是否出现在多个文件，得到 0（先算出 122 又改掉）", "过度套用规范"],
@@ -822,23 +792,23 @@ const V2FAILS = [
   [167, 9, [1, 1, 1], [0, 1, 1], "答案正确，但把 answer.json 写进了 marketing/", "输出位置错误"],
   [193, 10, [1, 1, 1], [1, 0, 0], "stockout_sku_days 同样按“日终库存为 0”计为 5", "读错定义"],
 ];
-document.getElementById("v2-level-rows").innerHTML = V2.map(r => `<tr><td>L${r[0]} ${r[1]}</td>
+document.getElementById("retail-level-rows").innerHTML = RETAIL.map(r => `<tr><td>L${r[0]} ${r[1]}</td>
   <td${r[2] < 20 ? ' class="r diff-down"' : ' class="r"'}>${r[2].toFixed(1)}</td>
   <td${r[3] < 20 ? ' class="r diff-down"' : ' class="r"'}>${r[3].toFixed(1)}</td>
   <td class="r">${r[4].toFixed(1)}s</td><td class="r">${r[5].toFixed(1)}s</td>
   <td class="r">$${r[6].toFixed(2)}</td><td class="r">$${r[7].toFixed(2)}</td></tr>`).join("") +
   `<tr><td><b>合计</b></td><td class="r"><b>197.7</b></td><td class="r"><b>197.7</b></td><td class="r"><b>46.0s</b></td><td class="r"><b>54.5s</b></td><td class="r"><b>$5.06</b></td><td class="r"><b>$5.47</b></td></tr>`;
-document.getElementById("v2-fail-rows").innerHTML = V2FAILS.map(f => `<tr>
+document.getElementById("retail-fail-rows").innerHTML = RETAIL_FAILS.map(f => `<tr>
   <td class="mono">#${f[0]}</td><td>L${f[1]}</td>
   <td><span class="runs">${f[2].map(chip).join("")}</span></td>
   <td><span class="runs">${f[3].map(chip).join("")}</span></td>
   <td>${f[4]}</td><td><span class="tag">${f[5]}</span></td></tr>`).join("");
-lineChart(document.getElementById("chart-v2-time"), {
-  aria: "v2 各等级每题平均耗时折线图", cats: V2.map(r => "L" + r[0]), y0: 0, y1: 120, ticks: [0, 30, 60, 90, 120], tickFmt: t => t + "s",
+lineChart(document.getElementById("chart-retail-time"), {
+  aria: "跨境零售数据集各等级每题平均耗时折线图", cats: RETAIL.map(r => "L" + r[0]), y0: 0, y1: 120, ticks: [0, 30, 60, 90, 120], tickFmt: t => t + "s",
   valFmt: v => v.toFixed(1) + "s", endLabels: true, h: 280, mb: 34, mr: 52,
   series: [
-    { name: "Haiku 5.5", cls: "h", off: 0, values: V2.map(r => r[4]) },
-    { name: "DeepSeek", cls: "d", off: 0, values: V2.map(r => r[5]) },
+    { name: "Haiku 5.5", cls: "h", off: 0, values: RETAIL.map(r => r[4]) },
+    { name: "DeepSeek", cls: "d", off: 0, values: RETAIL.map(r => r[5]) },
   ],
 });
 const lvCats = LEVELS.map(r => "L" + r[0]);
@@ -850,8 +820,8 @@ const timeCfg = (h, d, aria) => ({
     { name: "DeepSeek", cls: "d", off: 0, values: d },
   ],
 });
-lineChart(document.getElementById("chart-time-hint"), timeCfg(LEVELS.map(r => r[8]), LEVELS.map(r => r[9]), "有提示时各等级每题平均耗时"));
-lineChart(document.getElementById("chart-time-nohint"), timeCfg(LEVELS.map(r => r[4]), LEVELS.map(r => r[5]), "无提示时各等级每题平均耗时"));
+lineChart(document.getElementById("chart-time-hint"), timeCfg(LEVELS.map(r => r[8]), LEVELS.map(r => r[9]), "电商数据集有提示时各等级每题平均耗时"));
+lineChart(document.getElementById("chart-time-nohint"), timeCfg(LEVELS.map(r => r[4]), LEVELS.map(r => r[5]), "电商数据集无提示时各等级每题平均耗时"));
 </script>
 </body>
 </html>
