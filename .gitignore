@@ -13,3 +13,6 @@ hard/v2/expected/
 
 # Claude Code 会话文件
 .claude/
+
+# Claude Code 项目说明（只保留在本地）
+CLAUDE.md
