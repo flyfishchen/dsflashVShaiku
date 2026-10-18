@@ -1,4 +1,4 @@
-# dsflashVSluna
+# dsflashVShaiku
 
 用 pi（`@earendil-works/pi-coding-agent` 1.3.0）评测 **DeepSeek V4.1-Flash-1017** 与 **Claude Haiku 5.5** 的数据处理与分析能力（pi 中的模型 ID 分别为 `newapi/deepseek-flash` 和 `newapi/claude-haiku-5-5`）。题目分 10 个难度等级、每级 20 题，从读文件计数一直到 cohort 留存、关联规则和统计检验。完整分析见 [`reports/eval_report.html`](reports/eval_report.html)（下载后用浏览器打开）。
 

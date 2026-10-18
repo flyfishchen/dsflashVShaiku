@@ -533,8 +533,11 @@ pre.cmd { margin: 14px 0 0; background: var(--surface); border: 1px solid var(--
 <!-- ================= 复现 ================= -->
 <section id="repro">
   <div class="sec-head"><span class="sec-no">09</span><h2>复现</h2></div>
-  <div class="prose"><p>所有脚本和结果都在 <code>/home/chenmx/project/dsflashVSluna/</code> 下。第 1 轮在根目录，第 2–4 轮在 <code>hard/</code> 下。</p></div>
-<pre class="cmd">cd /home/chenmx/project/dsflashVSluna/hard
+  <div class="prose"><p>所有脚本和结果都在 GitHub 仓库 <code>flyfishchen/dsflashVShaiku</code> 中。第 1 轮在根目录，第 2–4 轮在 <code>hard/</code> 下。</p></div>
+<pre class="cmd">git clone https://github.com/flyfishchen/dsflashVShaiku.git
+cd dsflashVShaiku
+uv venv .venv &amp;&amp; uv pip install --python .venv/bin/python pandas numpy scipy
+cd hard
 PY=../.venv/bin/python
 $PY gen_data.py                  # 生成脏数据与真值
 $PY gen_cases.py                 # 从真值计算 200 道题的标准答案

@@ -782,7 +782,8 @@ level_counts = Counter(c["level"] for c in cases)
 print("Level distribution:", dict(level_counts))
 print(f"Total cases: {len(cases)}")
 
-with open('/home/chenmx/project/dsflashVSluna/test_cases.json', 'w', encoding='utf-8') as f:
+from pathlib import Path
+with open(Path(__file__).parent / 'test_cases.json', 'w', encoding='utf-8') as f:
     json.dump(cases, f, ensure_ascii=False, indent=2)
 
 print("Test cases saved to test_cases.json")
